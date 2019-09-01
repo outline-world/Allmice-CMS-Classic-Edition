@@ -22,7 +22,7 @@ Instructions, tutorials and various other useful information about Allmice CMS a
 ## Versioning
 
 Releases are numbered using following format:
-'<major>.<minor>.<patch>'
+`<major>.<minor>.<patch>`
 
 
 ## History
@@ -39,7 +39,7 @@ Changes in a version compared with its previous version are listed below.
 
 * Supporting of remote hosts was fixed in many modules.
 * A check was added in Page module not to process those global snippets, which have no tokens for them by viewing a page.
-* README* and LICENSE* files were changed
+* The structure and names of README* and LICENSE* files were changed.
 
 
 #### Version 1.6.3, 2019-08-08
