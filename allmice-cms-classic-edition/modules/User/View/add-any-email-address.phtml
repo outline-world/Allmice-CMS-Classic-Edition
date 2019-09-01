@@ -1,0 +1,53 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-all-email-addresses'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if($status=="initial" || $status=="registered"){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('userId'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('userId'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('emailAddress'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('emailAddress'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('memWordQuestion'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('memWordQuestion'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('memWord'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('memWord'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('comment'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('comment'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php 
+}
+if($status=="newEmail"){
+	echo $message[0];
+}
+ ?>

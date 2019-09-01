@@ -1,0 +1,80 @@
+<?php 
+//if (isset($Region['menuArea']) && $Region['menuArea']!=""){
+if (isset($Region['menuArea']) && $Region['menuArea']!="" || isset($Region['bar1Area']) && $Region['bar1Area']!="" || isset($Region['bar2Area']) && $Region['bar2Area']!=""){
+
+ ?>
+
+<div class="colmask-rightbar">
+    <div class="colleft">
+
+        <div class="col1wrap">
+            <div class="col1">
+
+					<?php /* Content column start */ ?>
+					<?php if (isset($Region['title'])) : ?>
+					<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+					<?php endif; ?>
+
+					<?php /* Content area */ ?>
+
+					<?php if (isset($Region['messageArea'])) : ?>
+					&nbsp;<br />
+					<div class="message-area">
+					<?php echo ($Region['messageArea']); ?>
+					</div>
+					<?php endif; ?>
+
+					<div class="content-cell">
+					<?php include $contentView; ?>
+					</div>
+
+
+            </div>
+        </div>
+        <div class="col2">
+				<?php /* Left sidebar column start */ ?>
+				<?php if (isset($Region['menuArea'])) : ?>
+				<div class="sidebar">
+						<?php echo ($Region['menuArea']); ?>
+				</div>
+				<?php endif; ?>
+				<?php if (isset($Region['bar1Area'])) : ?>
+				<div class="sidebar">
+						<?php echo ($Region['bar1Area']); ?>
+				</div>
+				<?php endif; ?>
+				<?php if (isset($Region['bar2Area'])) : ?>
+				<div class="sidebar">
+						<?php echo ($Region['bar2Area']); ?>
+				</div>
+				<?php endif; ?>
+
+        </div>
+
+    </div>
+</div>
+
+
+<?php }else{ ?>
+		<div class="colmask">
+			<?php /* Content column start */ ?>
+
+			<?php if (isset($Region['title'])) : ?>
+			<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+			<?php endif; ?>
+
+			<?php /* Content area */ ?>
+
+			<?php if (isset($Region['messageArea'])) : ?>
+			&nbsp;<br />
+			<div class="message-area">
+			<?php echo ($Region['messageArea']); ?>
+			</div>
+			<?php endif; ?>
+
+			<div class="content-cell">
+			<?php include $contentView; ?>
+			</div>
+
+		</div>
+<?php } ?>

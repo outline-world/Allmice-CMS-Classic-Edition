@@ -1,0 +1,68 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<br />
+
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-templates"; ?>">Show list of message templates!</a>
+<br />
+<br />
+<?php if($id>0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('code'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('code'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('module'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('module'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('type'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('type'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('subject'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('subject'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('contentHtml'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('contentHtml'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('contentPlain'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('contentPlain'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('language'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('language'); ?>
+	</div>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

@@ -1,0 +1,145 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-all-pages"; ?>"><?php echo $lang['link1']; ?></a>
+     | <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-snippets/".$id; ?>" target="_blank"><?php echo $lang['link4']; ?></a>
+     | <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/add-snippet/".$id; ?>" target="_blank"><?php echo $lang['link5']; ?></a>
+</div>
+<?php if($id>0){ ?>
+
+<?php 
+$lang['link3']="Show/hide other options (Access right, caching, status, robot tags)";
+$lang['link3']="Show/hide Other options";
+
+$editorContent="";
+	if (isset($_POST['Xeditor2'])) {
+		$editorContent=$_POST['Xeditor2'];
+	}
+
+?>
+
+<?php 
+	echo "<a href=\"";
+if ($form->formMap['alias']['value']!=""){
+	echo $GLOBALS['baseUrl'].$form->formMap['alias']['value'];
+}else{
+	echo $GLOBALS['baseUrl']."/page/view/".$id."";
+}
+	echo "\"";
+	echo " target=\"_blank\"";
+	echo ">";
+	echo $lang['link1b'];
+	echo "</a>\n";
+
+ ?>
+<br />
+<br />
+<h2><?php echo $lang['subTitle1']; ?></h2>
+<hr />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+<?php echo $form->get('creatorId'); ?>
+<?php echo $form->get('menuItemId'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('title'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('descriptionArea'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('descriptionArea'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('bodyArea'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('bodyArea'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('alias'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('alias'); ?>
+	</div>
+<hr />
+<br />
+
+<br />
+<h2><?php echo $lang['subTitle2']; ?></h2>
+<hr />
+<br />
+	<div class="form-field">
+	<?php echo $form->get('label'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('label'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('menuId'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('menuId'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('weight'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('weight'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('parentId'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('parentId'); ?>
+	</div>
+<hr />
+<br />
+
+<br />
+<h2><?php echo $lang['subTitle3']; ?></h2>
+<hr />
+<br />
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('roleAccess'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('roleAccess'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('botTag'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('botTag'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('caching'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('caching'); ?>
+	</div>
+<hr />
+<br />
+
+<div class="form-field">
+<?php echo $form->get('submit1'); ?>
+</div>
+<?php echo $ckEditorScript; ?>
+<?php echo $form->get('end'); ?>
+<?php }else{ ?>
+<br />
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

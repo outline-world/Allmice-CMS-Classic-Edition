@@ -1,0 +1,44 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-contact-forms'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($message)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php 
+$visibleFields=$form->visibleFields;
+		for($i=0;$i<count($visibleFields);$i++){
+
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+<?php 
+if($visibleFields[$i]['fieldName']=="agreement"){
+	echo $agreementCode;
+}
+ ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php } ?>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php 
+}
+else{
+	echo $message[0];
+}
+ ?>
+

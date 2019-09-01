@@ -1,0 +1,92 @@
+<?php
+$title = 'Add Search Type';
+
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-types"; ?>">Show list of search types!</a>
+<br />
+<br />
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('title'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('description'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('description'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('modName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('modName'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('searchTable'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('searchTable'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('searchTableField'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('searchTableField'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('titleTableField'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('titleTableField'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('uri'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('uri'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('addWhereClause'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('addWhereClause'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('orderClause'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('orderClause'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('resultFieldNames'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('resultFieldNames'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('resultFieldTitles'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('resultFieldTitles'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('language'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('language'); ?>
+	</div>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>

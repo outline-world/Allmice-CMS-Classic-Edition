@@ -1,0 +1,67 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+	<a href="<?php	
+	echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-snippet/'.$id;
+	 ?>"><?php echo $lang['link1']; ?></a> | 
+	<a href="<?php	
+	echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-page/'.$id;
+	 ?>"><?php echo $lang['link2']; ?></a>
+</div>
+<br />
+
+<?php if($id>0){ ?>
+<?php	if ($ownPage) { ?>
+<?php 
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+	echo "\n";
+?>
+
+<?php if (count($snippetList)>0){ ?>
+
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1SnCode']; ?></th>
+	    <th><?php echo $lang['tb1SnContent']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($snippetList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['uri'];
+			 ?></td>
+			<td><?php echo strip_tags(htmlspecialchars_decode($row['content']))." ...";
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-snippet'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-snippet'.'/'.$row['id']; ?>"><?php echo $lang['link4']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>
+
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message2']; ?>
+<?php } ?>
+
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message3']; ?>
+<?php } ?>
+

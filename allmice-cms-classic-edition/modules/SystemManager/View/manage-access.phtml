@@ -1,0 +1,134 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>"><?php echo $lang['link1']; ?></a>
+<br />
+<button id="showHelp" type="button">Show help</button> 
+<button id="hideHelp" type="button">Hide help</button> 
+
+<br />
+<div id="helpArea">
+<div class="help-area">
+<?php echo $lang['text1selMod']; ?>
+<br />
+<?php echo $lang['text2selMod']; ?>
+<br />
+<?php echo $lang['text3selRole']; ?>
+<br />
+<?php echo $lang['text4selRole']; ?>
+<br />
+<br />
+<b>Caution</b>: Because of the flexible essence of two module methods (i.e. module events), such method pages have not so much form field input validating protection, than other pages.
+<br />
+Be sure that these pages have access for the most trusted users only (suggested for admin role only as it is by default).
+<br />
+Such two pages are: 1) in module System Manager event called addEditTsvSet (system-manager/add-edit-tsv-set); 2) in module Admin event called editConfig (admin/edit-config).
+<br />
+</div>
+</div>
+<br />
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('modId'); ?>
+</div>
+
+<div class="form-field">
+<?php echo $form->get('roleId'); ?>
+</div>
+
+<br />
+
+<?php if($modId>=0){ ?>
+
+<?php echo $lang['text5selCheck']; ?>
+<br />
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ModName']; ?></th>
+	    <th><?php echo $lang['tb1Event']; ?></th>
+	    <th><?php echo $lang['tb1ValidAcc']; ?></th>
+
+	    <th>
+<div class="aCbh">
+<?php echo $lang['tb1ChangeAcc']; ?> <br><?php echo $lang['tb1YesNo']; ?><br><input type="checkbox" name="resCb" />
+</div>
+	    </th>
+	    <th>&nbsp;</th>
+	</tr>
+	<?php 
+	//foreach ($resList as $row) :
+	 for($i=0;$i<count($resList);$i++){
+	 ?>
+
+		<tr>
+
+			<td><?php echo $resList[$i]['title'];
+			 ?></td>
+			<td><?php echo $resList[$i]['specific_name'];
+			 ?></td>
+			<td><?php
+			 if($resList[$i]['access_level']==1)
+				echo "Access granted";
+			elseif($resList[$i]['access_level']==0)
+				echo "No access";
+			else
+				echo "No permission";
+			 ?></td>
+			<td>
+<div class="aCb">
+			<?php 
+if($resList[$i]['access_level']==0)
+	$form->formMap['resCb']['attributes']=array();
+else
+	$form->formMap['resCb']['attributes']=array('checked' => "checked");
+/*
+echo "resList[i]['id']=";
+echo $resList[$i]['id'];
+echo "<br>";
+echo "resList[i]['access_level']=";
+echo $resList[$i]['access_level'];
+echo "<br>";
+*/
+//$form->formMap['resCb']['value']=$resCbArray[$i]['id'];
+$form->formMap['resCb']['value']=$resList[$i]['id'];
+echo $form->get('resCb');
+
+//$form->get('title');
+			 ?>
+</div>
+			 </td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].$resList[$i]['uri']; ?>" target="_blank">Try</a>
+			</td>
+		</tr>
+	<?php 
+}
+//	endforeach;
+	 ?>
+</table>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php }else{ ?>
+Choose a module or all modules to change access rights!
+<?php } ?>
+
+<?php echo $form->get('end'); ?>
+
+<script>
+$(document).ready(function(){
+	$(".aCbh input:checkbox").click(function() {
+
+		var checkedStatus = this.checked;
+		$(".aCb input:checkbox").each(function() {
+			this.checked = checkedStatus;
+		});
+	});
+});
+</script>
+

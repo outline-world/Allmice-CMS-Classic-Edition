@@ -1,0 +1,69 @@
+<?php
+$title = 'Edit an Existing Menu';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">Show list of menus!</a>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menu-items'; ?>">Show list of menu items!</a>
+<br />
+<?php if($id>0){ ?>
+	<a href="<?php
+	$url=$GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-menu-item/'.$id;
+	 echo $url;
+	  ?>">Add a menu item!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('code'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('code'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('title'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('type'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('type'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('roleAccess'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('roleAccess'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('caching'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('caching'); ?>
+	</div>
+<br />
+<div class="form-field">
+<?php echo $form->get('saveMenu'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{ ?>
+<br />
+Menu id is not correct!
+<?php } ?>
+

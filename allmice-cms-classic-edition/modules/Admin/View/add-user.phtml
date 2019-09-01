@@ -1,0 +1,34 @@
+<?php
+$title = 'Add a New User';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-users'; ?>">Show list of Users!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('username'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('password'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('eMail'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('userStatus'); ?>
+</div>
+<div class="form-field">
+<?php 
+echo $form->get('mainRole');
+ ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

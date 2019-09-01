@@ -1,0 +1,10 @@
+Following layout logic was used and tailored for Allmice CMS Classic themes purposes:
+https://matthewjamestaylor.com/blog/ultimate-2-column-left-menu-pixels.htm
+
+As on 27/10/2018 it was written on this website:
+
+FREE for anyone to use
+
+You don't have to pay anything. Simply view the source of this page and save the HTML onto your computer. My only suggestion is to put the CSS into a separate file. If you are feeling generous however, link back to this page so other people can find and use this layout too.
+
+

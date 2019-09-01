@@ -1,0 +1,53 @@
+<?php
+if(isset($pageData['status']) && $pageData['status']==1){
+
+	$editorData="";
+
+if($pageData['creatorId']==$_SESSION[($GLOBALS['siteId'])]['userData']['id']){
+
+	$editorData="<a href=\"";
+	$editorData.=$GLOBALS['baseUrl']."/own-page/edit-page/".$pageData['id']."\"";
+	$editorData.=" target=\"_blank\"";
+	$editorData.=">";
+	$editorData.=$lang['link1'];
+	$editorData.="</a>\n";
+
+}
+elseif($accessList['editAnyPage']==true){
+
+	$editorData="<a href=\"";
+	$editorData.=$GLOBALS['baseUrl']."/page/edit-any-page/".$pageData['id']."\"";
+	$editorData.=" target=\"_blank\"";
+	$editorData.=">";
+	$editorData.=$lang['link1'];
+	$editorData.="</a>\n";
+
+}
+
+	$template=str_replace("[editorData]",$editorData,$template);
+	$template=str_replace("[title]",$pageData['title'],$template);
+	$template=str_replace("[body]",$pageData['body'],$template);
+	$template=str_replace("[creator]",$pageData['creator'],$template);
+	$template=str_replace("[editor]",$pageData['editor'],$template);
+	$template=str_replace("[created]",date($GLOBALS['timeFormat'],$pageData['created']),$template);
+	$template=str_replace("[edited]",date($GLOBALS['timeFormat'],$pageData['edited']),$template);
+
+		foreach ($snippetSet as $row) {
+
+			if(strstr($row['content'],"[startCode]")){
+				$tempArr=explode("[startCode]",$row['content'],2);
+				$tempArr2=explode("[endCode]",$tempArr[1],2);
+
+				$midPart=$tempArr2[0];
+
+				$row['content']=$tempArr[0].$midPart.$tempArr2[1];
+			}
+			$template=str_replace($row['uri'],$row['content'],$template);
+		}
+
+	echo $template;
+
+		echo $commentWidget;
+
+}
+ ?>

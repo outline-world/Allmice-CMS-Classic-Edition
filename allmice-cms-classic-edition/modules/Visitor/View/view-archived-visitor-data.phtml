@@ -1,0 +1,80 @@
+<?php
+	$title = 'View Archived Visitor Data';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-archived-visitors'; ?>">Show list of visitors!</a>
+<br />
+<br />
+<?php if($id>0 && count($visitorData)>0 && count($eventData)>0){ ?>
+
+<b>Visitor details</b>
+<br />
+<?php 
+echo "Session id: ";
+echo $visitorData['sess_id'];
+echo "<br>";
+echo "IP address: ";
+echo $visitorData['ip'];
+echo "<br>";
+echo "Device data: ";
+echo $visitorData['device_data'];
+ ?>
+<br />
+<br />
+
+<b>Recorded visits</b>
+<br />
+<table class="table">
+	<tr>
+
+	    <th>URL</th>
+	    <th>Event time</th>
+	    <th>Username</th>
+	    <th>Event type</th>
+
+	</tr>
+	<?php foreach ($eventData as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['url'];
+			 ?></td>
+			<td><?php echo date("d/m/Y H:i:s",$row['eventTime']);
+			 ?></td>
+			<td><?php 
+			if($row['userName']!="anonymous")
+				echo $row['userName'];
+			else
+				echo "Not authenticated";
+			 ?></td>
+			<td><?php 
+
+			if(intval($row['eventType'])==1){
+				$typeString="Common visit";
+			}
+			elseif(intval($row['eventType'])==11){
+				$typeString="Consent signal by visits";
+			}
+			elseif(intval($row['eventType'])>99 && intval($row['eventType'])<150){
+				$typeString="Consent signal by submit click";
+			}
+			elseif(intval($row['eventType'])==22){
+				$typeString="Opt-out request click";
+			}
+			else{
+				$typeString="Unknown";
+			}
+			echo $typeString;
+
+			 ?></td>
+
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

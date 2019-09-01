@@ -1,0 +1,62 @@
+<?php
+$lang['submitYes']='Yes'; 
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-snippets/".$pageId; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php if($id>0){ ?>
+<?php	if ($ownPage) { ?>
+
+<?php if($deleted){ ?>
+
+<?php 
+	echo $lang['afterMessage'];
+	echo "<br>";
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+
+	echo $lang['afterField1']." ";
+	echo $snippetData['uri'];
+	echo "\n";
+ ?>
+<?php }else{ ?>
+<?php 
+	echo $lang['beforeMessage'];
+	echo "<br />";
+	echo "<br />";
+	echo $lang['beforeMessage2'];
+	echo "<br />";
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+
+	echo $lang['beforeField1']." ";
+	echo $snippetData['uri'];
+	echo "\n";
+ ?>
+
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $item->id; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitYes']; ?>" />
+</div>
+</form>
+<?php 
+ }
+ ?>
+<br />
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>
+
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message2']; ?>
+<?php } ?>

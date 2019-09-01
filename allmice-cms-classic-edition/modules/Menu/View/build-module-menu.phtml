@@ -1,0 +1,128 @@
+<?php
+	$title = 'Build Local Menu';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Menu module main links</a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">List menus</a>
+</p>
+<br />
+<?php if($saved){ ?>
+<br />
+Menu with the following details was created:
+<br />
+Menu title: "<?php echo $menu->title; ?>"
+<br />
+Menu code: "<strong><?php echo $menu->code; ?></strong>"
+<br />
+This menu can be displayed by default using Menu module view method.
+<br />
+To show this menu as a block menu in a theme's region for all pages, you should add a block for this menu.
+<br />
+<br />
+If Block module is installed, then it is easy to add such a block by:
+<br />
+1) Copying above mentioned Menu code
+<br />
+2) Going to following link (link opens in another window):
+ <a href="<?php echo $GLOBALS['baseUrl'].'/block/add'; ?>" target="_blank"><strong>Add block!</strong></a>
+<br />
+3) Pasting above mentioned Menu code into field "Block code". 
+<br />
+Rest of the fields there can have default values or you can change them, if you wish and if you know why you are changing them.
+<br />
+Most likely you wish to change also the field "Access right for roles" to determine for which roles the new block will be displayed. 
+<br />
+4) After clicking submit button ("Save" or however it is called there), the new menu will appear in the block's region, if it has items.
+<br />
+
+<?php }else{ ?>
+<b>
+Discover easy all the functionality of current installed modules!
+<br />
+Create menus automatically from the event methods of modules' controller classes!
+</b>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('modId'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('modId'); ?>
+	</div>
+
+Check the boxes below for event methods, which you wish to include as menu items (links) into the new menu.
+<br />
+<table class="table">
+	<tr>
+
+	    <th>Module name</th>
+	    <th>Event name</th>
+
+	    <th>
+<div class="aCbh">
+Access: <br>[v]-yes/[ ]-no<br><input type="checkbox" name="resCb" />
+</div>
+	    </th>
+	    <th>&nbsp;</th>
+	</tr>
+	<?php 
+
+	 for($i=0;$i<count($resList);$i++){
+	 ?>
+
+		<tr>
+
+			<td><?php echo $resList[$i]['module_name'];
+			 ?></td>
+			<td><?php echo $resList[$i]['specific_name'];
+			 ?></td>
+			<td>
+<div class="aCb">
+			<?php 
+if($resList[$i]['access_level']==0)
+	$form->formMap['resCb']['attributes']=array();
+else
+	$form->formMap['resCb']['attributes']=array('checked' => "checked");
+
+$form->formMap['resCb']['value']=$resList[$i]['id'];
+echo $form->get('resCb');
+
+			 ?>
+</div>
+			 </td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].''.$resList[$i]['uri']; ?>" target="blank">Try</a>
+			</td>
+		</tr>
+	<?php 
+}
+	 ?>
+</table>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<script>
+$(document).ready(function(){
+ $(".aCbh input:checkbox").click(function() {
+            var checkedStatus = this.checked;
+            $(".aCb input:checkbox").each(function() {
+                this.checked = checkedStatus;
+            });
+        });
+
+});
+</script>
+
+<?php } ?>

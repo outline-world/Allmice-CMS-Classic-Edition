@@ -1,0 +1,28 @@
+<?php
+$title = 'Edit an Existing Role';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-roles'; ?>">Show list of roles!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

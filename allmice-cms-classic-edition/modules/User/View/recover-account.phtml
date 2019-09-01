@@ -1,0 +1,65 @@
+<h1><?php echo $lang['title']; ?></h1>
+
+<br />
+<?php echo $lang['message1']; ?>
+<br />
+<br />
+
+<?php
+
+	echo $form->get('begin');
+	echo $form->get('id');
+
+$formMap=$form->formMap;
+$form->formMap['email']['guide']=$lang['message2'];
+
+	echo "<div class=\"form-field\">";
+		echo $form->get('emailAddress');
+	echo "</div>\n";
+?>
+
+	<div class="guide">
+	<?php echo $form->getGuide('emailAddress'); ?>
+	</div>
+
+<?php
+	if(isset($recoveryData['mem_word']) && count($recoveryData)>0 && $recoveryData['mem_word']!=""){
+		echo "<div class=\"vertical\">";
+?>
+<?php echo $lang['message3']; ?>
+<br />
+<?php
+		echo $recoveryData['mem_word_question']."<br />\n";
+		echo "</div>\n";
+		echo "<div class=\"form-field\">";
+			echo $form->get('memWord');
+		echo "</div>\n";
+?>
+	<div class="guide">
+	<?php echo $form->getGuide('memWord'); ?>
+	</div>
+<?php
+	}
+?>
+
+<?php
+
+	if($pageStatus=="initial"){
+		echo "<div class=\"form-field\">";
+			echo $form->get('submitEmail');
+		echo "</div>\n";
+	}
+	elseif($pageStatus=="email"){
+		echo "<div class=\"form-field\">";
+			echo $form->get('submitWord');
+		echo "</div>\n";
+	}
+	else{
+		echo "<div class=\"form-field\">";
+?>
+<a href="<?php echo $GLOBALS['baseUrl'] ?>/user"><?php echo $lang['link1']; ?></a>
+<?php
+		echo "</div>\n";
+	}
+		echo $form->get('end');
+ ?>

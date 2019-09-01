@@ -1,0 +1,61 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-account'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+	<?php if (count($dataList)>0){ ?>
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $paginator->formWidget; ?>
+</div>
+<?php echo $form->get('end'); ?>
+<?php 
+$lang['entriesCount']=str_replace("[allEntries]",$paginator->noOfAllItems,$lang['entriesCount']);
+echo $lang['entriesCount'];
+ ?>
+<br />
+<?php 
+if($paginator->formWidget!=""){
+$lang['paginStatus']=str_replace("[curPage]",($paginator->currentPage+1),$lang['paginStatus']);
+$lang['paginStatus']=str_replace("[allPages]",($paginator->lastPage+1),$lang['paginStatus']);
+echo $lang['paginStatus'];
+	echo "<br />\n";
+}
+ ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ColUsername']; ?></th>
+	    <th><?php echo $lang['tb1ColEmail']; ?></th>
+	    <th><?php echo $lang['tb1ColStatus']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['username'];
+			 ?></td>
+			<td><?php 
+			echo $row['mail'];
+			 ?></td>
+			<td><?php 
+			if($row['status']==1){
+	    		echo $lang['statusOption1'];
+			}else{
+	    		echo $lang['statusOption2'];
+			}
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-any-account'.'/'.$row['id']; ?>"><?php echo $lang['link2']; ?></a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-any-account'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'change-user-status'.'/'.$row['id']; ?>"><?php echo $lang['link4']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+	<?php }else{ ?>
+<?php echo $lang['message1']; ?>
+	<?php } ?>

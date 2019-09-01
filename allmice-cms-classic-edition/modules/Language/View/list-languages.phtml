@@ -1,0 +1,50 @@
+<?php
+	$title = 'List of Languages';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-language-details'; ?>">Add new language details</a>
+<br />
+<br />
+
+<?php if(count($langList)>0){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Language code</th>
+	    <th>Language code2</th>
+	    <th>Label</th>
+	    <th>Status</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($langList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['language_code'];
+			 ?></td>
+			<td><?php echo $row['language_code2'];
+			 ?></td>
+			<td><?php echo $row['label'];
+			 ?></td>
+			<td><?php echo $langOptions[($row['status'])];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-language-details'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-language-details'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php 
+}
+else{
+ ?>
+No languages were found.
+<?php 
+}
+ ?>

@@ -1,0 +1,20 @@
+<?php if($GLOBALS['siteStatus']=="inUse"){ ?>
+ <?php if (isset($Region['frontPage'])) : ?>
+   <div class="front-page-content">
+     <?php echo ($Region['frontPage']); ?>
+   </div>
+ <?php endif; ?>
+<?php
+		}else{
+//		  	echo "<a href=\"".$GLOBALS['baseUrl']."/app/install-website\">Click here to install a new website!</a>\n";
+		}
+		if(isset($GLOBALS['messages'])){
+			foreach ($GLOBALS['messages'] as $message) {
+				echo $message;
+			}
+		}
+		if(isset($GLOBALS['frontPageView'])){
+			echo $GLOBALS['frontPageView'];
+		}
+
+  ?>

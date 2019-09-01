@@ -1,0 +1,33 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-accounts'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php
+if($status=="initial" || $status=="registered"){
+
+	echo $form->get('begin');
+
+	echo "<div class=\"form-field\">";
+		echo $form->get('username');
+	echo "</div>\n";
+	echo "<div class=\"form-field\">";
+		echo $form->get('password');
+	echo "</div>\n";
+	echo "<div class=\"form-field\">";
+		echo $form->get('email');
+	echo "</div>\n";
+	echo "<div class=\"guide\">";
+		echo $form->getGuide('email');
+	echo "</div>\n";
+	echo "<div class=\"form-field\">";
+		echo $form->get('register');
+	echo "</div>\n";
+	echo $form->get('end');
+
+}
+if($status=="newUser"){
+	echo $message[0];
+}
+ ?>

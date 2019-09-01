@@ -1,0 +1,45 @@
+<?php
+$title = 'Delete Block';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-blocks'; ?>">Show list of blocks!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The block with following details was deleted<br />
+
+    name (code): '<?php echo $item->blockCode; ?>'<br />
+    rank: '<?php echo $item->rank; ?>'<br />
+    regionCode: '<?php echo $item->regionCode; ?>'<br />
+    type: '<?php echo $item->type; ?>'<br />
+    uri: '<?php echo $item->uri; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete block, which<br />
+
+    name (code) is: '<?php echo $item->blockCode; ?>'<br />
+    rank is: '<?php echo $item->rank; ?>'<br />
+    regionCode is: '<?php echo $item->regionCode; ?>'<br />
+    type is: '<?php echo $item->type; ?>'<br />
+    uri is: '<?php echo $item->uri; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

@@ -1,0 +1,42 @@
+<?php
+	$title = 'List Bot Access Resources';
+	$formMap=$form->formMap;
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Administrator menu</a>
+<br />
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Resource uri</th>
+	    <th>Specific name</th>
+	    <th>Module name</th>
+	    <th>Type</th>
+	    <th>Access level</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['uri'];
+			 ?></td>
+			<td><?php echo $row['specName'];
+			 ?></td>
+			<td><?php echo $row['modName'];
+			 ?></td>
+			<td><?php echo $row['type'];
+			 ?></td>
+			<td><?php echo $formMap['level']['options'][($row['level'])];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-bot-access'.'/'.$row['id']; ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

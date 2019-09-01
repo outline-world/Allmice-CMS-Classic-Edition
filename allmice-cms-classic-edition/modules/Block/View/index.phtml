@@ -1,0 +1,25 @@
+<?php
+$lang['title']=$GLOBALS['modName'].' module methods';
+$lang['tb1ColName']='Method name';
+$lang['tb1ColLink']='Method link';
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<table>
+<tr>
+	<th><?php echo $lang['tb1ColName']; ?></th>
+	<th><?php echo $lang['tb1ColLink']; ?></th>
+</tr>
+<?php foreach ($eventSet as $row) : ?>
+	<tr>
+		<td>
+			<?php echo $row['specific_name']; ?>
+		</td>
+		<td>
+			<a href="<?php echo $GLOBALS['baseUrl'].$row['uri']; ?>" target="_blank"><?php echo $row['uri']; ?></a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</table>

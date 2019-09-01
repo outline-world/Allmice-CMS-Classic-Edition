@@ -1,0 +1,68 @@
+<?php 
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+
+if(count($form->formMap['emailId']['options'])==0){
+	$messages[]=$lang['message2'];
+}
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-accounts'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($messages)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php 
+$visibleFields=$form->visibleFields;
+
+		$firstNameSet=false;
+		$changePassword=false;
+
+		for($i=0;$i<count($visibleFields);$i++){
+
+		if($visibleFields[$i]['fieldName']=="passwordStatus" && $form->formMap[($visibleFields[$i]['fieldName'])]['value']==1){
+			$changePassword=true;
+		}
+
+		if($visibleFields[$i]['fieldName']=="password" && $form->formMap['passwordStatus']['value']==0){
+
+		}
+		elseif($visibleFields[$i]['fieldName']=="password2" && $form->formMap['passwordStatus']['value']==0){
+		}
+		else{
+
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php
+			}
+		}
+ ?>
+ <div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+		echo "<br />";
+	}
+}
+ ?>
+

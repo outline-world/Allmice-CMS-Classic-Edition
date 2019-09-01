@@ -1,0 +1,22 @@
+<?php
+$title = 'Add a New Role';
+$form->formMap['title']['label']="Role title";
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-roles'; ?>">Show list of roles!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

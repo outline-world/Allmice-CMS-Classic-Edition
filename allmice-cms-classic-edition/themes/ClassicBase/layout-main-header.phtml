@@ -1,0 +1,117 @@
+<div class="header-area">
+
+<?php if (!isset($Region['headerArea'])) : ?>
+
+	<div class="site-name-logo-set">
+
+	<?php 
+		if(isset($GLOBALS['siteNameImage']) && $GLOBALS['siteNameImage']!="") :
+	 ?>
+		<div class="site-name-img-wrap">
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+			<div class="site-name-img-link">
+			<?php 
+				echo $GLOBALS['siteNameImage'];
+			 ?>
+			</div>
+			</a>
+		</div>
+		<?php if (isset($Region['searchArea'])) : ?>
+		<div class="search-set-img-wrap">
+		   	<?php echo ($Region['searchArea']); ?>
+		</div>
+		<?php endif; ?>
+
+	<?php else: ?>
+
+
+		<?php 
+			if(isset($GLOBALS['smallLogoImage']) && $GLOBALS['smallLogoImage']!="") :
+		 ?>
+			<div class="logo-wrap">
+				<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+				<div class="logo-link">
+				<?php 
+					echo $GLOBALS['smallLogoImage'];
+				 ?>
+				</div>
+				</a>
+			</div>
+		<?php endif; ?>
+
+		<div class="site-name-wrap">
+			<div class="site-name">
+				<h2>
+				<a href="<?php echo $GLOBALS['baseUrl']; ?>"><?php echo $GLOBALS['siteName']; ?></a>
+				</h2>
+			</div>
+		</div>
+		<?php if (isset($Region['searchArea'])) : ?>
+		<div class="search-set-wrap">
+		   	<?php echo ($Region['searchArea']); ?>
+		</div>
+		<?php endif; ?>
+
+
+	<?php endif; ?>
+
+	</div>
+<?php else: ?>
+	<div class="header-cell">
+		<?php echo ($Region['headerArea']); ?>
+	</div>
+<?php endif; ?>
+
+</div>
+<div class="header-bar">
+    <?php if (isset($Region['naviArea'])) : ?>
+		<div class="navi-area">
+			<?php echo ($Region['naviArea']); ?>
+		</div>
+    <?php endif; ?>
+
+    <?php if (isset($Region['userArea']) && isset($GLOBALS['userBlock']['username'])) : ?>
+    <?php /*Block called userBlock will be used, which shows content prepared by User module*/ ?>
+      <div class="user-area">
+    <?php if (isset($GLOBALS['userBlock']['username']) && $GLOBALS['userBlock']['username']!=""){ ?>
+			<div class="user-data">
+		    <?php 
+		    	echo "(".$GLOBALS['userBlock']['logoutLabel']." ".$GLOBALS['userBlock']['username'].")";
+		     ?>
+			</div>
+    <?php } ?>
+			<div class="user-space-wrap">
+			<div class="user-block-space">
+        <?php echo ($Region['userArea']); ?>
+			</div>
+			</div>
+      </div>
+    <?php endif; ?>
+
+    <?php if (isset($Region['userArea']) && !isset($GLOBALS['userBlock']['username'])) : ?>
+    <?php /*Block called appUserArea will be used, which shows content prepared by GlobalCore module*/ ?>
+			<div class="app-user-area">
+			<div class="app-user-data">
+        <?php echo ($Region['userArea']); ?>
+			</div>
+			</div>
+    <?php endif; ?>
+
+    <?php if (isset($Region['languageArea'])) : ?>
+      <div class="language-area">
+			<div class="lang-data">
+		    <?php 
+		    if (isset($GLOBALS['langBlock']['activeLanguage']) && $GLOBALS['langBlock']['activeLanguage']!="")
+				echo "(".strtoupper($GLOBALS['langCode']).")";
+		     ?>
+			</div>
+			<div class="lang-space-wrap">
+			<div class="lang-block-space">
+			
+	        <?php echo ($Region['languageArea']); ?>
+			</div>
+			</div>
+      </div>
+    <?php endif; ?>
+
+</div>

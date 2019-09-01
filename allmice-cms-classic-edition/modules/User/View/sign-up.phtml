@@ -1,0 +1,40 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<?php
+if($status=="initial" || $status=="registered"){
+ ?>
+<?php echo $form->get('begin'); ?>
+<?php 
+$visibleFields=$form->visibleFields;
+		for($i=0;$i<count($visibleFields);$i++){
+
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+<?php 
+if($visibleFields[$i]['fieldName']=="agreement"){
+	echo $agreementCode;
+}
+ ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php } ?>
+<?php 
+echo $captcha->formWidget;
+ ?>
+<div class="form-field">
+	<?php echo $form->get('register'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+}
+if($status=="newUser"){
+	echo $message[0];
+}
+ ?>

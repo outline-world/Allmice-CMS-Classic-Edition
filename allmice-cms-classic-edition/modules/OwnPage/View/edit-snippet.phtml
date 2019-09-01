@@ -1,0 +1,58 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-snippets/".$pageId; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php if($id>0){ ?>
+
+<?php	if ($ownPage) { ?>
+
+<?php 
+
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+	echo $lang['field1']." ";
+	echo $form->formMap['snippetCode']['value'];
+	echo "<br>";
+	echo "\n";
+
+//Following lines are needed because of snippet content special meaning:
+//   If these lines are missing, then although snippet content was saved last time with entities, the content would be shown without entities. 
+	if (!isset($_POST['save'])) {
+		$snippetContent=$form->getValue('snippetContent');
+		$form->setValue('snippetContent',htmlspecialchars($snippetContent));
+	}
+
+ ?>
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('snippetType'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('snippetType'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('snippetContent'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('snippetContent'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+	}else{
+		echo $lang['message1'];
+	}
+ ?>
+<?php }else{ ?>
+<?php echo $lang['message2']; ?>
+<?php } ?>

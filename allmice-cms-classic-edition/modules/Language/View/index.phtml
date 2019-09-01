@@ -1,0 +1,51 @@
+<h1><?php echo "Language Module Main Links"; ?></h1>
+<br />
+<?php echo $message; ?>
+<br />
+Methods, to manage multiple phrases at the same time.
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/add-edit-phrase-set'; ?>" target="_blank">Add or edit a phrase set</a>
+<br />
+Input phrases as a TSV table. Non-existing phrases will be inserted into database, existing phrases will be updated with new text. Sql insert query string will be displayed.  
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/view-phrase-set-table'; ?>" target="_blank">View a phrase set as a TSV table</a>
+<br />
+Choose a module. Phrases, which exist in database for the chosen module will be viewed on screen as a TSV table. 
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/delete-phrase-set'; ?>" target="_blank">Delete a phrase set</a>
+<br />
+Input phrases as a TSV table. Phrases which are existing in database according to the inserted details will be deleted.
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/manage-language-file'; ?>" target="_blank">Manage language file</a>
+<br />
+Manage language file.
+<br />
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/list-languages'; ?>" target="_blank">List languages</a>
+<br />
+List language details with links to edit or delete them one by one.
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/add-language-details'; ?>" target="_blank">Add language details</a>
+<br />
+Add details for a new language.
+<br />
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/list-relations'; ?>" target="_blank">List relations</a>
+<br />
+List relations between pages of different languages with links to edit or delete them one by one.
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/add-relation'; ?>" target="_blank">Add relation</a>
+<br />
+Add a new relation between pages of different languages.
+<br />
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/list-phrases'; ?>" target="_blank">List phrases</a>
+<br />
+List phrases with links to edit or delete them one by one.
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/language/add-phrase'; ?>" target="_blank">Add phrase</a>
+<br />
+Add a new phrase.
+<br />
+<br />

@@ -1,0 +1,1457 @@
+/* 1. Default HTML tags */
+/* 2. Layout styles */
+/* 3. Allmice CMS specific styles */
+/* 4. Other custom styles */
+
+/* ============================== */
+/* 1. Default HTML tags */
+/* ============================== */
+
+/* padding:[top]px [right]px [bottom]px [left]px; */
+/* text-shadow: [X-Offset]px [Y-Offset]px [blur]px [#color]; */
+
+/* Start of CSS reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/ */ 
+/* v2.0 | 20110126 */
+/* License: none (public domain) */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End of CSS reset */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* General styles */
+body {
+	width:100%;
+	background: #FFFFFF; /* tagBodyBackground */
+	min-width:260px;
+/* Minimum width of layout - remove line if not required */
+/* The min-width property does not work in old versions of Internet Explorer */
+	font: normal 16px/24px Arial, sans-serif; /* tagBodyTextFont */
+	color: #123552; /* tagBodyTextColor */
+	text-shadow: 0px 0px 0px #555555;
+/* text-shadow: [X-Offset]px [Y-Offset]px [blur]px [#color]; */
+}
+
+ul {
+/* list-style-type: none;*/
+	list-style-type: circle;
+	margin: 0px 0px 0px 8px;
+/*	list-style-position: inside; */
+/*	list-style-position: inside; !!! Not to use such inside style - it causes issues in Chromium/Chrome browsers */
+/* https://bugs.chromium.org/p/chromium/issues/detail?id=278115 */
+/*	margin: 0px 0px 0px 16px;*/
+}
+
+ul li {
+	list-style-image: url(../images/menu-leaf.png);
+	list-style-position: outside;
+	margin: 0px 0px 0px 16px;
+}
+
+a {
+	text-decoration: none; /* tagATextDecoration */
+	color: #2A4F6E; /* tagATextColor */
+	font: normal 16px/24px Arial, sans-serif; /* tagBodyTextFont */
+}
+a:hover {
+/*Caution: There is no space in selector between a: and hover as it may be after : between property and value!*/
+	text-decoration: underline; /* tagAHoverTextDecoration */
+	color: #2A4F6E;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+i {
+	font-style: italic;
+}
+
+u {
+	text-decoration:underline;
+}
+
+center {
+/*center an element e.g. div inside center tags*/
+	margin: auto;
+	width: 50%;
+/*center text*/
+	text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #123552;
+	text-shadow: 0px 0px 0px #AAAAAA;
+/* text-shadow: [X-Offset]px [Y-Offset]px [blur]px [#color]; */
+}
+h1 {
+	font: normal 1.6em Verdana, sans-serif;
+	padding: 12px 0px 10px 0px;
+}
+h2 {
+	font: 1.4em Verdana, sans-serif;
+	padding: 0px 0px 10px 0px;
+}
+h2 a {
+	font: 1.4em Verdana, sans-serif;
+	padding: 0px 0px 10px 0px;
+}
+h3, h4, h5, h6 {
+	font: 1.2em Verdana, sans-serif;
+	padding: 0px 0px 8px 0px;
+}
+
+p {
+	margin:0;
+	padding: 10px 0 10px 0;
+}
+
+img {
+	margin:10px 0 5px;
+}
+
+tbody {
+}
+
+tbody th {
+	border-bottom: 1px solid #123552;
+}
+
+thead th {
+	text-align: left; /* LTR */
+	padding: 3px;
+	border-top: 3px solid #123552;
+	border-bottom: 3px solid #123552;
+	background-color: #A3B8C9;
+	height: 24px;
+}
+
+td {
+	padding: 8px;
+/*	background-color: #C3D8E9;*/
+	background-color: #B3C8D9;
+	border-bottom: 1px solid #123552;
+}
+th {
+	padding: 8px;
+	border-top: 3px solid #123552;
+	border-bottom: 3px solid #123552;
+	height: 24px;
+	background-color: #A3B8C9;
+/*	font-weight: bold;*/
+	font: normal 18px/26px Arial, sans-serif;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="range"],
+input[type="number"],
+input[type="color"],
+input[type="password"]
+{
+	width:300px;
+	height:30px;
+	margin:4px;
+	padding:4px;
+	color: #2A4F6E;
+	background-color: #A3B8C9;
+	font: normal 16px Verdana, sans-serif;
+}
+
+textarea
+{
+	width:500px;
+	height:120px;
+	margin:4px;
+	padding:4px;
+	color: #2A4F6E; /* inputTextColor */
+	background-color: #A3B8C9; /* inputBackground */
+	font: normal 16px/22px 'Verdana', sans-serif; /* inputTextFont */
+}
+
+
+input[type="email"],
+input[type="color"]
+{
+	background-color: #FFFFFF;
+}
+
+input[type="text"].wide
+{
+	width:700px;
+	height:30px;
+	margin:4px;
+	padding:4px;
+	color: #2A4F6E;
+	background-color: #A3B8C9;
+}
+
+button,
+input[type="submit"]
+{
+	-webkit-appearance: button;
+	margin:5px;
+	padding:15px 30px 15px 30px;
+/*	background: url('../images/bg/button-default-bg-off.png') #8398A9 repeat-x left top;*/
+	background: url('../images/bg/button-default-bg-off.png') #85A5DF repeat-x left top;
+/*	background: url('../images/bg/button-default-bg-off.png') #1E90FF repeat-x left top;*/
+	border:1px none;
+	cursor:pointer;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font: normal 16px Verdana, sans-serif;
+}
+
+button:hover,
+input[type="submit"]:hover
+ {
+	-webkit-appearance: button;
+	margin:5px;
+	padding:15px 30px 15px 30px;
+/*	background: url('../images/bg/button-hover-bg-off.png') #AABBFF repeat-x left top;*/
+	background: url('../images/bg/button-hover-bg-off.png') #85B5FF repeat-x left top;
+/*	background: url('../images/bg/button-hover-bg-off.png') #1B81E5 repeat-x left top;*/
+	border:1px none;
+	cursor:pointer;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font: normal 16px Verdana, sans-serif;
+}
+
+select {
+	background-image:url(../images/arrow.png);
+	background-repeat:no-repeat;
+	width:200px;
+	padding:4px;
+	margin-top:4px;
+	font-family:Sans;
+	height:30px;
+	line-height:30px;
+	background-color: #A3B8C9;
+	color: #2A4F6E;
+	font-size:16px;
+}
+
+select:hover {
+	background-color: #FDFD96;
+}
+
+select.single {
+	display:block;
+	height:40px;
+}
+
+select.multiple {
+	background-image:url(../images/arrow.png);
+	background-repeat:no-repeat;
+	width:200px;
+/*	width:100%;*/
+	padding:4px;
+	margin-top:4px;
+	font-family:Sans;
+	height:80px;
+	line-height:30px;
+	background-color: #A3B8C9;
+	color: #2A4F6E;
+	font-size:16px;
+}
+
+select.multiple:hover {
+	background-color: #FDFD96;
+}
+
+.single option {
+	height: 20px;
+	font: normal 16px/18px Arial, sans-serif;
+	margin: 0px;
+	padding: 4px;
+}
+
+/*.option-single {*/
+/*	height: 20px;*/
+/*	padding: 10px;*/
+/*	margin: 10px;*/
+/*}*/
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*	padding: top right bottom left;*/
+
+/* ============================== */
+/* 2. Layout styles */
+/* ============================== */
+
+/* ============================== */
+/* 3. Allmice CMS specific styles */
+/* ============================== */
+
+.col1 a,
+.col1 a:link,
+.col1 a:hover,
+.col1 a:active,
+.col1 a:focus,
+.col2 a,
+.col2 a:link,
+.col2 a:hover,
+.col2 a:active,
+.col2 a:focus,
+.col3 a,
+.col3 a:link,
+.col3 a:hover,
+.col3 a:active,
+.col3 a:focus {
+	color: #2A4F6E;
+}
+
+
+/* CSS classes for form elements, form labels and for other form related text */
+
+.link-area,
+.form-field
+{
+	display: block;
+}
+
+.label-text,
+.label-textarea,
+.label-select,
+.label-password,
+.label-checkboxes {
+	display: block;
+	text-align: left;
+	font: bold 16px Arial, sans-serif;
+	margin:0px;
+	padding:4px;
+}
+
+label.check-set, label.radio-set {
+	width:100%;
+/* Minimum width of layout - remove line if not required */
+/* The min-width property does not work in old versions of Internet Explorer */
+	font: normal 16px/24px Arial, sans-serif;
+	color: #123552;
+	text-shadow: 0px 0px 0px #555555;
+	background: #FFFFFF;
+	min-width:260px;
+/* text-shadow: [X-Offset]px [Y-Offset]px [blur]px [#color]; */
+}
+
+.label-checkboxes, .label-radio-buttons {
+	display: block;
+	text-align: left;
+	font: bold 16px Arial, sans-serif;
+	margin:0px;
+	padding: 4px 4px 14px 4px;
+}
+
+/* The wrapper of a checkbox set */
+.check-set {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide default checkbox */
+.check-set input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.check-mark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #A3B8C9;
+}
+
+.check-set:hover input ~ .check-mark {
+/* background-color: #FDFD96;*/
+	background-color: #FFFF00;
+}
+
+.check-set input:checked ~ .check-mark {
+	background-color: #2A4F6E;
+}
+
+.check-mark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.check-set input:checked ~ .check-mark:after {
+	display: block;
+}
+
+.check-set .check-mark:after {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+}
+
+.radio-set {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+}
+
+.radio-set input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.radio-mark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #A3B8C9;
+	border-radius: 50%;
+}
+
+.radio-set:hover input ~ .radio-mark {
+/* background-color: #FDFD96;*/
+	background-color: #FFFF00;
+}
+
+.radio-set input:checked ~ .radio-mark {
+	background-color: #2A4F6E;
+}
+
+.radio-mark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.radio-set input:checked ~ .radio-mark:after {
+	display: block;
+}
+
+.radio-set .radio-mark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* Below are Profile module specific styles */
+
+/* The wrapper of a radio button set */
+.radio-set2 {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+}
+
+/* Hide the browser's default radio button */
+.radio-set2 input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radio-mark2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	background-color: #A3B8C9;
+}
+
+/* On mouse-over, add a background color */
+.radio-set2:hover input ~ .radio-mark2 {
+	background-color: #FFFF00;
+}
+
+/* When the radio button is checked, add a background */
+.radio-set2 input:checked ~ .radio-mark2 {
+	background-color: #2A4F6E;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio-mark2:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-set2 input:checked ~ .radio-mark2:after {
+	display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-set2 .radio-mark2:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* Paginator specific */
+
+select.pagin-select {
+	width: 90px;
+	height: 40px;
+	font: normal 16px/18px Arial, sans-serif;
+	padding: 4px;
+}
+
+option.pagin-option {
+	width: 40px;
+	height: 20px;
+	font: normal 16px/18px Arial, sans-serif;
+	padding: 4px;
+}
+
+/* Class for form element guides */
+
+.guide {
+	display:block;
+	padding: 0px 4px 14px 4px;
+	font: normal 14px/18px Arial, sans-serif;
+}
+
+select.wide-element {
+	width:400px;
+}
+
+.header-area {
+	position:relative;
+	min-height:70px;
+	width:100%;
+	background: url('../images/header-area-bg.png') #496C89 repeat left top; /* headerBackground */
+	color: #FFFFFF;
+	text-shadow: 0px 0px 0px #AAAAAA;
+	padding: 0px 0px 10px 0px;
+}
+
+.header-cell{
+	position: relative;
+	top: 50%; left: 0%;
+	transform: translate(0%,-50%);
+	display: inline-block; 
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+}
+
+/* CSS classes for site name, title, etc. */
+
+.site-name-wrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0px 0px 0px;
+}
+
+.logo-wrap {
+/*	border: 1px solid red;*/
+	position: relative;
+	display: inline-block;
+	margin: 0px 0px 10px 20px;
+	z-index: 3;
+}
+
+.logo-link {
+/*	border: 1px solid red;*/
+	height: 48px;
+	width: 48px;
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+}
+
+.site-name{
+	position: relative;
+	display: inline-block;
+	margin: 0px 20px 0px 20px;
+	padding: 10px 0px 0px 0px;
+}
+
+.site-name-img-wrap{
+	position: relative;
+	display: inline-block;
+	margin: 0px 10px 0px 20px;
+}
+
+.site-name-img-link{
+	height: 60px;
+	display: flex;
+	align-items: center;
+}
+
+h2.site-name
+{
+	font: normal 38px Verdana, sans-serif;
+	color: #FFFFFF;
+	text-shadow: 2px 2px 4px #AAAAAA;
+}
+
+.site-name a,
+.site-name a:link,
+.site-name a:hover,
+.site-name a:active,
+.site-name a:focus {
+	font: normal 38px Verdana, sans-serif;
+	color: #FFFFFF;
+	text-shadow: 2px 2px 4px #AAAAAA;
+	margin: 18px 0px 18px 0px;
+}
+
+
+/* CSS classes for header-bar: location of naviArea & userArea */
+
+.header-bar {
+	float:right;
+ 	width:100%;
+	min-height:30px;
+	background: url('../images/header-bar-bg.png') #718DA5 repeat left top; /* headerBarBackground */
+	color: #FFFFFF;
+	font: normal 18px/26px Verdana, sans-serif;
+	border-top:2px solid #123552;
+	border-bottom:2px solid #123552;
+}
+
+/* CSS classes for horizontal menus - naviArea */
+
+.navi-area {
+	float:left;
+	color: #FFFFFF;
+	font: 20px Verdana, sans-serif;
+	position:relative;
+	min-height:30px;
+	text-align: center;
+	top: 50%;
+}
+
+.navi-area ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.navi-area li {
+	float: left;
+}
+
+.navi-area li a {
+	display: block;
+	color: #FFFFFF;
+	font: normal 18px/24px Arial, sans-serif;
+	text-align: center;
+	padding: 12px 16px 8px 16px;
+	text-decoration: none;
+/*min-height value must be at least the same as header-bar height*/
+	min-height:30px;
+}
+
+.navi-area li a:hover:not(.active) {
+	background-color: #85B5FF;
+	color: #123552;
+	min-height:30px;
+}
+
+.navi li.active a {
+	background-color: #FFFFFF;
+	color: #123552;
+}
+
+.navi-area ul li {
+/* In use - vertical menu indent and bullets */
+	list-style-image: none;
+	list-style-position: outside;
+	margin: 0px 0px 0px 0px;
+}
+
+/* CSS classes for vertical menus - menuArea */
+
+ul.menu li {
+/* In use - vertical menu indent and bullets */
+	list-style-image: url(../images/menu-leaf.png);
+	list-style-position: outside;
+	margin: 0px 0px 0px 6px;
+}
+
+.menu li.active a {
+/*In use - class of active menu item for vertical menu*/
+/*Problem - if main menu item will be active, then all sub menu items will have such active font too*/
+/*Solution - div inside li around the link of menu item - see classes menu-ap, menu-ac, menu-pp, menu-pc*/
+/*	font-style: italic;*/
+}
+
+.menu-ap a {
+/*menu active parent item*/
+/*this is div inside li - li includes also all the sub li-s and thus separated div is needed to style parent only*/
+/*	font-style: italic;*/
+	font-weight: bold;
+}
+.menu-ac a {
+/*menu active child item*/
+/*this is div inside li - if this child has childs, then li includes also all the sub li-s and thus separated div is needed to style current item, but not the sub items*/
+/*	font-style: italic;*/
+	font-weight: bold;
+}
+.menu-pp a {
+/*menu passive parent item*/
+/*this is div inside li - li includes also all the sub li-s and thus separated div is needed to style parent only*/
+}
+.menu-pc a {
+/*menu passive child item*/
+/*this is div inside li - if this child has childs, then li includes also all the sub li-s and thus separated div is needed to style current item, but not the sub items*/
+}
+
+
+.menu-title h2 {
+/*In use for vertical menus*/
+	color: #123552;
+	text-shadow: 0px 0px 0px #AAAAAA;
+	font: 18px Verdana, sans-serif;
+}
+
+.menu-content{
+/*In use for vertical menu items - location from one another - space between items*/
+	margin: 0px 0px 0px 6px;
+	padding: 6px 6px 24px 6px;
+	font: 1em/1.5em Verdana, sans-serif;
+	display:block;
+}
+
+/* CSS classes for captcha */
+
+.captcha-image,
+.captcha-text,
+.captcha {
+	display: block;
+}
+
+
+/* CSS classes for messages */
+
+.error-messages {
+	text-align: left;
+	display: block;
+	margin:0px;
+	padding:20px;
+	font: normal 16px/1.5em Arial, sans-serif;
+	border: 1px solid #DDAAAA;
+	background-color: #FFCCCC;
+	color: #774444;
+}
+
+.message-area {
+	display: block;
+	margin: auto;
+	padding:20px;
+}
+
+.green,
+.success-note {
+ 	border: 1px solid #AADDAA;
+	background-color: #CCFFCC;
+	color: #447744;
+	padding: 10px;
+}
+
+.red,
+.problem-note {
+ 	border: 1px solid #DDAAAA;
+	background-color: #FFCCCC;
+	color: #774444;
+	padding: 10px;
+}
+
+.blue,
+.help-area {
+	border: 1px solid #AAAADD;
+	background-color: #CCCCFF;
+	color: #222244;
+	padding: 10px;
+}
+
+h2.title {
+	font: normal 28px Verdana, sans-serif;
+	color: #FFFFFF;
+	text-shadow: 0px 0px 0px #AAAAAA;
+	margin: 18px 0px 18px 0px;
+}
+
+/* CSS classes for content area */
+
+.content-cell
+{
+	text-align: left;
+	display: inline-block;
+	margin:0px;
+	padding:20px;
+}
+
+div.content-cell ul {
+/* list-style-type: none;*/
+	list-style-type: circle;
+	list-style-position: inside;
+}
+div.content-cell ul li {
+	list-style-image: url(../images/menu-leaf-off.png);
+	margin: 0px 0px 0px 16px;
+}
+
+ul.content li.content,
+ul.content-body li.content-body,
+ul.content-cell li.content-cell {
+/* In use - vertical menu indent and bullets */
+	list-style-type: circle;
+	list-style-image: url(../images/menu-leaf.png);
+	margin: 0px 0px 0px 16px;
+}
+
+/* Page module Post specific */
+
+.post-wrap {
+	display: block;
+	padding: 10px 20px 10px 20px;
+}
+
+.post-creating-data {
+/* float: left;*/
+/* 	display: inline-block;*/
+}
+
+.post-creator-name {
+/* float: left;*/
+ 	display: inline-block;
+}
+.post-creating-time {
+/* float: left;*/
+ 	display: inline-block;
+}
+.post-editor-name {
+/* float: left;*/
+ 	display: inline-block;
+}
+.post-editing-time {
+/* float: left;*/
+ 	display: inline-block;
+}
+
+/* Global Observer module specific - Statistics & GDPR */
+
+.consent-area {
+	display: flex;
+  flex-direction: column;
+   align-items: center;
+	justify-content: center;
+
+	width:100%;
+	left: 0;
+	bottom: 0px;
+	margin: 0px;
+	padding: 8px 0px 8px 0px;
+	text-shadow: 0px 0px 0px #AAAAAA;
+	text-align: center;
+	background:url('x-off.png') #222222 repeat left top;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.consent-text {
+	display: inline-block;
+	width:90%;
+	padding: 5px 10px 5px 10px;
+}
+
+.consent-text a,
+.consent-text a:link,
+.consent-text a:hover,
+.consent-text a:active,
+.consent-text a:focus {
+/*	font: 18px Verdana, sans-serif;*/
+	font: normal 16px/24px Arial, sans-serif;
+	color: #999999;
+	text-shadow: 0px 0px 0px #AAAAAA;
+}
+
+.consent-button {
+	top: 0px;
+	display: inline-block;
+	width:90%;
+	padding: 0px;
+}
+
+button.consent-signal {
+	display: inline-block;
+	width:110px;
+	color: #000000;
+	background:url('../images/bg/cardboard-teal-off.png') #FFFF00;
+	top: 0px;
+	padding: 12px 0px 12px 0px;
+}
+
+/*Profile module specific*/
+.avatar-image
+{
+	display: inline-block;
+	padding-left: 30px;
+}
+
+/*Theme module specific*/
+.context {
+	background-color:transparent;
+	margin: 0px 0px 0px 0px;
+	border:1px solid #123552;
+	padding: 8px;
+}
+
+.footer-area {
+	clear:both;
+	display: block;
+	width:100%;
+	overflow:hidden;
+	background: url('../images/footer-area-bg.png') #496C89; /* footerBackground */
+	color: #FFFFFF;
+	text-shadow: 0px 0px 0px #AAAAAA;
+	border-top:2px solid #123552;
+	border-bottom:2px solid #123552;
+	text-align: center;
+}
+
+.footer-area a {
+	text-decoration: none;
+	color: white;
+}
+.footer-area a:hover {
+	text-decoration: underline;
+	color: white;
+}
+
+.footer-cell {
+	padding: 15px;
+	color: white;
+	text-align: center;
+}
+
+/* ============================== */
+/* 4. Other custom styles */
+/* ============================== */
+
+td.active {
+	background-color: #A3B8C9;
+	border-bottom: 1px solid #123552;
+}
+
+tr.trHead {
+	padding: 4px;
+}
+
+/* Some tables have rows marked even or odd. */
+tr.even {
+	padding: 8px;
+	background-color: #A3B8C9;
+	border-bottom: 1px solid #123552;
+}
+
+tr.odd {
+	padding: 8px;
+	background-color: #B3C8D9;
+	border-bottom: 1px solid #123552;
+}
+
+
+.header-line-set {
+}
+.header-line {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+}
+
+/* User & Language block specific */
+
+.lang-label,
+.user-label
+{
+	font: normal 18px/24px 'DejaVu Sans', sans-serif;
+ 	padding: 0px 10px 0px 0px;
+}
+
+.app-user-area
+{
+	display: flex;
+	justify-content: center;
+	min-height:50px;
+	align-items: center;
+}
+.app-user-data
+{
+	padding: 0px 20px 0px 20px;
+}
+.app-user-area a,
+.app-user-area a:link,
+.app-user-area a:hover,
+.app-user-area a:active,
+.app-user-area a:focus
+{
+	color: #FFFFFF;
+	font: normal 18px/26px Verdana, sans-serif;
+}
+
+.lang-space-wrap,
+.user-space-wrap
+ {
+	top: 0px;
+	position: relative;
+	display: inline-block; 
+	float: right;
+	width: 270px;
+	height: 48px;
+}
+
+.user-space-wrap
+{
+	margin:10px 0px 0px 0px;
+}
+
+.lang-space-wrap
+{
+	margin:10px 0px 0px 0px;
+}
+
+.lang-block-space
+ {
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%; 
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width:240px;
+	clear: none;
+	position: absolute;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 4;
+}
+
+.user-block-space
+ {
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width:240px;
+	clear: none;
+	position: absolute;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 4;
+}
+
+/* Buttons, which are triggering blocks to do something */
+button.user-block, input.user-block {
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	display: inline;
+	position: relative;
+	background:url('../images/x-off.png') #718DA5 repeat-x left top;
+	cursor: pointer;
+	border: 0px;
+	margin: 0px;
+	padding:5px 20px 5px 20px;
+	text-decoration:none;
+	color: #FFFFFF;
+	text-align: center;
+	height:40px;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index: 4;
+}
+
+#lang-option {
+	margin: 0px 30px 10px 10px;
+}
+#lang-option-button {
+	padding: 14px 10px 14px 10px;
+	width: 100%;
+	height: 100%;
+}
+a.link-area
+{
+	color : #006655;
+}
+
+button:hover.user-block, input:hover.user-block {
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	display: inline;
+	position: relative;
+	background:url('../images/x-off.png') #85B5FF repeat-x left top;
+	cursor: pointer;
+	border: 0px;
+	margin: 0px;
+	padding:5px 20px 5px 20px;
+	text-decoration:none;
+	color: #FFFFFF;
+	height:40px;
+	text-align: center;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index: 4;
+}
+
+#lang-option-button {
+	color: #3A5F7E;
+}
+
+.login-form-area {
+	clear: none;
+	display: inline-block;
+	float: right;
+	top: -25px;
+	right: 0px;
+	width: 240px;
+	background-color: #D3DEE7;
+	position:fixed!important;
+	z-index:4;
+	overflow:hidden;
+	border: 1px solid #123552;
+}
+
+.language-form-area {
+	clear: none;
+	display: inline-block;
+	float: left;
+	top: -25px;
+	width: 240px;
+	right: 0px;
+	background-color: #D3DEE7;
+	position:fixed!important;
+	z-index:4;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #123552;
+}
+
+.login-form-area a,
+.login-form-area a:link,
+.login-form-area a:hover,
+.login-form-area a:active,
+.login-form-area a:focus {
+	color: #3A5F7E;
+}
+
+.window-title {
+	display: inline-block;
+	position: relative;
+	padding: 12px;
+	line-height:24px;
+	height:24px;
+	font-size: 20px;
+	z-index:4;
+}
+
+button.close-button, input.close-button {
+	float:left;
+	position:absolute;
+	right:0;
+	top:0;
+	z-index: 4;
+	padding:8px;
+	font-size: 18px;
+	color: #2A4F6E;
+	background-color: #EBFFFF;
+}
+
+button:hover.close-button, input:hover.close-button {
+	float:left;
+	position:absolute;
+	right:0;
+	top:0;
+	z-index: 4;
+	padding:8px;
+	font-size: 18px;
+	color: #2A4F6E;
+}
+
+.language-block-header,
+.user-block-header {
+	z-index: 4;
+	width:240px;
+	height:50px;
+	background-color:transparent;
+	background:url('../images/block-header-bg.png') #718DA5 repeat left top;
+	margin: 0px 0px 0px 0px;
+	border-top:1px solid #123552;
+	border-bottom:2px solid #123552;
+}
+
+div.language-block-content,
+div.user-block-content {
+	z-index: 4;
+	width:220px;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+	color: #123552;
+}
+
+button.language-block-content,
+input.language-block-content,
+input.user-block-content {
+	z-index: 4;
+	width:180px;
+}
+input[type="submit"].user-block-content {
+	z-index: 4;
+	width:190px;
+	margin: 10px 10px 0px 4px;
+}
+
+.lang-list-text {
+	z-index: 4;
+	padding: 0px 0px 10px 0px;
+}
+
+
+/*Search area specific*/
+
+.search-set-wrap
+ {
+	left:-4px;
+	position:relative;
+	display: inline-block; 
+	height: 30px;
+	width: 250px;
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	float: left;
+}
+
+div.search-phrase
+{
+	float: left;
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	width:220px;
+	position: relative;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+
+div.search-button
+{
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	left: 0px;
+	width:30px;
+	position: relative;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+input[type="text"].search-phrase
+{
+	position:relative;
+	display: inline-block;
+	color: #2A4F6E;
+	background-color: #A3B8C9;
+	font: normal 16px/20px Arial, sans-serif;
+	width:202px;
+	height:30px;
+	padding:0px 5px 0px 5px;
+	float: left;
+}
+
+button.search-button,
+input[type="submit"].search-button
+{
+	position:relative;
+	display: inline-block;
+	background:url('../../images/search-white-30px.png') #718DA5 no-repeat center center;
+	cursor:pointer;
+	font: normal 16px Verdana, sans-serif;
+	color:#FFFFFF;
+	padding:0px 0px 0px 0px;
+	border:0px;
+	float: left;
+	left:0px;
+	width:30px;
+	height:30px;
+}
+
+button:hover.search-button,
+input[type="submit"]:hover.search-button
+{
+	background:url('../../images/search-white-30px.png') #85B5FF no-repeat center center;
+}
+
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="range"],
+input[type="number"],
+input[type="color"],
+input[type="password"]
+{
+	width:90%;
+}
+
+textarea
+{
+	width:90%;
+}
+
+select {
+	width:90%;
+}
+
+.link-area,
+.form-field
+ {
+	width:90%;
+}
+
+input[type="text"].wide
+ {
+	width:90%;
+}
+
+select.multiple {
+	width:90%;
+}
+
+select.wide-element {
+	width:90%;
+}
+
+.header-bar {
+	position: relative;
+/*For mobile same as ".navi-area li a" bg. color*/
+}
+.navi-area li {
+    border-right: none;
+}
+
+a.link-area
+{
+  font-size: 1.4em;
+}
+
+.col2 {
+	display:block;
+	margin:18px;
+	padding:15px;
+	position:relative;
+	overflow:hidden;
+}
+
+.word-break {
+	width: 280px;
+	word-wrap: break-word;
+	display: inline-block;
+}

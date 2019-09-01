@@ -1,0 +1,121 @@
+<h1><?php 
+echo $lang['title'];
+ ?></h1>
+<br />
+    <a href="<?php echo $GLOBALS['baseUrl']."/own-page/list-pages"; ?>"><?php echo $lang['link1']; ?></a>
+<br />
+<br />
+<h2><?php echo $lang['subTitle1']; ?></h2>
+<hr />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('title'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('descriptionArea'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('descriptionArea'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('bodyArea'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('bodyArea'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('alias'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('alias'); ?>
+	</div>
+
+<hr />
+<br />
+<br />
+<h2><?php echo $lang['subTitle2']; ?></h2>
+<hr />
+<br />
+	<div class="form-field">
+	<?php echo $form->get('label'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('label'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('menuId'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('menuId'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('weight'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('weight'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('parentId'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('parentId'); ?>
+	</div>
+<hr />
+<br />
+
+<br />
+<h2><?php echo $lang['subTitle3']; ?></h2>
+<hr />
+<br />
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+
+<?php if ($form->accessFieldStatus=="on" && $form->botTagStatus=="on"){ ?>
+
+<div class="form-field">
+<?php echo $form->get('roleAccess'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('roleAccess'); ?>
+	</div>
+<?php } ?>
+
+<?php if ($form->accessFieldStatus=="on" && $form->botTagStatus=="on"){ ?>
+<div class="form-field">
+<?php echo $form->get('botTag'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('botTag'); ?>
+	</div>
+<?php } ?>
+
+<?php if ($form->cacheFieldStatus=="on"){ ?>
+<div class="form-field">
+<?php echo $form->get('caching'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('caching'); ?>
+	</div>
+<?php } ?>
+
+<hr />
+<br />
+
+<div class="form-field">
+<?php echo $form->get('submit1'); ?>
+</div>
+<?php echo $ckEditorScript; ?>
+<?php echo $form->get('end'); ?>
+

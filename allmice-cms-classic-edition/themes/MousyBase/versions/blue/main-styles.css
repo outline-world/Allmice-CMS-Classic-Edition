@@ -1,0 +1,1228 @@
+/* 1. Default HTML tags */
+/* 2. Theme layout & Allmice CMS specific elements */
+/* 3. Other custom styles */
+
+/* ============================== */
+/* 1. Default HTML tags */
+/* ============================== */
+
+/* padding|margin:[top]px [right]px [bottom]px [left]px; */
+/* Elements, which are not related to any specific class or id attribute; selectors are refering to tags only. */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+* {
+/*Short CSS reset*/
+/*For more detailed CSS reset - see https://meyerweb.com/eric/tools/css/reset/ */
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width:100%;
+	background: #FFFFFF; /* tagBodyBackground */
+	font: normal 16px/24px 'DejaVu Sans', sans-serif; /* tagBodyTextFont */
+	color: #1c4877; /* tagBodyTextColor */
+}
+
+p {
+	margin:0;
+	padding: 10px 0 10px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #1c4877; /* tagH2TextColor */
+}
+h1 {
+	font: normal 1.6em 'DejaVu Sans', sans-serif;
+	padding: 12px 0px 10px 0px;
+}
+h2 {
+	font: normal 1.4em 'DejaVu Sans', sans-serif;
+	padding: 0px 0px 10px 0px;
+}
+h3, h4, h5, h6 {
+	font: normal 1.2em 'DejaVu Sans', sans-serif;
+	padding: 0px 0px 8px 0px;
+}
+
+a {
+	text-align: left;
+	font: normal 16px/24px 'DejaVu Sans', sans-serif; /* tagATextFont */
+	text-decoration: none; /* tagATextDecoration */
+	color: #3c6897; /* tagATextColor */
+} 
+a:hover {
+	text-decoration: underline; /* tagAHoverTextShadow */
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+i, em, var {
+	font-style: italic;
+}
+
+u {
+	text-decoration:underline;
+}
+
+center {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+}
+
+ul {
+	list-style-type: circle;
+	margin: 0px 0px 0px 8px;
+/*	list-style-position: inside; !!! Not to use such inside style - it causes issues in Chromium/Chrome browsers */
+/* https://bugs.chromium.org/p/chromium/issues/detail?id=278115 */
+}
+
+tbody {
+}
+tbody th {
+	border-top: 0px solid #3F6276; /* tagTdBorderTop */
+	border-bottom: 1px solid #3F6276; /* tagTdBorderBottom */
+}
+thead th {
+	text-align: left; /* LTR */
+	padding: 3px;
+	border-top: 3px solid #3F6276; /* tagThBorderTop */
+	border-bottom: 3px solid #3F6276; /* tagThBorderBottom */
+	background-color: #C0D0EF; /* tagThBackground */
+	height: 24px;
+}
+td {
+	padding: 8px;
+	background-color: #D0E0FF; /* tagTdBackground */
+	border-top: 0px solid #3F6276; /* tagTdBorderTop */
+	border-bottom: 1px solid #3F6276; /* tagTdBorderBottom */
+}
+th {
+	padding: 8px;
+	border-top: 3px solid #3F6276; /* tagThBorderTop */
+	border-bottom: 3px solid #3F6276; /* tagThBorderBottom */
+	height: 24px;
+	background-color: #C0D0EF; /* tagThBackground */
+	font: normal 16px/24px 'DejaVu Sans', sans-serif;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="range"],
+input[type="number"],
+input[type="color"],
+input[type="password"]
+ {
+	width:380px;
+	height:30px;
+	margin:4px;
+	padding:4px;
+	color: #1c4877; /* inputTextColor */
+	background-color: #ccddff; /* inputBackground */
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* inputTextFont */
+}
+
+textarea
+ {
+	width:500px;
+	height:120px;
+	margin:4px;
+	padding:4px;
+	color: #1c4877; /* inputTextColor */
+	background-color: #ccddff; /* inputBackground */
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* inputTextFont */
+}
+
+input[type="email"],
+input[type="color"]
+ {
+	background-color: #FFFFFF;
+}
+
+button,
+input[type="submit"]
+ {
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	margin:5px;
+	padding:15px 30px 15px 30px;
+	background: url('../images/button-default-bg.png') #5F8296 repeat-x left top; /* buttonBackground */
+	border:0px;
+	cursor:pointer;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* buttonTextFont */
+	color: #FFFFFF; /* buttonTextColor */
+}
+
+button:hover,
+input[type="submit"]:hover
+ {
+/* the submit button when hovered over */
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	margin:5px;
+	padding:15px 30px 15px 30px;
+	background: url('../images/button-hover-bg.png') #91B1D6 repeat-x left top; /* buttonHoverBackground */
+	border:0px;
+	cursor:pointer;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* buttonHoverTextFont */
+	color: #123552; /* buttonHoverTextColor */
+}
+
+select {
+	background-image:url(../images/x-off.png);
+	background-repeat:no-repeat;
+	width:360px;
+	padding:4px;
+	margin-top:4px;
+	height:30px;
+	line-height:30px;
+	background-color:#bbccee;
+	color:#123552;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* selectFont */
+}
+select:hover {
+	background-color:#FDFD96;
+}
+
+option {
+	height: 20px;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* optionFont */
+	margin: 0px;
+	padding: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================== */
+/* 2. Theme layout & Allmice CMS specific elements */
+/* ============================== */
+
+/* These elements will appear mostly in order as seen on screen, */
+/* general form element and other general styles will be declared first. */
+/* It may be easier to find specific styles in such a way. */
+/* Order should be following: */ 
+/* 1. Form elements and other general styles. */
+/* 2. Header-area layout, site-name and user-area, etc. */
+/* 3. Header-bar layout, navi menu elements, etc. */
+/* 4. Middle area layout, vertical menu, content area layout, etc. */
+/* 5. Footer area layout with related elements. */
+
+/* ---------- */
+/* 1. Form elements and other general styles. */
+
+.link-area,
+.form-field
+ {
+	display: block;
+}
+
+.label-text,
+.label-password,
+.label-textarea {
+	display: block;
+	text-align: left;
+/* font-weight part in font: normal=400, bold=700 */
+/* It seems that DejaVu Sans font has only either normal or bold thickness (no other variants) - */
+/*    if number value is provided, then normal or bold will be chosen depending which is closer to the number. */
+	font: bold 16px/22px 'DejaVu Sans', sans-serif; /* labelFont */
+	margin: 0px;
+	padding: 0 0 4px 0;
+​}
+.label-select {
+	display: inline-block;
+	text-align: left;
+	font: bold 16px/22px 'DejaVu Sans', sans-serif;
+	margin:0px;
+	padding: 0 0 4px 0;
+​}
+
+input[type="text"].wide
+ {
+	width:500px;
+	height:30px;
+	margin:4px;
+	padding:4px;
+	color:#123552;
+	background-color:#A0C1B8;
+}
+
+select.single {
+	display:block;
+	height:40px;
+}
+
+select.multiple {
+	background-image:url(../images/x-off.png);
+	background-repeat:no-repeat;
+	width:100%;
+	padding:4px;
+	margin-top:4px;
+	font-family: Sans;
+	height:80px;
+	line-height:30px;
+	background-color:#bbccee;
+	color:#123552;
+	font-size: 16px;
+}
+
+select.multiple:hover {
+	background-color:#FDFD96;
+}
+
+.label-checkboxes, .label-radio-buttons {
+	display: block;
+	text-align: left;
+	font: bold 16px/22px 'DejaVu Sans', sans-serif; /* labelFont */
+	margin:0px;
+	padding: 10px 4px 6px 4px;
+}
+
+/* Checkbox and radio button styles */
+
+.radio-set2,
+.radio-set,
+.check-set {
+	display: block;
+	position: relative;
+	padding-left: 10px;
+	margin-bottom: 0px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.radio-button2,
+.radio-button, .checkbox
+ {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: inline-block;
+	position: relative;
+	background-color: #5F8296; /* radioButtonCheckBoxBg */
+	color: #123552;
+	top: 8px;
+	height: 26px;
+	width: 26px;
+	border: 0;
+	border-radius: 50px;
+	cursor: pointer; 
+	margin-right: 7px;
+	outline: none;
+}
+.checkbox
+ {
+	border-radius: 3px;
+}
+
+.radio-button2:checked::before,
+.radio-button:checked::before
+ {
+	position: absolute;
+	font: normal 20px 'DejaVu Sans', sans-serif; /* radioButtonCheckedFont */
+	left: 4px;
+	top: 3px;
+	/* Check mark as 'content' property - HTML Character Codes, Ascii or Unicode hex values */
+	/* content: '\02022'; bullets and dots are not same in Firefox & Chrome, crosses and ticks are the same */
+	content: '\02718';
+	/* content: '\02718'; cross*/
+	/* content: '\02714';*/
+}
+
+.checkbox:checked::before
+ {
+	position: absolute;
+	font: 23px 'DejaVu Sans', sans-serif; /* checkBoxCheckedFont */
+	left: 4px;
+	top: 0px;
+	/* content: '\02714'; tick*/
+	content: '\02714';
+}
+
+.radio-button2:checked,
+.radio-button:checked, .checkbox:checked
+{
+	background-color: #91B1D6; /* radioButtonCheckBoxCheckedBg */
+}
+
+.radio-button2:hover,
+.radio-button:hover, .checkbox:hover
+{
+	background-color: #91B1D6; /* radioButtonCheckBoxHoverBg */
+}
+
+input.radio-button2,
+input.radio-button,
+input.checkbox {
+	margin: 0 0 0 8px;
+}
+
+.guide {
+	display:block;
+	padding: 8px 4px 18px 4px;
+	font: normal 14px/20px 'DejaVu Sans', sans-serif; /* guideFont */
+}
+
+/* CSS classes for captcha */
+
+.captcha-image,
+.captcha-text,
+.captcha {
+	display: block;
+}
+
+/* Paginator specific */
+
+select.pagin-select {
+	width: 90px;
+	height: 40px;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	padding: 4px;
+}
+
+option.pagin-option {
+	width: 40px;
+	height: 20px;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	padding: 4px;
+}
+
+select.wide-element {
+	width:400px;
+}
+
+/* ---------- */
+/* 2. Header-area layout, site-name and user-area, etc. */
+
+.header-area {
+	float:left;
+	clear:none;
+	width:100%;
+	color: #FFFFFF; /* alternativeTextColor */
+	background: url('../images/header-area-bg.png') #3F6276 repeat-x left top; /* headerBackground */
+}
+
+.header-area a {
+	text-decoration: none;
+	color: #FFFFFF; /* alternativeATextColor */
+}
+.header-area a:hover {
+	text-decoration: underline;
+	color: #FFFFFF; /* alternativeAHoverTextColor */
+}
+
+.site-name-logo-set {
+	position: relative;
+	display: inline-block; 
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+	margin: 10px 0px 0px 0px;
+}
+
+.logo-wrap {
+/*	border: 1px solid red;*/
+	position: relative;
+	display: inline-block;
+	margin: 0px 0px 0px 20px;
+	z-index: 3;
+}
+.logo-link {
+/*	border: 1px solid red;*/
+	height: 60px;
+	width: 60px;
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+}
+
+
+.site-name {
+	position: relative;
+	display: inline-block;
+	margin: 0px 20px 0px 20px;
+	z-index: 3;
+}
+.site-name-img-wrap {
+/*	border: 1px solid white;*/
+	position: relative;
+	display: inline-block;
+	margin: 0px 10px 0px 20px;
+	z-index: 3;
+}
+
+.site-name-img-link {
+	/*	border: 1px solid red;*/
+	height: 60px;
+	/*	width: 288px;*/
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+}
+
+h2.site-name
+ {
+	font: normal 38px 'DejaVu Sans', sans-serif; /* siteNameH2TextFont */
+	color: #FFFFFF; /* alternativeTextColor */
+}
+
+.site-name a,
+.site-name a:link,
+.site-name a:hover,
+.site-name a:active,
+.site-name a:focus {
+/*	padding: 20px 0px 0px 10px;*/
+	font: normal 38px 'DejaVu Sans', sans-serif; /* siteNameATextFont */
+	color: #FFFFFF; /* alternativeATextColor */
+	margin: 18px 0px 18px 0px;
+}
+
+
+/*Search area specific*/
+
+.search-set-wrap
+ {
+	top: 4px;
+	position:relative;
+	display: inline-block; 
+	height: 70px;
+	width: 250px;
+	padding: 0px 20px 0px 20px;
+/*	float: right;*/
+	float: left;
+}
+
+div.search-phrase
+ {
+	float: left;
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%; 
+	transform: translate(0%,-50%);
+	width:200px;
+	clear: none;
+	position: absolute;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+
+div.search-button
+ {
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%; 
+	left: 236px;
+	transform: translate(0%,-50%);
+	width:30px;
+	clear: none;
+	position: absolute;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+
+input[type="text"].search-phrase
+ {
+	position:relative;
+	display: inline-block;
+
+	width:200px;
+	height:30px;
+	padding:0px 4px 0px 4px;
+	color:#123552;
+	background-color:#ccddff;	/* searchButtonBackground */
+
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	float: left;
+
+}
+
+button.search-button,
+input[type="submit"].search-button
+ {
+	position:relative;
+	display: inline-block;
+
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	padding:0px 0px 0px 0px;
+	background:url('../../images/search-white-30px.png') #5F8296 no-repeat center center;/* searchButtonHoverBackground */
+
+	border:0px;
+	cursor:pointer;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	color: #FFFFFF; /* alternativeTextColor */
+	float: left;
+	left:0px;
+	width:30px;
+	height:30px;
+}
+
+button:hover.search-button,
+input[type="submit"]:hover.search-button
+{
+	background:url('../../images/search-white-30px.png') #91B1D6 no-repeat center center; /* searchButtonHoverBackground */
+
+}
+
+/* User & Language block specific */
+
+.lang-label,
+.user-label
+{
+	font: normal 18px/24px 'DejaVu Sans', sans-serif; /* blockLabelFont */
+ 	padding: 0px 10px 0px 0px;
+}
+
+.lang-space-wrap,
+.user-space-wrap
+ {
+	top: 4px;
+	/*	border: 1px solid red;*/
+	position: relative;
+	display: inline-block; 
+	/* width: 540px;*/
+	float: right;
+	width: 270px;
+	height: 70px;
+}
+
+
+.lang-block-space
+ {
+	/*	border: 1px solid green;*/
+	/*	top: 0px;*/
+	/*	left: 20px;*/
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%; 
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width:240px;
+	clear: none;
+	/*	display: inline-block;*/
+	position: absolute;
+	/* position: relative;*/
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* blockButtonTextFont */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 4;
+}
+.user-block-space
+ {
+/*	border: 1px solid green;*/
+/*	top: 0px;*/
+/*	left: 20px;*/
+/*	right: 20px;*/
+	margin: auto;
+	padding: 0px;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);	width:240px;
+	width:240px;
+	clear: none;
+	/*	display: inline-block;*/
+	position: absolute;
+	/* position: relative;*/
+	font: normal 16px/22px 'DejaVu Sans', sans-serif; /* blockButtonTextFont */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 4;
+}
+
+/* Buttons, which are triggering blocks to do something */
+button.user-block, input.user-block {
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	display: inline;
+	position: relative;
+	background:url('../images/x-off.png') #5F8296 repeat-x left top;
+	cursor: pointer;
+	border: 0px;
+/*	padding: 5px 10px 5px 10px;*/
+	margin: 0px;
+	padding:5px 20px 5px 20px;
+	text-decoration:none;
+	color: #FFFFFF; /* alternativeTextColor */
+/*	width:240px;*/
+	text-align: center;
+/*	line-height:24px;*/
+	height:40px;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index: 4;
+}
+
+button:hover.user-block, input:hover.user-block {
+	-webkit-appearance: button;
+	-webkit-border-radius: 0px;
+	display: inline;
+	position: relative;
+	background:url('../images/x-off.png') #91B1D6 repeat-x left top;
+	cursor: pointer;
+	border: 0px;
+/*	padding: 5px 10px 5px 10px;*/
+	margin: 0px;
+	padding:5px 20px 5px 20px;
+	text-decoration:none;
+	color: #123552;
+/*	width:240px;*/
+/*	line-height:24px;*/
+	height:40px;
+	text-align: center;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index: 4;
+}
+
+#lang-option {
+	margin: 0px 30px 10px 10px;
+}
+#lang-option-button {
+	padding: 14px 10px 14px 10px;
+	width: 100%;
+	height: 100%;
+}
+
+.login-form-area {
+	clear: none;
+	display: inline-block;
+	float: right;
+/*	top: -2px;*/
+	top: -25px;
+	right: 0px;
+/*	height: 440px;*/
+	width: 240px;
+	background-color: #7FA2B6; /* blockFormBg */
+	position:fixed!important;
+	z-index:4;
+	overflow:hidden;
+	border: 1px solid #3F6276; /* blockFormBorder */
+}
+
+.language-form-area {
+	clear: none;
+	display: inline-block;
+	float: left;
+/*	top: -2px;*/
+	top: -25px;
+/* 	height: 300px;*/
+	width: 240px;
+	right: 0px;
+	background-color: #7FA2B6; /* blockFormBg */
+/*	position:fixed!important;*/
+	position:fixed!important;
+	z-index:4;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #3F6276; /* blockFormBorder */
+}
+
+
+.login-form-area a,
+.login-form-area a:link,
+.login-form-area a:hover,
+.login-form-area a:active,
+.login-form-area a:focus {
+	color: #000022; /* blockFormATextColor */
+}
+
+.window-title {
+	display: inline-block;
+	position: relative;
+	padding: 12px;
+	line-height:24px;
+	height:24px;
+	font-size: 20px;
+	z-index:4;
+}
+
+button.close-button, input.close-button {
+	float:left;
+	position:absolute;
+	right:0;
+	top:0;
+	z-index: 4;
+	padding:8px;
+	font-size: 18px;
+	color: #123552;
+	background-color: #FFFFFF;
+}
+
+button:hover.close-button, input:hover.close-button {
+	float:left;
+	position:absolute;
+	right:0;
+	top:0;
+	z-index: 4;
+	padding:8px;
+	font-size: 18px;
+	color: #123552;
+}
+
+.language-block-header,
+.user-block-header {
+	z-index: 4;
+	width:240px;
+	height:50px;
+	background-color:transparent;
+	background:url('../images/block-header-bg.png') #5F8296 repeat left top; /* blockHeaderBg */
+	margin: 0px 0px 0px 0px;
+	border-top:1px solid #3F6276;
+	border-bottom:2px solid #3F6276;
+}
+
+div.language-block-content,
+div.user-block-content {
+	z-index: 4;
+	width:220px;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+	color: #123552;
+}
+
+button.language-block-content,
+input.language-block-content,
+input.user-block-content {
+	z-index: 4;
+	width:180px;
+}
+input[type="submit"].user-block-content {
+	z-index: 4;
+	width:190px;
+	margin: 10px 10px 0px 4px;
+}
+.lang-list-text {
+	z-index: 4;
+	padding: 0px 0px 10px 0px;
+}
+
+button.language-block-content,
+input[type="submit"].language-block-content,
+input[type="submit"].user-block-content {
+	z-index: 4;
+	width:190px;
+	color: #FFFFFF;
+	background-color: #5F8296;
+}
+
+button:hover.language-block-content,
+input[type="submit"]:hover.language-block-content,
+input[type="submit"]:hover.user-block-content {
+	color: #123552;
+	background-color: #FDFD96;
+}
+
+/* ---------- */
+/* 3. Header-bar layout, navi menu elements, etc. */
+
+.header-bar {
+	float:left;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+ 	width:100%;
+	min-height:40px;
+	background: url('../images/header-bar-area-bg.png') #5F8296 repeat left top; /* headerBarBackground */
+	color: #FFFFFF; /* alternativeTextColor */
+	z-index: 3;
+}
+
+.navi-area {
+	float:left;
+	color: #FFFFFF; /* alternativeTextColor */
+	font: normal 18px/24px 'DejaVu Sans', sans-serif; /* naviATextFont */
+	position:relative;
+	padding: 0 0 0 20px;
+/*	border: 3px solid #000;*/
+	z-index: 3;
+}
+
+.navi-area ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	z-index: 3;
+}
+
+.navi-area li {
+	float: left;
+	z-index: 3;
+}
+
+.navi-area li a {
+	display: block;
+	color: #FFFFFF; /* alternativeATextColor */
+	font: normal 18px/24px 'DejaVu Sans', sans-serif; /* naviATextFont */
+	text-align: center;
+/*	padding: 8px 16px 8px 16px;*/
+	padding: 12px 16px;
+	text-decoration: none;
+	background-color: #5F8296;	/* naviABackground */
+	z-index: 3;
+}
+
+.navi-area li a:hover {
+/*	background-color: #81ee79;*/
+	color: #123552; /* alternativeAHoverTextColor */
+/*	text-decoration: underline;*/
+	text-decoration: none;
+	background-color: #91B1D6; /* naviAHoverBackground */
+	z-index: 3;
+}
+
+.navi li.active a {
+/*	background-color: #FFFFFF;*/
+/*	color: #3F6276;*/
+	color: #5F8296;
+	text-decoration: none;
+	background-color: #FFFFFF; /* naviActiveABackground */
+	z-index: 3;
+}
+
+.navi-area ul li {
+/* In use - vertical menu indent and bullets */
+	list-style-image: none;
+	list-style-position: outside;
+	margin: 0px 0px 0px 0px;
+	z-index: 3;
+}
+
+/* ---------- */
+/* 4. Middle area layout, vertical menu, content area layout, etc. */
+
+.middle-area {
+/*Middle area is a wrapper of other elements - not to use padding and margin there or to assign them 0 values*/	
+	float:left;
+	width:100%;
+}
+.middle-area a {
+	text-decoration: none;
+}
+.middle-area a:hover {
+	text-decoration: underline;
+}
+
+
+.menu-area {
+	float: left;
+	max-width: 190px;
+	margin: 0;
+	padding: 10px;
+	font: normal 16px/1.5em 'DejaVu Sans', sans-serif;
+}
+.menu-area ul {
+	list-style-type: none;
+	padding: 0 0 0 16px;
+}
+ 
+.menu-area ul a {
+	text-decoration: none;
+}
+
+.menu-area li a {
+	font: normal 16px/1.5em 'DejaVu Sans', sans-serif;
+}
+
+.menu-title h2 {
+	margin: 0;
+	padding: 8px 0px 8px 8px;
+	font: 20px DejaVu Sans, sans-serif;
+}
+
+.menu-content {
+	margin: 0px 0px 20px 0px;
+	padding: 0px 10px 0px 0px;
+}
+/*	padding: top right bottom left;*/
+
+.menu-ap a {
+/*menu active parent item*/
+/*this is div inside li - li includes also all the sub li-s and thus separated div is needed to style parent only*/
+	font-style: italic;
+	font-weight: bold;
+}
+.menu-ac a {
+/*menu active child item*/
+/*this is div inside li - if this child has childs, then li includes also all the sub li-s and thus separated div is needed to style current item, but not the sub items*/
+	font-style: italic;
+	font-weight: bold;
+}
+.menu-pp a {
+/*menu passive parent item*/
+/*this is div inside li - li includes also all the sub li-s and thus separated div is needed to style parent only*/
+}
+.menu-pc a {
+/*menu passive child item*/
+/*this is div inside li - if this child has childs, then li includes also all the sub li-s and thus separated div is needed to style current item, but not the sub items*/
+}
+
+.content-area {
+	margin-left: 200px;
+/* border-left: 1px solid gray;*/
+	padding: 20px;
+	overflow: auto;
+}
+
+/* CSS classes for messages */
+
+.message-area,
+.error-messages {
+	text-align: left;
+	display: block;
+	padding:20px;
+	font: normal 16px/24px 'DejaVu Sans', sans-serif;
+}
+
+.green,
+.success-note {
+ 	border: 1px solid #AADDAA;
+	background-color: #CCFFCC;
+	color: #447744;
+	padding: 10px;
+}
+
+.red,
+.problem-note {
+ 	border: 1px solid #DDAAAA;
+	background-color: #FFCCCC;
+	color: #774444;
+	padding: 10px;
+}
+
+.blue,
+.help-area {
+	border: 1px solid #AAAADD;
+	background-color: #CCCCFF;
+	color: #222244;
+	padding: 10px;
+}
+
+/* CSS classes for posts */
+
+.post-wrap {
+	display: block;
+	padding: 10px 20px 10px 20px;
+}
+.post-creator-name,
+.post-creating-time,
+.post-editor-name,
+.post-editing-time {
+	display: inline-block;
+}
+
+/* ---------- */
+/* 5. Footer area & consent area layout with related elements. */
+
+.footer-area-set {
+	position:fixed!important;
+	z-index:1;
+	bottom: 0px;
+}
+
+.gap {
+/*If consent message is shown in sticky user area, then end of page content is covered.*/
+/* The .gap class helps to reduce such problem so that there will be some empty space to cover. */
+	clear:both;
+	display: block;
+	height:100px;
+	width:100%;
+}
+
+.footer-area {
+	clear:both;
+	display: block;
+	width:100%;
+	overflow:hidden;
+	background: url('../images/footer-area-bg.png') #3F6276 repeat-x left top; /* footerBackground */
+}
+
+.footer-area a {
+	text-decoration: none;
+	color: #FFFFFF; /* alternativeATextColor */
+}
+.footer-area a:hover {
+	text-decoration: underline;
+	color: #FFFFFF; /* alternativeAHoverTextColor */
+}
+
+.footer-cell {
+	padding: 15px;
+	color: #FFFFFF; /* alternativeTextColor */
+	text-align: center;
+}
+
+/* Global Observer module specific - Statistics & GDPR */
+
+.consent-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	 
+	width:100%;
+	left: 0;
+	bottom: 0px;
+	margin: 0px;
+	padding: 8px 0px 8px 0px;
+
+	text-align: center;
+	background:url('../images/consent-area-bg.png') #222222 repeat left top;
+	color: #FFFFFF; /* alternativeTextColor */
+	text-align: center;
+}
+
+.consent-text {
+	top: 0px;
+	display: inline-block;
+	width:80%;
+	padding: 5px 10px 5px 10px;
+}
+
+.consent-text a,
+.consent-text a:link,
+.consent-text a:hover,
+.consent-text a:active,
+.consent-text a:focus {
+	font: 18px 'DejaVu Sans', sans-serif;
+	font: normal 16px/24px 'DejaVu Sans', sans-serif;
+	color: #999999;
+}
+
+.consent-button {
+	top: 0px;
+	display: inline-block;
+	width:20%;
+	padding: 0px;
+}
+
+button.consent-signal {
+	display: inline-block;
+	width:110px;
+	color: #000000;
+	background:url('../images/consent-button-bg.png') #FFFF00;
+	top: 0px;
+	padding: 12px 0px 12px 0px;
+}
+
+/* ============================== */
+/* 3. Other custom styles */
+/* ============================== */
+
+/*Profile module specific*/
+.avatar-image
+ {
+	display: inline-block;
+	padding-left: 30px;
+}
+
+/*Theme module specific*/
+.context {
+	background-color:transparent;
+	margin: 0px 0px 0px 0px;
+	border:1px solid #123552;
+	padding: 8px;
+}
+
+.wrap {
+	float: left;
+	text-align:center;
+}
+.left {
+	float: left;
+	background:grey;
+	width: 200px;
+}
+.right {
+	float: right;
+	background:red;
+	width: 30px;
+}
+
+.container {
+	position:relative;
+	display: block; 
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo-wrap {
+/*	border: 1px solid red;*/
+	position: relative;
+	display: inline-block;
+	margin: 0px 0px 0px 20px;
+	z-index: 3;
+}
+
+.logo-link {
+/*	border: 1px solid red;*/
+	height: 60px;
+	width: 60px;
+	display: flex;
+	/* justify-content: center;*/
+	align-items: center;
+}
+
+.logo-image {
+	position: relative;
+	display: inline-block;
+	margin:0px;
+	padding:0px 0px 0px 0px;
+}
+
+.site-name {
+	position: relative;
+	display: inline-block;
+	margin: 10px 20px 0px 30px;
+	z-index: 3;
+}
+
+.word-break {
+	width: 260px;
+	word-wrap: break-word;
+	display: inline-block;
+}

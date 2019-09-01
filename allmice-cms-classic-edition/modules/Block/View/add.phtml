@@ -1,0 +1,83 @@
+<?php
+$title = 'Add a New Block';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-blocks'; ?>">Show list of blocks!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('blockCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('blockCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('buildingModule'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('buildingModule'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('type'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('type'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('displayMethod'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('displayMethod'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('regionCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('regionCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('roleAccess'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('roleAccess'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('caching'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('caching'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('rank'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('rank'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('uri'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('uri'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('languageCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('languageCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

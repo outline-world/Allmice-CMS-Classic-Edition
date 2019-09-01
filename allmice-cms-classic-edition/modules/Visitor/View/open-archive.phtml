@@ -1,0 +1,77 @@
+<?php
+	$title = 'Open an Archive';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+Here you can open an archive file for managing it - this means populate archive database tables choosing an archive file as source for such data.
+<br />
+<br />
+Archive location folder is determined in config entry, which is specified with module GlobalObserver, type dataExpiry and uri archivingLocation.
+<br />
+	This location folder is: <?php echo $path; ?>
+<br />
+Check out, that this folder and its .sql archive files are readable (suggested file permissions on *nix systems is '755').
+<br />
+<br />
+
+<?php
+
+if($archiveStatus=="closed"){
+	if(count($pathSet)>0){
+	echo $form->get('begin');
+
+ ?>
+
+<table border="0">	
+<tr class="trHead">	
+	<th>Archive file</th>	
+	<th>
+&nbsp;
+	</th>
+</tr>	
+
+<?php
+
+	 for($i=0;$i<count($pathSet);$i++){
+		 	 ?>
+		<tr class="odd">	
+		    <td><?php echo $pathSet[$i]; ?></td>
+					<td>
+						<div class="cb">
+									<?php 
+
+				$form->setValue('fileName',$pathSet[$i]);
+
+						echo $form->get('fileName');
+
+									 ?>
+						</div>
+					 </td>
+		</tr>	
+<?php 
+		}
+ ?>
+</table>
+<br />
+
+<?php
+	echo $form->get('openArchive');
+	echo $form->get('end');
+
+	}else{
+		echo "No files were found.";
+	}
+
+ }else{
+
+	echo "An archive is already open. Close it first to open another archive! Use following link:";
+
+ ?>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/close-archive'; ?>">Close archive!</a>
+<br />
+<?php
+ }
+ ?>
+<br />
+

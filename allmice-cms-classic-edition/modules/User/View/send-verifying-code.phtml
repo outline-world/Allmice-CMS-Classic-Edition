@@ -1,0 +1,34 @@
+<h1><?php echo $lang['title']; ?></h1>
+
+<br />
+
+<?php
+	if($pageStatus=="initial"){
+ ?>
+<?php echo $lang['message1']; ?>
+<br />
+<br />
+
+<?php
+
+	echo $form->get('begin');
+	echo $form->get('id');
+
+	echo "<div class=\"form-field\">";
+		echo $form->get('emailAddress');
+	echo "</div>\n";
+ ?>
+	<div class="guide">
+	<?php echo $form->getGuide('emailAddress'); ?>
+	</div>
+<?php
+		echo "<div class=\"form-field\">";
+			echo $form->get('submitEmail');
+		echo "</div>\n";
+		echo $form->get('end');
+
+	}
+	elseif($pageStatus=="sent"){
+		echo $message[0];
+	}
+ ?>

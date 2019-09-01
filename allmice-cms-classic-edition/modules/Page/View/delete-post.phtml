@@ -1,0 +1,56 @@
+
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php if($id>0){ ?>
+
+<?php
+	echo $lang['intro'];
+	echo "<br>";
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+	echo $lang['label2']." ".$pageDetails['alias'];
+	echo "<br>";
+	echo "<br>";
+	echo "\n";
+?>
+
+<?php if($deleted){ ?>
+
+<p><?php echo $lang['afterMessage']; ?><br />
+    <?php echo $lang['afterField1']; ?> '<?php echo $postData['creator_name']; ?>'<br />
+    <?php echo $lang['afterField2']; ?> '<?php echo gmdate($GLOBALS['timeFormat'],$postData['time_created']); ?>'<br />
+    <?php echo $lang['afterField3']; ?> '<?php echo $postData['content']; ?>'<br />
+</p>
+<?php }else{ ?>
+<p><?php echo $lang['beforeMessage']; ?>
+	<br />
+	<br />
+	<?php echo $lang['beforeMessage2']; ?>
+	<br />
+    <?php echo $lang['beforeField1']; ?> '<?php echo $postData['creator_name']; ?>'<br />
+    <?php echo $lang['beforeField2']; ?> '<?php echo gmdate($GLOBALS['timeFormat'],$postData['time_created']); ?>'<br />
+    <?php echo $lang['beforeField3']; ?> '<?php echo $postData['content']; ?>'<br />
+</p>
+
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $item->id; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitYes']; ?>" />
+</div>
+</form>
+<?php 
+ }
+ ?>
+<br />
+
+<?php }else{
+	 ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

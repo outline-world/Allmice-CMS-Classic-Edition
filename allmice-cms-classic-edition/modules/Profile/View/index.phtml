@@ -1,0 +1,62 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<?php if($profile->userId>0){ ?>
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('gravatarSource'); ?>
+<?php echo $form->get('getEmailAddress'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('gravatarSource'); ?>
+	</div>
+
+<br />
+
+<span class="label-text"><?php echo $lang['imageSetLabel']; ?></span>
+<div class="form-field">
+<?php echo $form->get('refreshImages'); ?>
+</div>
+
+<?php
+
+	for($i=0;$i<7;$i++){
+		$imageCode=$profile->avatarImageSet;
+		echo "<div class=\"avatar-image\">";
+		echo $imageCode[$i];
+		echo "</div>";
+
+	}
+
+?>
+<br />
+<br />
+
+<div class="form-field">
+<?php echo $form->get('personalNotes'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('personalNotes'); ?>
+	</div>
+
+<?php if ($form->langFieldStatus=="on"){ ?>
+<div class="form-field">
+<?php echo $form->get('langCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('langCode'); ?>
+	</div>
+<?php } ?>
+
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+			echo $lang['message2'];
+		}
+ ?>

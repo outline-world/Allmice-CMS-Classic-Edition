@@ -1,0 +1,22 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-user-blockings'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+
+<br />
+<?php echo $note; ?>
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('username'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('username'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>

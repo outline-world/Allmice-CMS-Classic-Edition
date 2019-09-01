@@ -1,0 +1,63 @@
+<?php
+$title = 'Edit an Existing Phrase';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-phrases'; ?>">Show list of phrases!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('text'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('text'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('langCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('langCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('moduleName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('moduleName'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('specificName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('specificName'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('type'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('type'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('uri'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('uri'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

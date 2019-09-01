@@ -1,0 +1,46 @@
+<?php
+$title = 'Assign Additional Roles to a User';
+$formMap=$form->formMap;
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-users'; ?>">Show list of users!</a>
+<br />
+<br />
+<?php if($id>0){ ?>
+
+An active (main) role of a user is the default role for every functionality.
+<br />
+If additional roles are assigned for a user, then these roles extend the possible access right functionality of a content for this user.
+<br />
+Other role based functionality will still depend on active role only.
+<br />
+<br />
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo "User name: ".$userName; ?>
+</div>
+<div class="form-field">
+<?php 
+echo "Main role: ".$mainRoleName;
+ ?>
+</div>
+<div class="form-field">
+<?php 
+echo $form->get('userRoles');
+ ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

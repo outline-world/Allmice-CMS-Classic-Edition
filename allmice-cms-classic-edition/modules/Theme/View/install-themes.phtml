@@ -1,0 +1,128 @@
+<h1><?php 
+echo "Install Themes";
+ ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Theme module main page</a>
+<br />
+
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<?php
+ if(count($uiThemes)>0){
+ 	 ?>
+<?php echo $lang['tb1Title']; ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ThemeTitle']; ?></th>
+	    <th><?php echo $lang['tb1ThemeDesc']; ?></th>
+	    <th><?php echo $lang['tb1ThemeName']; ?></th>
+	    <th><?php echo $lang['tb1ThemeVersion']; ?></th>
+	    <th><?php echo $lang['tb1ThemeTime']; ?></th>
+	    <th><?php echo $lang['tb1ThemeDeveloper']; ?></th>
+
+	    <th>
+<div class="cbh">
+<input type="checkbox" name="modCb" />
+</div>
+	    </th>
+	</tr>
+	<?php
+
+	 for($i=0;$i<count($uiThemes);$i++){
+	 ?>
+		<tr>
+
+			<td><?php echo $uiThemes[$i]['title'];
+			 ?></td>
+			<td><?php echo $uiThemes[$i]['description'];
+			 ?></td>
+			<td><?php echo $uiThemes[$i]['name'];
+			 ?></td>
+			<td><?php echo $uiThemes[$i]['version'];
+			 ?></td>
+			<td><?php echo date(($GLOBALS['dateFormat']." "."H:i"), $uiThemes[$i]['time']);
+			 ?></td>
+			<td><?php echo $uiThemes[$i]['developer'];
+			 ?></td>
+			<td>
+<div class="cb">
+			<?php 
+
+if($themeCbArray[$i]['status']=="")
+	$form->formMap['themeCb']['attributes']=array();
+else
+	$form->formMap['themeCb']['attributes']=array('checked' => "checked");
+
+$form->formMap['themeCb']['value']=$themeCbArray[$i]['id'];
+echo $form->get('themeCb');
+
+			 ?>
+</div>
+			 </td>
+
+		</tr>
+	<?php 
+}
+	 ?>
+</table>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php }else{ ?>
+<?php echo $lang['text1NoUninsThemes']; ?>
+<?php } ?>
+<br />
+<br />
+
+<?php echo $form->get('end'); ?>
+
+<?php if(count($dbThemes)>0){ ?>
+<?php echo $lang['tb2Title']; ?>
+<table class="table">
+	<tr>
+	    <th><?php echo $lang['tb1ThemeTitle']; ?></th>
+	    <th><?php echo $lang['tb1ThemeDesc']; ?></th>
+	    <th><?php echo $lang['tb1ThemeName']; ?></th>
+	    <th><?php echo $lang['tb1ThemeVersion']; ?></th>
+	    <th><?php echo $lang['tb1ThemeTime']; ?></th>
+	    <th><?php echo $lang['tb1ThemeDeveloper']; ?></th>
+	</tr>
+	<?php for($i=0;$i<count($dbThemes);$i++){ ?>
+		<tr>
+			<td><?php echo $dbThemes[$i]['title'];
+			 ?></td>
+			<td><?php echo $dbThemes[$i]['description'];
+			 ?></td>
+			<td><?php echo $dbThemes[$i]['name'];
+			 ?></td>
+			<td><?php echo $dbThemes[$i]['version'];
+			 ?></td>
+			<td><?php echo date(($GLOBALS['dateFormat']." "."H:i"), $dbThemes[$i]['time']);
+			 ?></td>
+			<td><?php echo $dbThemes[$i]['developer'];
+			 ?></td>
+		</tr>
+	<?php } ?>
+</table>
+<?php }else{ ?>
+<?php echo $lang['text2NoInsThemes']; ?>
+<?php } ?>
+<br />
+
+<script>
+$(document).ready(function(){
+ $(".cbh input:checkbox").click(function() {
+            var checkedStatus = this.checked;
+            $(".cb input:checkbox").each(function() {
+                this.checked = checkedStatus;
+            });
+        });
+
+});
+</script>

@@ -1,0 +1,49 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-snippets/".$id; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php if($id>0){ ?>
+<?php	if ($ownPage) { ?>
+<?php 
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+	echo "\n";
+?>
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+<div class="form-field">
+<?php echo $form->get('snippetCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('snippetCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('snippetType'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('snippetType'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('snippetContent'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('snippetContent'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+	}else{
+		echo $lang['message1'];
+	}
+?>
+<?php }else{ ?>
+<?php echo $lang['message2']; ?>
+<?php } ?>

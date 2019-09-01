@@ -1,0 +1,82 @@
+<?php
+$title = 'Install an Allmice CMS Website';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+<?php
+/*
+
+if(isset($form->errorMessages) && count($form->errorMessages)>0){
+
+	foreach ($form->errorMessages as $message) {
+		echo $message;
+		echo "<br>\n";
+	}
+	echo "<br>\n";
+
+}
+*/
+?>
+
+<?php if($isWriteable){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+<?php // Other fields - start ?>
+
+<div class="vertical">
+<?php echo $form->get('siteName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('siteName'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('adminPassword'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('adminPassword'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('dbName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('dbName'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('dbUserName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('dbUserName'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('dbUserPassword'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('dbUserPassword'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('dbHost'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('dbHost'); ?>
+	</div>
+<div class="vertical">
+<?php echo $form->get('tablePrefix'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('tablePrefix'); ?>
+	</div>
+
+<div class="vertical">
+<?php echo $form->get('install'); ?>
+</div>
+
+<?php // Other fields - end ?>
+<?php echo $form->get('end'); ?>
+
+<?php }else{ ?>
+You can continue installing the website after directory "sites" has been made writable. 
+<br />
+Please reload current page to continue installing after it has been made writable.
+<?php } ?>

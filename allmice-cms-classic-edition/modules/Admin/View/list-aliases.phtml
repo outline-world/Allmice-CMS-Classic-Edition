@@ -1,0 +1,41 @@
+<?php
+	$title = 'List of Aliases';
+
+	$formMap=$form->formMap;
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Administrator menu</a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-alias'; ?>">Add</a>
+<br />
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Alias path</th>
+	    <th>Source path</th>
+	    <th>Source as duplicate status</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['alias'];
+			 ?></td>
+			<td><?php echo $row['source'];
+			 ?></td>
+			<td><?php 
+			echo $formMap['sourceStatus']['options'][($row['source_status'])];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-alias'.'/'.$row['id']; ?>">Delete</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-alias'.'/'.$row['id']; ?>">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

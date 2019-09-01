@@ -1,0 +1,73 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-contact-form'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if (count($dataList)>0){ ?>
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $paginator->formWidget; ?>
+</div>
+<?php echo $form->get('end'); ?>
+<?php 
+$lang['entriesCount']=str_replace("[allEntries]","".($paginator->noOfAllItems),$lang['entriesCount']);
+	echo $lang['entriesCount'];
+ ?>
+	<br />
+<?php 
+if($paginator->formWidget!=""){
+$lang['paginStatus']=str_replace("[curPage]","".($paginator->currentPage+1),$lang['paginStatus']);
+$lang['paginStatus']=str_replace("[allPages]","".($paginator->lastPage+1),$lang['paginStatus']);
+	echo $lang['paginStatus'];
+	echo "<br />\n";
+}
+ ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ColEmail']; ?></th>
+	    <th><?php echo $lang['tb1ColName']; ?></th>
+	    <th><?php echo $lang['tb1ColDescription']; ?></th>
+	    <th><?php echo $lang['tb1ColStatus']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['email_address'];
+			 ?></td>
+			<td><?php 
+			echo $row['name'];
+			 ?></td>
+			<td><?php echo $row['description'];
+			 ?></td>
+			<td><?php 
+			switch($row['status']){
+				case "active":
+				$statusValue=$lang['statusOption1'];
+				break;
+				case "passive":
+				$statusValue=$lang['statusOption0'];
+				break;
+				default:
+				$statusValue="";
+			}
+			echo $statusValue;
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-contact-form'.'/'.$row['id']; ?>"><?php echo $lang['link2']; ?></a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-contact-form'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+				| <a href="<?php 
+        echo $GLOBALS['baseUrl']."/user/contact-form/".$row['id'];
+            ?>" target="blank"><?php echo $lang['link4']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+	<?php }else{ ?>
+<?php echo $lang['message1']; ?>
+	<?php } ?>
+

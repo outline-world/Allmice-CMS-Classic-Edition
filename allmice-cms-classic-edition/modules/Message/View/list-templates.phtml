@@ -1,0 +1,58 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<div class="link">
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-template'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<b>Attention, if using other languages than English!</b>
+<br />
+If you are allowing for users to use other languages, than English and the system is sending messages to those users,  
+ then make sure, that there are existing message templates for such languages - templates, which are existing by default for English. 
+<br />
+Otherwise sending templates using messages may cause unexpected results.
+<br />
+<br />
+
+<?php 
+	if (count($dataList)>0){
+		$lang['tb1LangCode']="Language code";
+	 ?>
+
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1Code']; ?></th>
+	    <th><?php echo $lang['tb1Subject']; ?></th>
+	    <th><?php echo $lang['tb1Module']; ?></th>
+	    <th><?php echo $lang['tb1Type']; ?></th>
+	    <th><?php echo $lang['tb1LangCode']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['code'];
+			 ?></td>
+			<td><?php echo $row['subject'];
+			 ?></td>
+			<td><?php echo $row['module'];
+			 ?></td>
+			<td><?php echo $row['type'];
+			 ?></td>
+			<td><?php echo $row['language_code'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-template'.'/'.$row['id']; ?>"><?php echo $lang['link2']; ?></a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-template'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php }else{ ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

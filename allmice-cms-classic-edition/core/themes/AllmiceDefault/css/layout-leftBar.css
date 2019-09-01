@@ -1,0 +1,56 @@
+/* column container */
+.colmask-leftbar {
+	position:relative;		/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	clear:both;
+	float:left;
+	width:100%;			/* width of whole page */
+	overflow:hidden;	/* This chops off any overhanging divs */
+}
+
+.colmask-leftbar .colright {
+	float:left;
+	width:200%;
+	position:relative;
+	left:240px;
+	background:#fff;
+}
+.colmask-leftbar .col1wrap {
+	float:right;
+	width:50%;
+	position:relative;
+	right:240px;
+	padding-bottom:1em;
+}
+.colmask-leftbar .col1 {
+	margin:0 15px 0 255px;
+	position:relative;
+	right:100%;
+	overflow:auto;
+}
+.colmask-leftbar .col2 {
+/*left bar without left padding*/
+	padding-top:14px;
+	float:left;
+	width:210px;
+	position:relative;
+	right:225px;
+}
+
+.colmask-leftbar .colright {
+/* Left bar layout styles */
+	background:#FFFFFF;	/* Content area background */
+	border-left: 2px solid #123552;	/* Border between left bar and content area */
+}
+.colmask-leftbar {
+/* Left bar layout styles */
+	background:#ccffff;	/* Left bar area background */
+}
+
+.navi-area {
+	float:left;
+	color: #FFFFFF;
+	font: normal 18px/24px 'DejaVu Sans', sans-serif;
+	position:relative;
+	padding: 0 0 0 260px;
+	z-index: 3;
+}

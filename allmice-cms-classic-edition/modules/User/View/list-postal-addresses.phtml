@@ -1,0 +1,56 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-postal-address'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+	<?php if (count($dataList)>0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $paginator->formWidget; ?>
+</div>
+<?php echo $form->get('end'); ?>
+<?php 
+$lang['entriesCount']=str_replace("[allEntries]","".($paginator->noOfAllItems),$lang['entriesCount']);
+	echo $lang['entriesCount'];
+ ?>
+	<br />
+<?php 
+if($paginator->formWidget!=""){
+$lang['paginStatus']=str_replace("[curPage]","".($paginator->currentPage+1),$lang['paginStatus']);
+$lang['paginStatus']=str_replace("[allPages]","".($paginator->lastPage+1),$lang['paginStatus']);
+	echo $lang['paginStatus'];
+	echo "<br />\n";
+}
+ ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ColTitle']; ?></th>
+	    <th><?php echo $lang['tb1ColComment']; ?></th>
+	    <th><?php echo $lang['tb1ColAddress']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['title'];
+			 ?></td>
+			<td><?php 
+			echo $row['comment'];
+			 ?></td>
+			<td><?php echo $row['postal_address'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-postal-address'.'/'.$row['id']; ?>"><?php echo $lang['link2']; ?></a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-postal-address'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+	<?php }else{ ?>
+<?php echo $lang['message1']; ?>
+	<?php } ?>

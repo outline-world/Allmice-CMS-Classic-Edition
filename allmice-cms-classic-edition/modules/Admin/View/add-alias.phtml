@@ -1,0 +1,27 @@
+<?php
+$title = 'Add a New Alias';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-aliases'; ?>">Show list of aliases!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('alias'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('source'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('sourceStatus'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

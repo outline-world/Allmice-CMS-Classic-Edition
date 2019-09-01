@@ -1,0 +1,33 @@
+<?php
+
+echo $loginForm->get('begin');
+
+if($userData['name']==""){
+echo "<div class=\"form-field\">";
+	echo $loginForm->get('username');
+echo "</div>\n";
+echo "<div class=\"form-field\">";
+	echo $loginForm->get('password');
+echo "</div>\n";
+
+echo "<div class=\"form-field\">";
+	echo $loginForm->get('login');
+echo "</div>\n";
+ ?>
+<?php if(isset($registerCode) && $registerCode!=""){ ?>
+<br />
+<?php echo $registerCode; ?>
+<?php } ?>
+<?php if(isset($recoveryCode) && $recoveryCode!=""){ ?>
+<br />
+<?php echo $recoveryCode; ?>
+<?php } ?>
+<?php 
+}else{
+	echo $lang['label1']." ";
+	echo $userData['name'];
+	echo $loginForm->get('logout');
+}
+echo $loginForm->get('end');
+
+ ?>

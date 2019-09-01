@@ -1,0 +1,73 @@
+<h1><?php 
+echo "Choose Default Theme";
+ ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Theme module main page</a>
+<br />
+<br />
+Here you can choose a default (active) theme - same theme for all roles or a different theme for every role.
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<?php echo $form->get('roleId'); ?>
+			 <br />
+<br />
+
+
+<?php
+ if(count($dbThemes)>0){
+ 	 ?>
+
+<div style="display: flex;flex-wrap: wrap;">
+
+<?php for($i=0;$i<count($dbThemes);$i++){ ?>
+<?php
+	if($dbThemes[$i]['code_path']==""){
+		$imgPath=$GLOBALS['baseUrl']."/"."themes/".$dbThemes[$i]['name']."/";
+	}else{
+		$imgPath=$GLOBALS['baseUrl']."/".$dbThemes[$i]['code_path'].$dbThemes[$i]['name']."/";
+	}
+	$imgPath=str_replace("https","http",$imgPath);
+		$imgFilePath=$imgPath.'screenshot.png';
+
+ 	 ?>
+<div style="width:320px;margin:10px;padding:10px;border: 1px solid #aaa;">
+<br />
+<div class="form-field">
+<a href="<?php echo "".$imgPath; ?>screenshot.png" target="image">
+<img class="screenshot" src="<?php echo "".$imgPath; ?>screenshot.png" alt="Screenshot of theme" width="240" height="180">
+</a>
+
+			 </div>
+
+<div class="form-field">
+Title: 
+<strong><?php echo $dbThemes[$i]['title'];
+
+			 ?>
+</strong>
+		 <br />
+Description:
+<?php echo $dbThemes[$i]['description'];
+			 ?>
+			 <hr />
+
+<?php echo $form->getItem('themeId',$i); ?>
+			 <br />
+			 </div>
+			 </div>
+
+	<?php 
+}
+	 ?>
+</div>
+
+			 <br />
+<?php echo $form->get('save'); ?>
+<?php echo $form->get('end'); ?>
+
+<?php }else{ ?>
+<?php } ?>

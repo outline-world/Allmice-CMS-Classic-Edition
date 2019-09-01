@@ -1,0 +1,48 @@
+<?php 
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+if(!$ownEntry){
+	$messages[]=$lang['message2'];
+}
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-postal-addresses'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($messages)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php 
+$visibleFields=$form->visibleFields;
+
+		for($i=0;$i<count($visibleFields);$i++){
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php
+		}
+ ?>
+<div class="form-field">
+	<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+		echo "<br />";
+	}
+}
+ ?>

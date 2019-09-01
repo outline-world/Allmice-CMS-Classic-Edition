@@ -1,0 +1,41 @@
+<?php
+$title = 'Delete an Existing Archived Visitor';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-archived-visitors'; ?>">Show list of archived visitors!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The visitor with following details was deleted<br />
+
+    session id: '<?php echo $item->sessId; ?>'<br />
+    IP address: '<?php echo $item->ip; ?>'<br />
+    user agent data: '<?php echo $item->agentData; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete visitor, which<br />
+
+    session id is: '<?php echo $item->sessId; ?>'<br />
+    IP address is: '<?php echo $item->ip; ?>'<br />
+    user agent data is: '<?php echo $item->agentData; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

@@ -1,0 +1,74 @@
+<?php
+	$title = 'List of Language Phrases';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-phrase'; ?>">Add phrase</a>
+<br />
+<br />
+Choose a module and language.
+<br />
+Phrases, which exist in database for the chosen module and language will be viewed on screen as a table with links to edit or delete it. 
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('modId'); ?>
+</div>
+<br />
+<div class="form-field">
+<?php echo $form->get('langId'); ?>
+</div>
+<br />
+
+<?php echo $form->get('end'); ?>
+
+<?php if(count($dataList)>0){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Language code</th>
+	    <th>Type</th>
+	    <th>Module name</th>
+	    <th>Specific name</th>
+	    <th>Uri</th>
+	    <th>Phrase</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['language_code'];
+			 ?></td>
+			<td><?php echo $typeSet[($row['type'])];
+			 ?></td>
+			<td><?php echo $row['module_name'];
+			 ?></td>
+			<td><?php echo $row['specific_name'];
+			 ?></td>
+			<td><?php echo $row['uri'];
+			 ?></td>
+			<td><?php echo $row['text'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-phrase'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-phrase'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php 
+}
+else{
+ ?>
+No phrases were found.
+<?php 
+}
+ ?>

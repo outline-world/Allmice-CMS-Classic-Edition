@@ -1,0 +1,40 @@
+<?php
+$title = 'Delete Menu';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">Show list of Menus!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The Menu with following details was deleted<br />
+
+    code: '<?php echo $item->code; ?>'<br />
+    title: '<?php echo $item->title; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete Menu, which<br />
+
+    code is: '<?php echo $item->code; ?>'<br />
+    title is: '<?php echo $item->title; ?>'<br />
+
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<br />
+
+</p>
+<?php } ?>
+<?php }else{ ?>
+Menu id is not correct!
+<?php } ?>
+

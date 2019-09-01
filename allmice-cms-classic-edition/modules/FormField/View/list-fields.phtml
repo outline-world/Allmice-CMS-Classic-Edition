@@ -1,0 +1,50 @@
+<?php
+	$title = 'List of Form Fields';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add'; ?>">Add</a>
+</p>
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Module</th>
+	    <th>Event</th>
+	    <th>Field name</th>
+	    <th>Visibility</th>
+	    <th>Required</th>
+	    <th>Field order</th>
+	    <th>Default value</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['module'];
+			 ?></td>
+			<td><?php echo $row['event'];
+			 ?></td>
+			<td><?php echo $row['field_name'];
+			 ?></td>
+			<td><?php echo $row['visibility'];
+			 ?></td>
+			<td><?php echo $row['required'];
+			 ?></td>
+			<td><?php echo $row['field_order'];
+			 ?></td>
+			<td><?php echo $row['default_value'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

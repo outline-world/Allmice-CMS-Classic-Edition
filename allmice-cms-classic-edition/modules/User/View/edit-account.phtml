@@ -1,0 +1,108 @@
+<?php 
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+if(!$ownEntry){
+	$messages[]=$lang['message2'];
+}
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/my-account-options'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($messages)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php 
+$visibleFields=$form->visibleFields;
+
+		$firstNameSet=false;
+		$changePassword=false;
+		for($i=0;$i<count($visibleFields);$i++){
+
+		if($visibleFields[$i]['fieldName']=="firstName" && $form->formMap[($visibleFields[$i]['fieldName'])]['value']!=""){
+			$firstNameSet=true;
+		}
+		elseif($visibleFields[$i]['fieldName']=="passwordStatus" && $form->formMap[($visibleFields[$i]['fieldName'])]['value']==1){
+			$changePassword=true;
+		}
+
+		if($visibleFields[$i]['fieldName']=="username" && $form->formMap[($visibleFields[$i]['fieldName'])]['value']!=""){
+ ?>
+<div class="form-field">
+<?php
+			echo $form->formMap[($visibleFields[$i]['fieldName'])]['label']." ".$form->formMap[($visibleFields[$i]['fieldName'])]['value'];
+ ?>
+</div>
+	<div class="guide">
+	</div>
+<?php
+		}
+		elseif(strstr($visibleFields[$i]['fieldName'],"Name") && $form->formMap[($visibleFields[$i]['fieldName'])]['value']!=""){
+ ?>
+<div class="form-field">
+<?php
+			echo $form->formMap[($visibleFields[$i]['fieldName'])]['label']."".$form->formMap[($visibleFields[$i]['fieldName'])]['value'];
+ ?>
+</div>
+	<div class="guide">
+	</div>
+<?php
+		}
+		elseif($visibleFields[$i]['fieldName']=="middleNames" && $firstNameSet){
+ ?>
+<div class="form-field">
+<?php
+			echo $form->formMap[($visibleFields[$i]['fieldName'])]['label']."".$form->formMap[($visibleFields[$i]['fieldName'])]['value'];
+ ?>
+</div>
+	<div class="guide">
+	</div>
+<?php
+		}
+		elseif($visibleFields[$i]['fieldName']=="password" && $changePassword==false || $visibleFields[$i]['fieldName']=="password2" && $changePassword==false){
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php
+		}
+		else{
+ ?>
+
+<div class="form-field">
+	<?php echo $form->get($visibleFields[$i]['fieldName']); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php
+			}
+
+		}
+ ?>
+ <div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+	}
+}
+ ?>

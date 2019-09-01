@@ -1,0 +1,32 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p><?php echo $lang['afterMessage']; ?><br />
+    <?php echo $lang['afterField1']; ?>: '<?php echo $page->title; ?>'<br />
+</p>
+<?php }else{ ?>
+<p><?php echo $lang['beforeMessage']; ?>
+	<br />
+	<br />
+	<?php echo $lang['beforeMessage2']; ?>
+	<br />
+    <?php echo $lang['beforeField1']; ?>: '<?php echo $page->title; ?>'<br />
+</p>
+
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $item->id; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitYes']; ?>" />
+</div>
+</form>
+<?php } ?>
+<?php }else{ ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

@@ -1,0 +1,72 @@
+<?php
+$title = 'Edit an Existing Configuration';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-config'; ?>">Show list of configuration items!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="field">
+<?php 
+echo $form->formMap['description']['label'];
+if (isset($_POST['save']))
+	echo ($form->formMap['description']['value']);
+else
+	echo htmlspecialchars($form->formMap['description']['value']);
+ ?>
+<br />
+<?php 
+echo $form->formMap['modName']['label'];
+echo $form->formMap['modName']['value'];
+ ?>
+<br />
+<?php 
+echo $form->formMap['type']['label'];
+echo $form->formMap['type']['value'];
+ ?>
+<br />
+<?php 
+echo $form->formMap['uri']['label'];
+echo $form->formMap['uri']['value'];
+ ?>
+<br />
+<br />
+</div>
+<div class="field">
+<?php echo $form->get('value'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('save'); ?>
+</div>
+<br />
+<hr />
+<br />
+Following fields are changeable, but changing them for other purposes than module development makes usually no sense and can make corresponding module to work incorrectly.
+<br />
+<br />
+<div class="field">
+<?php echo $form->get('description'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('modName'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('uri'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('type'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

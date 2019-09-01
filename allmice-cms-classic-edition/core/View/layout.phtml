@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF8" />
+<?php 
+if($pageType!="printable"){
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+
+        $(".slidingDiv").hide();
+        $(".show_hide").show();
+
+    $('.show_hide').click(function(){
+    $(".slidingDiv").slideToggle();
+    });
+
+});
+</script>
+<link href="<?php echo $_SESSION['baseUrl']; ?>/core/View/style.css" media="screen" rel="stylesheet" type="text/css">
+<!-- Scripts -->
+<script type="text/javascript" src="<?php echo $_SESSION['baseUrl']; ?>/core/View/jquery.min.js"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="/a-other/zf2-examples-online/public/js/html5.js"></script><![endif]-->
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">
+    //<!--
+    $(function() {$("#shippingTimeview").datepicker({ dateFormat: "dd/mm/yy" });});
+    $(function() {$("#deliveryTimeview").datepicker({ dateFormat: "dd/mm/yy" });});
+    //-->
+</script>
+<?php 
+}else{
+<link rel="stylesheet" href="<?php echo $GLOBALS['baseUrl']; ?>/core/View/style-printable.css">
+?>
+</head>
+
+<body id="html">
+
+<?php 
+if($pageType!="printable"){
+?>
+<h2><a href="<?php echo $_SESSION['baseUrl']; ?>"><?php echo $lang['ui']['appName']; ?></a></h2>
+<div>by Any Outline LTD</div>
+<div>Version 1.2.1 (06/09/2018)</div>
+<br />
+<br />
+
+<?php 
+
+	include $pathModuleViewFile;
+
+	echo $Region['userData'];
+
+	echo $Region['mainContent'];
+
+	echo $Region['mainMenu'];
+
+ ?>
+<br />
+
+		<div class="rowInvisible">
+		<div class="moduleMenuItem">
+		</div>
+		<?php
+
+			foreach($Module as $row){
+				if($row['path']!=""){
+		 ?>
+		<div class="moduleMenuItem">
+		<?php
+					echo "<a href=\""."http:"."/"."/".$path_info['host'].$path_info['base']."/".$row['path']."\">".$Other['modMenuMap'][($row['name'])]."</a>";
+		 ?>
+		</div>
+		<?php
+				}
+			}
+		 ?>
+		</div>
+
+		<br />
+
+<?php 
+
+}else{
+		include $pathModuleView;
+}
+?>
+
+</body>
+</html>

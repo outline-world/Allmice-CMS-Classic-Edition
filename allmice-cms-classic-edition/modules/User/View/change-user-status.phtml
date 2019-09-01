@@ -1,0 +1,30 @@
+<h1><?php echo $lang['title']; ?></h1>
+
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-accounts'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+<?php
+if($id>1){
+	echo $lang['label1']." ".$userData['username'];
+ ?>
+<br />
+<?php
+	echo $form->get('begin');
+ ?>
+	<div class="form-field">
+	<?php echo $form->get('userStatus'); ?>
+	</div>
+	<div class="guide">
+	<?php echo $form->getGuide('userStatus'); ?>
+	</div>
+	<div class="form-field">
+	<?php echo $form->get('save'); ?>
+	</div>
+<?php
+		echo $form->get('end');
+}else{
+	echo $lang['message2'];
+}
+
+ ?>

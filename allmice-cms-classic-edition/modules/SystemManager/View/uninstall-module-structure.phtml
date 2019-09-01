@@ -1,0 +1,131 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>"><?php echo $lang['link1']; ?></a>
+<br />
+<br />
+<?php echo $form->get('begin'); ?>
+
+<button id="btnShow" type="button">Show more columns</button> 
+<button id="btnHide" type="button">Hide some columns</button> 
+<br />
+<?php if(count($activeList)>0){ ?>
+<br />
+
+<b><?php echo $lang['tb2Title']; ?></b>
+<table class="table">
+	<tr>
+	    <th><?php echo $lang['tb1ModTitle']; ?></th>
+	    <th><?php echo $lang['tb1ModDesc']; ?></th>
+	    <th><?php echo $lang['tb1ModClassName']; ?></th>
+	    <th><?php echo $lang['tb1ModVersion']; ?></th>
+	    <th><?php echo $lang['tb1ModTime']; ?></th>
+	    <th><?php echo $lang['tb1ModDeveloper']; ?></th>
+	    <th>
+			<div class="cbh">
+			<input type="checkbox" name="modCb" />
+			</div>
+	    </th>
+	</tr>
+	<?php
+	 for($i=0;$i<count($activeList);$i++){
+//	 foreach ($modList as $row) :
+	 ?>
+		<tr>
+			<td><?php echo $activeList[$i]['title'];
+			 ?></td>
+			<td><?php echo $activeList[$i]['description'];
+			 ?></td>
+			<td><?php echo $activeList[$i]['module_name'];
+			 ?></td>
+			<td><?php echo $activeList[$i]['version'];
+			 ?></td>
+			<td><?php echo date(($GLOBALS['dateFormat']." "."H:i"), $activeList[$i]['time']);
+			 ?></td>
+			<td><?php echo $activeList[$i]['developer'];
+			 ?></td>
+			<td>
+				<div class="cb">
+							<?php 
+				if($modCbArray[$i]['status']=="")
+					$form->formMap['modCb']['attributes']=array();
+				else
+					$form->formMap['modCb']['attributes']=array('checked' => "checked");
+				$form->formMap['modCb']['value']=$modCbArray[$i]['id'];
+				echo $form->get('modCb');
+							 ?>
+				</div>
+			 </td>
+		</tr>
+	<?php } ?>
+</table>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php }else{ ?>
+<br />
+<b><?php echo $lang['text4NoInsMod']; ?></b>
+	<br />
+<?php } ?>
+
+<br />
+
+<?php if(count($passiveList)>0){ ?>
+<b><?php echo $lang['tb1Title']; ?></b>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ModTitle']; ?></th>
+	    <th><?php echo $lang['tb1ModDesc']; ?></th>
+	    <th><?php echo $lang['tb1ModClassName']; ?></th>
+	    <th><?php echo $lang['tb1ModVersion']; ?></th>
+	    <th><?php echo $lang['tb1ModTime']; ?></th>
+	    <th><?php echo $lang['tb1ModDeveloper']; ?></th>
+
+	</tr>
+	<?php
+	 for($i=0;$i<count($passiveList);$i++){
+//	 foreach ($modList as $row) :
+	 ?>
+		<tr>
+
+			<td><?php echo $passiveList[$i]['title'];
+			 ?></td>
+			<td><?php echo $passiveList[$i]['description'];
+			 ?></td>
+			<td><?php echo $passiveList[$i]['name'];
+			 ?></td>
+			<td><?php echo $passiveList[$i]['version'];
+			 ?></td>
+			<td><?php echo date(($GLOBALS['dateFormat']." "."H:i"), $passiveList[$i]['time']);
+			 ?></td>
+			<td><?php echo $passiveList[$i]['developer'];
+			 ?></td>
+
+		</tr>
+	<?php 
+}
+//	endforeach;
+	 ?>
+</table>
+<br />
+<?php }else{ ?>
+<b><?php echo $lang['text3NoUninsMod']; ?></b>
+<br />
+<?php } ?>
+
+<?php echo $form->get('end'); ?>
+
+<script>
+$(document).ready(function(){
+ $(".cbh input:checkbox").click(function() {
+            var checkedStatus = this.checked;
+            $(".cb input:checkbox").each(function() {
+                this.checked = checkedStatus;
+            });
+        });
+
+});
+</script>

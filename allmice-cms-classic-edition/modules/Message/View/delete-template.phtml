@@ -1,0 +1,41 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-templates"; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p><?php echo $lang['afterMessage']; ?><br />
+
+    <?php echo $lang['afterField1']; ?>: '<?php echo $item->code; ?>'<br />
+    <?php echo $lang['afterField2']; ?>: '<?php echo $item->module; ?>'<br />
+    <?php echo $lang['afterField3']; ?>: '<?php echo $item->type; ?>'<br />
+    <?php echo $lang['afterField4']; ?>: '<?php echo $item->subject; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p><?php echo $lang['beforeMessage']; ?><br />
+
+    <?php echo $lang['beforeField1']; ?>: '<?php echo $item->code; ?>'<br />
+    <?php echo $lang['beforeField2']; ?>: '<?php echo $item->module; ?>'<br />
+    <?php echo $lang['beforeField3']; ?>: '<?php echo $item->type; ?>'<br />
+    <?php echo $lang['beforeField4']; ?>: '<?php echo $item->subject; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitYes']; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitNo']; ?>" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

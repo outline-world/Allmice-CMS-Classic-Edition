@@ -1,0 +1,44 @@
+<h1><?php 
+//echo $modLang['index']['title'];
+echo "Functionality to Update Modules";
+ ?></h1>
+<br />
+<?php //echo $message;
+ ?>
+<div class="menu-content">
+<ul class="menu menu-parent">
+Uninstall one or more module(s) by keeping (not deleting) the data, which was created using such module(s). 
+		<li class="menu-item"><a href="<?php echo $GLOBALS['baseUrl']; ?>/system-manager/uninstall-module-structure">Uninstall modules preserving data</a></li>
+<br />
+Install one or more module(s), but not executing SQL statements, which will usually create module tables or populate some other tables with module specific data. 
+		<li class="menu-item"><a href="<?php echo $GLOBALS['baseUrl']; ?>/system-manager/install-module-structure">Install modules using existing data</a></li>
+</ul>
+</div>
+<br />
+<br />
+
+<?php
+$lang['title']='System Manager Module Events';
+$lang['tb1ColName']='Event name';
+$lang['tb1ColLink']='Event link';
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<table>
+<tr>
+	<th><?php echo $lang['tb1ColName']; ?></th>
+	<th><?php echo $lang['tb1ColLink']; ?></th>
+</tr>
+<?php foreach ($eventSet as $row) : ?>
+	<tr>
+		<td>
+			<?php echo $row['specific_name']; ?>
+		</td>
+		<td>
+			<a href="<?php echo $GLOBALS['baseUrl'].$row['uri']; ?>" target="_blank"><?php echo $row['uri']; ?></a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</table>

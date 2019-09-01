@@ -1,0 +1,109 @@
+<div class="header-area header-line-set">
+
+<?php if (isset($Region['headerArea'])) : ?>
+<div class="header-line">
+	<?php echo ($Region['headerArea']); ?>
+</div>
+<?php endif; ?>
+
+<div class="header-line">
+	<div class="site-name-logo-set">
+
+	<?php 
+		if(isset($GLOBALS['smallSiteNameImage']) && $GLOBALS['smallSiteNameImage']!="") :
+	 ?>
+		<div class="site-name-img-wrap">
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+			<div class="site-name-img-link">
+			<?php 
+				echo $GLOBALS['smallSiteNameImage'];
+			 ?>
+			</div>
+			</a>
+		</div>
+
+	<?php else: ?>
+
+	<div class="site-name-wrap">
+		<?php if(isset($GLOBALS['smallLogoImage']) && $GLOBALS['smallLogoImage']!="") : ?>
+		<div id="logo-image">
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+			<?php 
+				echo $GLOBALS['smallLogoImage'];
+			 ?>
+			</a>
+		</div>
+		<?php endif; ?>
+
+	<div class="site-name">
+		<h2>
+		<a href="<?php echo $GLOBALS['baseUrl']; ?>"><?php echo $GLOBALS['siteName']; ?></a>
+		</h2>
+	</div>
+	</div>
+	<?php endif; ?>
+	</div>
+</div>
+
+<?php if (isset($Region['searchArea'])) : ?>
+<div class="header-line">
+	<div class="search-set-wrap">
+	<div class="search-set">
+	   	<?php echo ($Region['searchArea']); ?>
+	</div>
+	</div>
+</div>
+<?php endif; ?>
+
+<?php if (isset($Region['userArea'])) : ?>
+<div class="header-line">
+			<div class="user-space-wrap">
+			<div class="generic-block user-block-space">
+			<div class="user-label">
+			<?php 
+			if(isset($GLOBALS['userBlock']['username']) && $GLOBALS['userBlock']['username']!=""){
+			echo $GLOBALS['userBlock']['logoutLabel']." ".$GLOBALS['userBlock']['username'];
+			echo "<br>";
+			}
+			 ?>
+			</div>
+	   	<?php echo ($Region['userArea']); ?>
+			</div>
+			</div>
+			<div class="user-data">
+			</div>
+</div>
+<?php endif; ?>
+
+<?php if (isset($Region['languageArea'])) : ?>
+<div class="header-line">
+			<div class="lang-space-wrap">
+			<div class="generic-block lang-block-space">
+			<div class="lang-label">
+		    <?php 
+//Use following PHP code snippets to display language code and/or language phrase
+		    if (isset($GLOBALS['langBlock']['activeLanguage']) && $GLOBALS['langBlock']['activeLanguage']!="")
+//		    	echo $GLOBALS['langBlock']['activeLanguage'];
+				echo "".strtoupper($GLOBALS['langCode'])."";
+//$GLOBALS['langBlock']['activeLanguage'] language label, which can be changed as language phrase
+		     ?>
+			</div>
+	   	<?php echo ($Region['languageArea']); ?>
+			</div>
+			</div>
+</div>
+<?php endif; ?>
+
+</div>
+
+
+<?php if (isset($Region['naviArea'])) : ?>
+<div class="header-line">
+<div class="header-bar">
+	<div class="navi-area">
+		<?php echo ($Region['naviArea']); ?>
+	</div>
+</div>
+</div>
+<?php endif; ?>
+

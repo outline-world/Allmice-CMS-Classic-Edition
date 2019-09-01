@@ -1,0 +1,30 @@
+<?php 
+$messages=array();
+if($userId<=0){
+	$messages[]=$lang['message1'];
+}
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<?php if(count($messages)==0){ ?>
+<div class="link">
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-account/'.$userId; ?>"><?php echo $lang['link1']; ?></a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-email-addresses'; ?>"><?php echo $lang['link2']; ?></a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-contact-forms'; ?>"><?php echo $lang['link3']; ?></a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-postal-addresses'; ?>"><?php echo $lang['link4']; ?></a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-account/'.$userId; ?>"><?php echo $lang['link5']; ?></a>
+</div>
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+		echo "<br />";
+	}
+}
+ ?>

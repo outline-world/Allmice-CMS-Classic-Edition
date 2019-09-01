@@ -1,0 +1,38 @@
+<?php
+	$title = 'List of Users';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Administrator menu</a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-user'; ?>">Add</a>
+<br />
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Username</th>
+	    <th>E-mail</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['username'];
+			 ?></td>
+			<td><?php echo $row['mail'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-user'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'assign-roles'.'/'.$row['id']; ?>">Assign roles</a>
+<?php if($row['id']>1){ ?>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-user'.'/'.$row['id']; ?>">Delete</a>
+<?php } ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

@@ -1,0 +1,43 @@
+<?php
+$title = 'Delete Search Type';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-types'; ?>">Show list of search types!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The search type with following details was deleted<br />
+
+    title: '<?php echo $item->title; ?>'<br />
+    module name: '<?php echo $item->modName; ?>'<br />
+    table name: '<?php echo $item->searchTable; ?>'<br />
+    search table field: '<?php echo $item->searchTableField; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete search type, which<br />
+
+    title is: '<?php echo $item->title; ?>'<br />
+    module name is: '<?php echo $item->modName; ?>'<br />
+    table name is: '<?php echo $item->searchTable; ?>'<br />
+    search table field is: '<?php echo $item->searchTableField; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

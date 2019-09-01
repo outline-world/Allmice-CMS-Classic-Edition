@@ -1,0 +1,145 @@
+<?php
+if($note!=""){
+	echo "<div class=\"problem-note\">".$note."</div>";
+	echo "<br />\n";
+	echo "<br />\n";
+}
+ ?>
+<?php
+$title = 'Create CSS From Template';
+
+$lang['link1']="Read more...";
+ ?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Theme module main page</a>
+<br />
+<br />
+
+This page helps with minimal effort to change certain set of style elements (specified in template's TSV table) of CSS files - to create new CSS file variations from existing ones.
+<br />
+<br />
+Open template file in minimal text editor (e.g. Notepad on Windows, gedit on Linux) or get the template file content otherwise.
+<br />
+Enter template file content into input field and click available button ('Process template data').
+<br />
+If template data format is correct, then after button click changeable properties appear with input fields for new values.
+<br />
+Make the changes in those input fields and click the other button ('Show output'), which got displayed with the input fields.
+<br />
+New CSS file content will be displayed in output field.
+<br />
+<br />
+<a href="#" class="show_hide"><?php echo $lang['link1']; ?></a>
+<div id="help" class="slidingDiv">
+<b>Format of template data</b>
+<br />
+Template data has two parts separated by the line "#==========#".
+<br />
+First part is the initial CSS file content.
+<br />
+The other part is a TSV (tab separated values) table with fields "oldValue	newValue	keyword	description".
+<br />
+If it is more convenient, then such TSV table in template data can already be prepared with new values (column newValue) without the need to change them in input fields.
+<br />
+If a row value in keyword column is color, then the values of such row will be considered as specific color codes (hex web format e.g. #00AA88).
+<br />
+Otherwise keyword value should be a sub string in CSS property (e.g. url, border, font, text-shadow), which will be used as filter to find such rows (declarations) for replacing.
+<br />
+<br />
+<b>Color code format in template data</b>
+<br />
+To avoid unexpected issues by replacing colors and to avoid same duplicated color shades with different values, it is strongly suggested, that all color codes have 6 digits and capital letters.
+<br />
+An example of not following such suggestion. If in a CSS file content there exist color values like #ffffff and #fff and you would wish to replace color values #fff with color codes #80A0A0, then the values of initial color #ffffff would be after replacing incorrect #80A0A0fff.
+<br />
+Using page theme/change-theme-colors helps quite easy to change CSS file contents to replace color codes with different digits and letter case to be all 6 digit codes in capital case.
+<br />
+<br />
+<b>A special case - good to know</b>
+<br />
+Following example explains a special case, if you wish to change a color separately and a declaration, which includes the same color at the same time.
+<br />
+For example: If you wish to change a declaration, which includes background property with both url and color values and you are also trying to change the same color separately as color replacement, then 
+<br />
+1) If changing such color value in the background value, it will not be changed as color replacement.
+<br />
+2) If not changing such color value in the background value, it will be changed as color replacement.
+</div>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php echo $form->get('cssData'); ?>
+<br />
+<br />
+<?php echo $form->get('action'); ?>
+<br />
+<br />
+
+<?php 
+
+	if(count($dataSet)>0){
+ ?>
+<?php echo $form->get('newCssData'); ?>
+<br />
+<br />
+<hr />
+<?php 
+
+		for ($i=0;$i<count($dataSet);$i++) {
+
+			echo $dataSet[$i]['description'];
+			echo "<br />\n";
+			if($dataSet[$i]['type']=='color'){
+				echo "<div style=\"display:inline;\">\n";
+				echo "Initial color: ";
+				echo $dataSet[$i]['oldValue'];
+				echo "&nbsp;";
+				echo "<div style=\"display:inline;background-color:".$dataSet[$i]['oldValue'].";border:1px solid gray;width:100px;\">\n";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "</div>\n";
+				echo "</div>\n";
+				echo "<br />\n";
+
+				echo "New color:\n";
+				if(isset($_POST[('newValue'.$i)]))
+
+					echo "<input type=\"text\" name=\"newValue".$i."\" class=\"color no-alpha\" value=\"".$_POST[('newValue'.$i)]."\" />\n";
+				else
+					echo "<input type=\"text\" name=\"newValue".$i."\" class=\"color no-alpha\" value=\"".$dataSet[$i]['newValue']."\" />\n";
+
+			}
+			else{
+				echo "<div style=\"display:inline;\">\n";
+				echo "Initial value: ";
+				echo $dataSet[$i]['oldValue'];
+				echo "</div>\n";
+				echo "<br />\n";
+				if($dataSet[$i]['note']!=""){
+					echo $dataSet[$i]['note'];
+					echo "<br />\n";
+				}
+				echo "New value: ";
+				if(isset($_POST[('newValue'.$i)]))
+
+					echo "<input type=\"text\" name=\"newValue".$i."\" style=\"width:500px\" value=\"".$_POST[('newValue'.$i)]."\" />\n";
+				else
+					echo "<input type=\"text\" name=\"newValue".$i."\" style=\"width:500px\" value=\"".$dataSet[$i]['newValue']."\" />\n";
+			}
+			echo "<br />\n";
+			echo "<hr />\n";
+			echo "<br />\n";
+
+		}
+ ?>
+ <?php echo $form->get('getOutput'); ?>
+<br />
+<?php 
+	}
+ ?>
+
+ <?php echo $form->get('end'); ?>
+<script type="text/javascript" src="<?php echo $GLOBALS['baseUrl']; ?>/modules/Theme/config/vendor/tinyColorPicker/index.js"></script>

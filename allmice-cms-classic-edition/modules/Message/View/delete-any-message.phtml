@@ -1,0 +1,43 @@
+<?php
+$title = 'Delete Message';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-all-messages"; ?>">Show list of messages!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The message with following details was deleted:<br />
+
+    from: '<?php echo $mesData['senderName']; ?>'<br />
+    to: '<?php echo $mesData['recipientrName']; ?>'<br />
+    time: '<?php echo date($GLOBALS['timeFormat'],$mesData['time']); ?>'<br />
+    subject: '<?php echo $mesData['subject']; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure, that you wish to delete the message with following details?<br />
+<br />
+Message details are:<br />
+    sender is: '<?php echo $mesData['senderName']; ?>'<br />
+    recipient is: '<?php echo $mesData['recipientName']; ?>'<br />
+    time is: '<?php echo date($GLOBALS['timeFormat'],$mesData['time']); ?>'<br />
+    subject is: '<?php echo $mesData['subject']; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Delete this message!" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

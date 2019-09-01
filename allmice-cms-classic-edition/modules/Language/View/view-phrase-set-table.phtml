@@ -1,0 +1,30 @@
+<?php
+	$title = 'View a Phrase Set As a TSV Table';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Language module main links</a>
+<br />
+<br />
+Choose a module.
+<br />
+Phrases, which exist in database for the chosen module will be viewed on screen as a TSV table. 
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('modId'); ?>
+</div>
+<br />
+<div class="form-field">
+<?php echo $form->get('langId'); ?>
+</div>
+<br />
+
+<?php echo $form->get('outputString'); ?>
+<br />
+
+<?php echo $form->get('end'); ?>
