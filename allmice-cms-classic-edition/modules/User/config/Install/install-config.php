@@ -4,6 +4,6 @@ $modInstall['description']="This module is an extension to the AppUser and Admin
 $modInstall['path']="user";
 $modInstall['configPath']="";
 $modInstall['version']="1.6.5";
-$modInstall['time']="2019-09-08 14:26:28";
+$modInstall['time']="2019-09-09 23:03:14";
 $modInstall['developer']="A stable module. Copyright 2018 - 2019 by Any Outline LTD, www.allmice.com/cms, User module is released under the 'GNU GENERAL PUBLIC LICENSE'.";
 $modInstall['requiredModules']="Message, FormField, SystemManager";

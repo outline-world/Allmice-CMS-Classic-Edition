@@ -1,7 +1,7 @@
 <?php 
 /*
  * User module for Allmice™ CMS
- * Version 1.6.5 (2019-09-08)
+ * Version 1.6.5 (2019-09-09)
  * Copyright 2018 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * User module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
