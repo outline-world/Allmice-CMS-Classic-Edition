@@ -35,12 +35,6 @@ Allmice CMS has been developed since 2016 by the companies Any Outline LTD regis
 Changes in a version compared with its previous version are listed below.
 
 
-#### Version 1.6.5, 2019-09-08
-
-* List styles were improved in all themes.
-* User module was improved.
-
-
 #### Version 1.6.4, 2019-08-31
 
 * Supporting of remote hosts was fixed in many modules.
@@ -58,3 +52,4 @@ Changes in a version compared with its previous version are listed below.
 #### Earlier versions
 
 No changelog is available for versions before 1.6.3.
+
