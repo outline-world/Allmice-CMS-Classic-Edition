@@ -4,9 +4,11 @@ if($id<=0){
 	$messages[]=$lang['message1'];
 }
 
-if(count($form->formMap['emailId']['options'])==0){
-	$messages[]=$lang['message2'];
-}
+//In case of edit-any-account method, account should be able to be edited even if there are no verified email addresses
+//   or even if there are other problems with email addresses.
+//if(count($form->formMap['emailId']['options'])==0){
+//	$messages[]=$lang['message2'];
+//}
  ?>
 
 <h1><?php echo $lang['title']; ?></h1>

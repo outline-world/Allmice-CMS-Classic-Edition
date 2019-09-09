@@ -148,10 +148,35 @@ center {
 
 ul {
 	list-style-type: circle;
-	margin: 0px 0px 0px 8px;
+/* There seems to be no difference if in ul tag margin or padding is used - it effects the space before bullet or other list-type. */
+/* This changes the space before bullet (indent of bullet). */
+	margin: 0px 0px 0px 4px;
+	padding: 0px 0px 0px 4px;
 /*	list-style-position: inside; !!! Not to use such inside style - it causes issues in Chromium/Chrome browsers */
 /* https://bugs.chromium.org/p/chromium/issues/detail?id=278115 */
+/*	margin: 0px 0px 0px 16px;*/
 }
+
+ul li {
+	list-style-image: url(../images/menu-leaf-off.png);
+	list-style-position: outside;
+	margin: 0px 0px 0px 16px;
+/* This changes the space between bullet and text for all lines under same list item. */
+	padding-left: 4px;
+}
+
+ol {
+/* This changes the space before numbers (indent of numbers). */
+	margin: 0px 0px 0px 16px;
+	padding: 0px 0px 0px 16px;
+}
+
+ol li {
+/* This changes the space between bullet and text for all lines under same list item. */
+	padding-left: 4px;
+}
+
+/* See specific ul, ol li styles also below for classes .content, .menu, .navi! */
 
 tbody {
 }
@@ -1034,13 +1059,13 @@ ul.menu li {
 }
 
 div.content-cell ul {
-/* list-style-type: none;*/
 	list-style-type: circle;
-	list-style-position: inside;
+	margin: 0px 0px 0px 20px;
+/*	list-style-position: inside; Do not use inside - it causes Chromium browser issues */
 }
 div.content-cell ul li {
 	list-style-image: url(../images/menu-leaf-off.png);
-	margin: 0px 0px 0px 16px;
+	margin: 0px 0px 0px 6px;
 }
 
 ul.content li.content,
@@ -1048,8 +1073,8 @@ ul.content-body li.content-body,
 ul.content-cell li.content-cell {
 /* In use - vertical menu indent and bullets */
 	list-style-type: circle;
-	list-style-image: url(../images/menu-leaf.png);
-	margin: 0px 0px 0px 16px;
+	list-style-image: url(../images/menu-leaf-off.png);
+	margin: 0px 0px 0px 6px;
 }
 
 /* CSS classes for messages */

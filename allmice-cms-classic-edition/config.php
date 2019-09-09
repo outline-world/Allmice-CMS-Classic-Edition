@@ -21,6 +21,7 @@ Comment them out, if the website is stable and active, to avoid:
 
 	$finalCode="core/includes/final-code.php";
 */
+
 /*Development config end*/
 	
 	$GLOBALS['siteSaltData']="$5$"."rounds=5000$";
@@ -75,7 +76,7 @@ Comment them out, if the website is stable and active, to avoid:
 //Choose template file for edition
 	$Other['installPath']="misc/input/install-website/TemplateMinimal";
 	$Other['installPath']="misc/input/install-website/TemplateClassic";
-	$GLOBALS['version']="Classic Edition 🐭 Version 1.6.4";
+	$GLOBALS['version']="Classic Edition 🐭 Version 1.6.5";
 
 	$tempArr=explode("://",$GLOBALS['baseUrl']);
 	$sitePath=str_replace("/","_",$tempArr[1]);

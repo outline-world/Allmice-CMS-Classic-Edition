@@ -1,7 +1,7 @@
 <?php 
 /*
  * User module for Allmice™ CMS
- * Version 1.5.10 (2019-06-11)
+ * Version 1.6.5 (2019-09-08)
  * Copyright 2018 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * User module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
@@ -125,13 +125,20 @@ class UserController extends Controller
 
 			}
 			else{
-				$message=array();
-				$GLOBALS['messageList']=array();
-				$classStart[]="messageClassStart-red";
-				$classEnd[]="messageClassEnd";
-				$message[]=$lang['message2'];
-				$GLOBALS['messageList']=array_merge($classStart,$message,$classEnd);
-
+//If user block is active, then it will cause double messages - there are two identical user forms in this case.
+//Do not show error message here, if user block is active.
+				$blockNameList=array();
+				foreach ($GLOBALS['regionMap'] as $row) {
+					$blockNameList[]=$row['blockName'];
+				}
+				if(!in_array('userBlock',$blockNameList)){
+					$message=array();
+					$GLOBALS['messageList']=array();
+					$classStart[]="messageClassStart-red";
+					$classEnd[]="messageClassEnd";
+					$message[]=$lang['message2'];
+					$GLOBALS['messageList']=array_merge($classStart,$message,$classEnd);
+				}
 			}
 
 		}
@@ -158,6 +165,7 @@ class UserController extends Controller
 	public function loginEvent()
 	{
 		$output = $this->indexEvent();
+
 		return $output;
 	}
 
@@ -288,7 +296,7 @@ class UserController extends Controller
 				}
 
 				if($eventPath=="sign-up" && $form->formMap['agreement']['required']){
-					if (isset($_POST['agreement'][0]) && $_POST['agreement'][0] == 'i-agree'){
+					if(isset($_POST['agreement']) && $_POST['agreement'] == 'i-agree'){
 					}
 					else{
 						$form->errorMessages[]=$lang['agreementError'];
@@ -357,11 +365,11 @@ class UserController extends Controller
 								$mesData=$appDb->registerAccount($user,$email,$mesData);
 							}
 
-					$mesData['receiver']['contactId']=0;
-					$mesData['status']="unread";
-					$mesData['type']="system-guest";
-					$mesData['comment']="";
-					$mesData['userId']=0;
+							$mesData['receiver']['contactId']=0;
+							$mesData['status']="unread";
+							$mesData['type']="system-guest";
+							$mesData['comment']="";
+							$mesData['userId']=0;
 
 							$resMes=$email->sendMessage($mesData);
 
@@ -392,6 +400,21 @@ class UserController extends Controller
 						}
 						$GLOBALS['messageList']=array_merge($classStart,$message,$classEnd);
 					}
+
+					//==> Start of extension since 6/9/2019
+						if(isset($_SESSION[($GLOBALS['siteId'])]['returnUrl']) && $_SESSION[($GLOBALS['siteId'])]['returnUrl']!=""){
+					//If sign up is part of some other process, then redirect back to this other process.
+							$returnUrl=$_SESSION[($GLOBALS['siteId'])]['returnUrl'];
+						//User id must be passed to the parent process.
+							$_SESSION[($GLOBALS['siteId'])]['signUp']['userId']=$user->id;
+						//MessageList will be passed to the parent process too.
+							$_SESSION[($GLOBALS['siteId'])]['signUp']['messageList']=$message;
+					//To avoid false redirects, don't keep returnUrl in session, when it is not needed any more.
+							unset($_SESSION[($GLOBALS['siteId'])]['returnUrl']);
+					//Now, that the preparations have been done, make the redirect leaving this method!
+							$this->redirect($returnUrl, false);
+						}
+					//End of extension <==
 
 				}
 				else{
@@ -1489,7 +1512,16 @@ class UserController extends Controller
 
 		$form->convertDbData($userData);
 
-		$emailOptions = $appDb->getOwnEmailOptions($userId);
+		if($eventPath=="edit-any-account"){
+//Next row gets email addresses, which have whatever status
+			$emailOptions = $appDb->getUserEmailOptions($userId);
+		}else{
+//Next row gets email addresses, which have whatever status
+			$emailOptions = $appDb->getUserEmailOptions($userId);
+//Next row gets email addresses, which status is verified or accepted
+//			$emailOptions = $appDb->getOwnEmailOptions($userId);
+		}
+
 		$form->formMap['emailId']['options']=$emailOptions;
 		$mainEmail = $appDb->getMainEmailData($userId);	
 

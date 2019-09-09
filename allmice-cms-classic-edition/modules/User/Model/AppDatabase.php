@@ -1288,6 +1288,30 @@ class AppDatabase extends DatabaseCms
 
 	}
 
+	public function getUserEmailOptions($userId)
+	{
+
+		$itemList=array();
+		$sqlString="SELECT id, email_address";
+		$sqlString.=" FROM ".$this->tablePrefix."mod_user_email";
+		$sqlString.=" WHERE user_id = :userId";
+//		$sqlString.=" AND (status = 'verified')";
+//		$sqlString.=" AND (status = 'verified' OR status = 'accepted')";
+
+		$stmt = $this->dbId->prepare($sqlString);
+		$stmt->execute(array(
+			":userId" => $userId
+		));
+		$resultSet = $stmt->fetchAll();
+
+		foreach ($resultSet as $row) {
+			$itemList[($row['id'])] = $row['email_address'];
+		}
+
+		return $itemList;
+
+	}
+
 	public function getUserOptions()
 	{
 

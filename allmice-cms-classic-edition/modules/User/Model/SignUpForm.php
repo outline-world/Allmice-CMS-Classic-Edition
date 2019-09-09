@@ -287,7 +287,6 @@ class SignUpForm extends Form
         $this->add(array(
             'name' => 'agreement',
             'type'  => 'checkbox',
-            'value'  => 'i-agree',
             'label' => '',
 				'required' => true,
 				'guide' => '',
