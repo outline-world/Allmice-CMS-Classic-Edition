@@ -1,5 +1,4 @@
  * Allmice™ CMS Classic Edition
- * Version 1.6.4 (2019-08-31)
  * Copyright 2016 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
