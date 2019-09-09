@@ -9,4 +9,3 @@ For quick overview check out the other README.md file in the subfolder allmice-c
 The content of this subfolder is the same as the content of extracted .tar.gz or .zip file, which can be downloaded from the project website.
 
 For detailed copyright and license information see also LICENSE.txt file under subdirectory allmice-cms-classic-edition.
-
