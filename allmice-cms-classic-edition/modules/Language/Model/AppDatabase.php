@@ -33,7 +33,7 @@ class AppDatabase extends DatabaseCms
 			$stmt = $this->dbId->prepare($sqlString);
 			$stmt->execute();
 
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($resultSet as $row) {
 				$itemList[] = $row;
 			}
@@ -87,7 +87,7 @@ class AppDatabase extends DatabaseCms
 			$stmt = $this->dbId->prepare($sqlString);
 			$stmt->execute();
 
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($resultSet as $row) {
 				$itemList[] = $row;
 			}
@@ -121,7 +121,7 @@ class AppDatabase extends DatabaseCms
 			":id" => $id
 		));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 
 			$relData = $row;
@@ -153,7 +153,7 @@ class AppDatabase extends DatabaseCms
 			$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
 
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 				foreach ($resultSet as $row) {
 					$id = $row['id'];
@@ -252,7 +252,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}
@@ -381,7 +381,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -403,7 +403,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -423,7 +423,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -453,7 +453,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			if(strstr($row['bodyPart']," ")){
@@ -492,7 +492,7 @@ class AppDatabase extends DatabaseCms
 		$stmt->execute(array(
 			":id" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$row=$this->decodeDbRow($row,array("title","description","bodyPart"));
@@ -610,7 +610,7 @@ class AppDatabase extends DatabaseCms
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$langList[] = $row;
 		}
@@ -634,7 +634,7 @@ class AppDatabase extends DatabaseCms
 			":id" => $id
 		));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$langData = $row;
 		}

@@ -33,7 +33,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -54,7 +54,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}
@@ -196,7 +196,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -216,7 +216,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}
@@ -279,7 +279,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 
 			$sqlString="INSERT INTO ".$this->tablePrefix."core_access (role_id, resource_id, access_level)";
@@ -379,7 +379,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -398,7 +398,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}
@@ -542,7 +542,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$resId = $row['id'];
 		}
@@ -573,7 +573,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$sourceList[($row['id'])] = $row['uri'];
 		}
@@ -594,7 +594,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails[] = $row['id'];
 		}
@@ -617,7 +617,7 @@ class AppDatabase extends DatabaseCms
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[($row['uri'])] = $row['value'];

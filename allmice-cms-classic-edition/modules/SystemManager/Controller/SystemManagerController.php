@@ -1,7 +1,7 @@
 <?php 
 /*
  * System Manager module for Allmice™ CMS
- * Version 1.5.11 (2019-06-12)
+ * Version 1.7.1 (2019-11-19)
  * Copyright 2017 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * System Manager module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".

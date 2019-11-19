@@ -23,7 +23,7 @@ class AppDatabase
 		$stmt->execute(array(
 				":userId" => $userId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemDetails = $row['mail'];
@@ -52,7 +52,7 @@ class AppDatabase
 		$stmt->execute(array(
 				":userId" => $userId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
@@ -71,7 +71,7 @@ class AppDatabase
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$langOptions[($row['language_code'])] = $row['label'];
@@ -182,7 +182,7 @@ class AppDatabase
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[($row['uri'])] = $row['value'];
@@ -206,7 +206,7 @@ class AppDatabase
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$configData[($row['type'])][($row['uri'])] = $row['value'];
 		}

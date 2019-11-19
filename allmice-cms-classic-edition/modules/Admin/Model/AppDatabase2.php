@@ -28,7 +28,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -48,7 +48,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemData = $row;
 		}
@@ -99,7 +99,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$row=$this->decodeDbRow($row,array("description","value"));
 			$itemList[] = $row;
@@ -190,7 +190,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$row=$this->decodeDbRow($row,array("description","value"));
 			$configDetails = $row;
@@ -229,7 +229,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -254,7 +254,7 @@ class AppDatabase2 extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;

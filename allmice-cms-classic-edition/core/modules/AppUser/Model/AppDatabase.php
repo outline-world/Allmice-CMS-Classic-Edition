@@ -39,7 +39,7 @@ class AppDatabase
 		$stmt->execute(array(
 			":username" => $name
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$dbUserData = $row;
@@ -70,7 +70,7 @@ class AppDatabase
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -91,7 +91,7 @@ class AppDatabase
 		$stmt->execute(array(
 			":id" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}

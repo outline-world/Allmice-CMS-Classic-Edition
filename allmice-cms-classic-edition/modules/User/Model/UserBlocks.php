@@ -186,7 +186,7 @@ class UserBlocks
 		$stmt->execute(array(
 			":username" => $name
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$dbUserData = $row;
@@ -220,7 +220,7 @@ class UserBlocks
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$configData[($row['type'])][($row['uri'])] = $row['value'];
 		}
@@ -246,7 +246,7 @@ class UserBlocks
 			":langCode" => $GLOBALS['langCode'],
 			":blockCode" => $blockCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[($row['uri'])] = $row['text'];
@@ -265,7 +265,7 @@ class UserBlocks
 			$stmt->execute(array(
 				":blockCode" => $blockCode
 			));
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($resultSet as $row) {
 				$itemList[($row['uri'])] = $row['text'];

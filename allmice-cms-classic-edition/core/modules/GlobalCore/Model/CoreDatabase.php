@@ -41,7 +41,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":alias" => $alias
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList = $row;
@@ -63,7 +63,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$fpData = $row;
@@ -88,7 +88,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		if(isset($resultSet)){
 			foreach ($resultSet as $row) {
@@ -123,7 +123,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":uri" => $uri
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 //This status value is only relevant if alias exists
@@ -153,7 +153,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$blockSet[] = $row;
@@ -174,7 +174,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$module['name'] = $row['name'];
@@ -201,7 +201,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$module['name'] = $row['name'];
@@ -228,7 +228,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":path" => $path
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$module['name'] = $row['name'];
@@ -259,7 +259,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":path" => $path
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$botAccess = 1;
 		foreach ($resultSet as $row) {
@@ -295,7 +295,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":path" => $path
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row['role_id'];
@@ -319,7 +319,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":path" => $path
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$resExists = true;
@@ -341,7 +341,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":userId" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row['role_id'];
@@ -364,7 +364,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":id" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$roleId = $row['main_role_id'];
@@ -388,7 +388,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":id" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$title = $row['title'];
@@ -411,7 +411,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":alias" => $alias
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList = $row;
@@ -431,7 +431,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -451,7 +451,7 @@ class CoreDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList = $row;
@@ -479,7 +479,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":menuCode" => $menuCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		if(isset($resultSet)) {
 			foreach ($resultSet as $row) {
@@ -508,7 +508,7 @@ class CoreDatabase extends Database
 			":userRole" => $userRole,
 			":blockCode" => $blockCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$access_level = $row['access_level'];
 		}
@@ -531,7 +531,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":blockCode" => $blockCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$menuData = $row;
 		}
@@ -560,7 +560,7 @@ class CoreDatabase extends Database
 			":userRole" => $userRole,
 			":uri" => $uri
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$cacheData = $row;
 		}
@@ -595,7 +595,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":userRole" => $userRole
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$cacheList[] = $row['block_code'];
@@ -630,7 +630,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":roleId" => $roleId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$themeData = $row;
@@ -677,7 +677,7 @@ class CoreDatabase extends Database
 			":modName" => $modName,
 			":eventName" => $eventName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 
@@ -710,7 +710,7 @@ class CoreDatabase extends Database
 			":langCode" => $langCode,
 			":blockCode" => $blockCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[($row['uri'])] = $row['text'];
@@ -735,7 +735,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$default="";
 		$specific="";
@@ -772,7 +772,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$row=$this->decodeDbRow($row,array("value"));
@@ -806,7 +806,7 @@ class CoreDatabase extends Database
 			":type" => $type
 		));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$default="";
 		$specific="";
@@ -878,7 +878,7 @@ class CoreDatabase extends Database
 
 		$stmt->execute(array(':id' => $id));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 
@@ -990,7 +990,7 @@ class CoreDatabase extends Database
 		$stmt->execute(array(
 			":uri" => $uri
 		));
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$resId = $row['id'];

@@ -29,7 +29,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -57,7 +57,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -76,13 +76,14 @@ class AppDatabase extends Database
 		$sqlString.=" FROM ".$this->tablePrefix."core_resource";
 		$sqlString.=" WHERE module_name = :modName";
 		$sqlString.=" AND uri NOT LIKE '/%/%/%'";
+		$sqlString.=" AND type = 1";
 //		echo "sqlString=".$sqlString."<br>";
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$resId[] = $row['id'];
 		}
@@ -90,7 +91,7 @@ class AppDatabase extends Database
 		try {
 			$this->dbId->beginTransaction();
 
-			$this->deleteModResource($modName);
+			$this->deleteModMethodResource($modName);
 
 			for($i=0;$i<count($resId);$i++){
 				$this->deleteModCaching($resId[$i]);
@@ -279,7 +280,7 @@ class AppDatabase extends Database
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$resId[] = $row['id'];
 		}
@@ -293,7 +294,7 @@ class AppDatabase extends Database
 		$stmt->execute(array(
 			":modName" => $modName
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$tableList = $row['db_tables'];
 		}
@@ -364,6 +365,20 @@ class AppDatabase extends Database
 	{
 		$sqlString="DELETE FROM ".$this->tablePrefix."core_resource WHERE";
 		$sqlString.=" module_name = :modName";
+//		echo "sqlString=".$sqlString."<br>";
+
+		$stmt = $this->dbId->prepare($sqlString);
+		$stmt->execute(array(
+			":modName" => $modName
+		));
+
+	}
+
+	public function deleteModMethodResource($modName)
+	{
+		$sqlString="DELETE FROM ".$this->tablePrefix."core_resource WHERE";
+		$sqlString.=" module_name = :modName";
+		$sqlString.=" AND type = 1";
 //		echo "sqlString=".$sqlString."<br>";
 
 		$stmt = $this->dbId->prepare($sqlString);
@@ -544,7 +559,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -570,7 +585,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
@@ -599,7 +614,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -679,7 +694,7 @@ class AppDatabase extends Database
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}

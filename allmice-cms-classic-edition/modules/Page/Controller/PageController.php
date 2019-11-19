@@ -1,7 +1,7 @@
 <?php 
 /*
  * Page module for Allmice™ CMS
- * Version 1.6.4 (2019-08-31)
+ * Version 1.7.1 (2019-11-19)
  * Copyright 2017 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Page module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
@@ -12,6 +12,11 @@
 <?php
 include $pathCoreController."Controller.php";
 include $pathCoreModel."Form.php";
+
+if(isset($GLOBALS['urlParts'][1]) && strstr($GLOBALS['urlParts'][1],"view-pdf")){
+	include "modules/Page/config/vendor/tcpdf/"."tcpdf.php";
+	include "modules/Page/Model/"."CustomPdf.php";
+}
 
 if($pageType2!="frontPage")
 	include "core/includes/Model/"."DatabaseCms.php";
@@ -141,6 +146,7 @@ class PageController extends Controller
 			$GLOBALS['titleTagTemplate']=$config['viewEvent']['titleTagTemplate'];
 
 		$accessList['editAnyPage']=$pageDb->getAccessRight($_SESSION[($siteId)]['userData'],("/page/edit-any-page"));
+		$accessList['viewPdfPage']=$pageDb->getAccessRight($_SESSION[($siteId)]['userData'],("/page/view-pdf"));
 
 		$pageData=$pageDb->getPageDetails($id);
 
@@ -193,6 +199,10 @@ class PageController extends Controller
 			}
 		}
 
+		if(isset($config['viewEvent']['pdfLinkSwitch']) && $config['viewEvent']['pdfLinkSwitch']=="off"){
+			$accessList['viewPdfPage']=false;
+		}
+
 		return array(
 			'accessList' => $accessList,
 			'template' => $template,
@@ -200,6 +210,125 @@ class PageController extends Controller
 			'commentWidget' => $commentWidget,
 			'lang' => $GLOBALS['localLang']['other'],
 			'snippetSet' => $snippetSet,
+		);
+
+	}
+
+	public function viewPdfEvent()
+	{
+
+		$id = 0;
+		if(isset($GLOBALS['urlParts'][2])){
+			$id = $GLOBALS['urlParts'][2];
+			$id=(int)$id;
+			if(!is_integer($id))
+				$id=0;
+		}
+
+		$pageType="pdf";
+//		$pageType="html";
+
+		$Other=$this->otherConfig;
+		$siteId=$Other['siteId'];
+
+		$Database=$this->dbConfig;
+		$pageDb = new AppDatabase($Database['app_db']);
+
+		$whereClauseEnd=" AND (type = 'viewEvent'";
+		$whereClauseEnd.=" OR type = 'viewPdfEvent')";
+		$config = $pageDb->getConfigData($whereClauseEnd);
+
+		if(isset($config['viewEvent']['titleTagTemplate']))
+			$GLOBALS['titleTagTemplate']=$config['viewEvent']['titleTagTemplate'];
+
+		$accessList['editAnyPage']=$pageDb->getAccessRight($_SESSION[($siteId)]['userData'],("/page/edit-any-page"));
+
+		$pageData=$pageDb->getPageDetails($id);
+
+		if(isset($pageData['body']))
+			$pageData['body']=str_replace("[baseUrl]",$GLOBALS['baseUrl'],$pageData['body']);
+
+		$snippetSet=$pageDb->getPageSnippetSet($id);
+		$globalSnippetSet=$pageDb->getGlobalSnippetSet();
+
+		if(count($snippetSet)>0 || count($globalSnippetSet)>0){
+
+			$page = new Page();
+			$snippetSet=$page->manageSnippetSet($snippetSet,$globalSnippetSet);
+
+		}
+
+		$template=$pageDb->getTemplate('pageView');
+		if(isset($pageData['status']) && $pageData['status']!=1){
+			$GLOBALS['pageStatus']="wrongUrl";
+		}
+		if(isset($pageData['title']) && $pageData['title']!=""){
+			$GLOBALS['pageTitle']=$pageData['title'];
+		}
+		if(isset($pageData['description']) && $pageData['description']!=""){
+
+			$GLOBALS['metaSet']['description']="<meta name=\"description\" content=\"".$pageData['description']."\">";
+
+		}
+
+		$commentWidget="";
+		if(isset($config['viewEvent']['commentSwitch']) && $config['viewEvent']['commentSwitch']=="on"){
+
+			if(file_exists($config['viewEvent']['postClassLocation'])){
+				$GLOBALS['commentRoleIdList']=$pageDb->getRoleIdList(explode(", ",$config['viewEvent']['commentRoleAccess']));
+				include $config['viewEvent']['postClassLocation'];
+				$comment=new Post($pageDb,$pageData['creatorId'],$id,$siteId);
+				$commentWidget=$comment->formWidget;
+
+			}
+		}
+
+		$GLOBALS['pdfData']['pageList'][0]=trim($pageData['body']);
+		$GLOBALS['pdfData']['styleData']="";
+		$GLOBALS['pdfData']['author']="";
+		$GLOBALS['pdfData']['title']=$GLOBALS['pageTitle'];
+		$GLOBALS['pdfData']['subject']=$pageData['description'];
+		$GLOBALS['pdfData']['keywords']="";
+
+		$GLOBALS['pdfData']['footerText']=$GLOBALS['localLang']['other']['footerText'];
+
+		$GLOBALS['pdfData']['mainStyles']=$config['viewPdfEvent']['mainStyles'];
+
+		$GLOBALS['pdfData']['displayMode']=$config['viewPdfEvent']['headerFooterDisplayMode'];
+		if($GLOBALS['pdfData']['displayMode']=="Tcpdf"){
+		}
+		else{
+			$GLOBALS['pdfData']['headerStyles']=$config['viewPdfEvent']['headerStyles'];
+			$GLOBALS['pdfData']['headerHtml']=$config['viewPdfEvent']['headerHtml'];
+			$GLOBALS['pdfData']['footerStyles']=$config['viewPdfEvent']['footerStyles'];
+			$GLOBALS['pdfData']['footerHtml']=$config['viewPdfEvent']['footerHtml'];
+		}
+
+		$GLOBALS['pdfData']['logoCode']=$config['viewPdfEvent']['logoCode'];
+		$GLOBALS['pdfData']['logoPath']=$config['viewPdfEvent']['logoPath'];
+		
+		if($GLOBALS['pdfData']['logoPath']!=""){
+			str_replace("[logoPath]",$GLOBALS['pdfData']['logoPath'],$GLOBALS['pdfData']['logoCode']);
+		}else{
+			$GLOBALS['pdfData']['logoPath']="";
+			$GLOBALS['pdfData']['logoCode']="";
+		}
+		
+		if($GLOBALS['pdfData']['logoCode']!=""){
+			str_replace("[logoCode]",$GLOBALS['pdfData']['logoCode'],$GLOBALS['pdfData']['headerHtml']);
+		}else{
+			$GLOBALS['pdfData']['logoPath']="";
+			$GLOBALS['pdfData']['logoCode']="";
+		}
+
+		$GLOBALS['pdfData']['spacesBeforeFooter']=str_repeat("&nbsp;",50);
+
+		$pdfComposerPath="modules/Page/View/pdf-composer.phtml";
+
+		return array(
+			'pageType' => $pageType,
+			'pdfComposerPath' => $pdfComposerPath,
+			'config' => $config,
 		);
 
 	}

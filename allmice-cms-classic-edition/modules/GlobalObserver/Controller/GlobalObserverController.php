@@ -1,7 +1,7 @@
 <?php 
 /*
  * Global Observer module for Allmice™ CMS
- * Version 1.5.9 (2019-06-07)
+ * Version 1.7.1 (2019-10-27)
  * Copyright 2018 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Global Observer module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".

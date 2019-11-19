@@ -27,7 +27,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -47,7 +47,7 @@ class AppDatabase extends DatabaseCms
 		$stmt->execute(array(
 				":id" => $id
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
@@ -207,7 +207,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 
 			if(!isset($row['receiverName']) || $row['receiverName']==""){
@@ -241,7 +241,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 
 			$itemList[] = $row;
@@ -269,7 +269,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			if(!isset($row['receiverName']) || $row['receiverName']==""){
 
@@ -308,7 +308,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$mesData = $row;
 		}
@@ -455,7 +455,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$recipientId = $row['id'];
 		}
@@ -470,7 +470,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$blString = $row['value'];
 		}
@@ -500,7 +500,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$valueString = $row['value'];
 		}
@@ -525,7 +525,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$userId = $row['id'];
 		}
@@ -614,7 +614,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$email = $row['mail'];
 		}
@@ -636,7 +636,7 @@ class AppDatabase extends DatabaseCms
 		$stmt->execute(array(
 			":messageId" => $messageId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$parentId = $row['parent_id'];
 		}
@@ -660,7 +660,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$messageData[($row['type'])][($row['uri'])] = $row['value'];
 		}
@@ -685,7 +685,7 @@ class AppDatabase extends DatabaseCms
 			":code" => $code,
 			":langCode" => $GLOBALS['langCode']
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$mesData = $row;
 		}
@@ -703,7 +703,7 @@ class AppDatabase extends DatabaseCms
 			$stmt->execute(array(
 				":code" => $code
 			));
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($resultSet as $row) {
 				$mesData = $row;
 			}

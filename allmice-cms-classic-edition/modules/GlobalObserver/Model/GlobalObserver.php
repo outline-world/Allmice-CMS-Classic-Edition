@@ -56,7 +56,7 @@ class GlobalObserver {
 		$stmt->execute(array(
 			":visitorId" => $visitorId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$amount = $row['total'];
@@ -144,7 +144,7 @@ class GlobalObserver {
 		$stmt->execute(array(
 			":visitorId" => $visitorId
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$visitorData = $row;
@@ -217,7 +217,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$id = $row['id'];
@@ -275,7 +275,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$id = $row['id'];
@@ -408,7 +408,7 @@ class GlobalObserver {
 
 			$stmt = $this->dbId->prepare($sqlString);
 			$stmt->execute();
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($resultSet as $row) {
 				$id = $row['id'];
@@ -434,7 +434,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$configData[($row['uri'])] = $row['value'];
 		}
@@ -455,7 +455,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$statusData[($row['uri'])] = $row['value'];
 		}
@@ -475,7 +475,7 @@ class GlobalObserver {
 			$stmt->execute(array(
 				":exPeriod" => $exPeriod
 			));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 
@@ -502,7 +502,7 @@ class GlobalObserver {
 				$stmt->execute(array(
 					":id" => $id
 				));
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($resultSet as $row) {
 
@@ -515,7 +515,7 @@ class GlobalObserver {
 					$stmt->execute(array(
 						":visitorId" => $id
 					));
-				$resultSet2 = $stmt->fetchAll();
+				$resultSet2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 				foreach ($resultSet2 as $row2) {
 					$eventList[] = $row2;
@@ -529,7 +529,7 @@ class GlobalObserver {
 			$sqlString="SELECT * FROM ".$this->tablePrefix."mod_global_observer_location";
 			$stmt = $this->dbId->prepare($sqlString);
 			$stmt->execute();
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($resultSet as $row) {
 				$locationList[] = $row;
 			}
@@ -652,7 +652,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$id = $row['id'];
@@ -672,7 +672,7 @@ class GlobalObserver {
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$title = $row['title'];
@@ -698,7 +698,7 @@ class GlobalObserver {
 			":langCode" => $GLOBALS['langCode'],
 			":blockCode" => $blockCode
 		));
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$itemList[($row['uri'])] = $row['text'];
@@ -718,7 +718,7 @@ class GlobalObserver {
 			$stmt->execute(array(
 				":blockCode" => $blockCode
 			));
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($resultSet as $row) {
 				$itemList[($row['uri'])] = $row['text'];

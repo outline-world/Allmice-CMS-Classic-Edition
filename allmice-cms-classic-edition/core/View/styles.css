@@ -1,0 +1,208 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 10px;
+	padding: 10px;
+	border: 0;
+	background: #f6f9fa url('gradient.png') repeat-x left top;
+	font: normal 12pt Verdana, sans-serif;
+	color: #29556A;
+	line-height: 1.5;
+}
+
+a {
+	text-decoration: none;
+	color: #002244;
+	padding: 10px;
+	line-height: 1.5;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #002244;
+	padding: 10px;
+	line-height: 1.5;
+}
+
+h1 a {
+	text-decoration: none;
+	padding: 8px 0px 8px 0px;
+	line-height: 1.5;
+	color: #29556a;
+}
+
+h1 a:hover {
+	text-decoration: underline;
+	padding: 8px 0px 8px 0px;
+	line-height: 1.5;
+	color: #29556A;
+}
+
+h1.shadow {
+	color: #fff;
+	text-shadow: 1px 1px 2px #aaa;
+	line-height: 1.5;
+}
+
+h1 {
+	font: 32px Verdana, sans-serif;
+	padding: 8px 0px 8px 0px;
+	line-height: 1.5;
+}
+
+h1.shadow {
+	color: #fff;
+	text-shadow: 1px 1px 2px #aaa;
+	line-height: 1.5;
+}
+
+h2 {
+	font: 24px Verdana, sans-serif;
+	padding: 10px 0px 10px 0px;
+	line-height: 1.5;
+}
+
+ul {
+	list-style-type: circle;
+	list-style-position: outside;
+	margin: 0px 0px 0px 4px;
+	padding: 0px 0px 0px 4px;
+}
+ul li {
+	font: 12pt Verdana, sans-serif;
+	list-style-image: url(../images/menu-leaf-off.png);
+	list-style-position: outside;
+	margin: 0px 0px 0px 16px;
+/* This changes the space between bullet and text for all lines under same list item. */
+	padding-left: 4px;
+}
+
+table
+{
+	width:100%;
+}
+
+th {
+	padding: 4px;
+	border-top: 2px solid #29556A;
+	border-bottom: 2px solid #29556A;
+	text-align: left;
+}
+
+td {
+	padding: 4px;
+	border-bottom: 1px solid #49758A;
+}
+
+tr.trHead {
+	background: #DDEEEE;
+	}
+
+tr.even {
+	background: #EEFFFF;
+}
+
+tr.odd {
+	background: #EEFFFF;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="range"],
+input[type="number"],
+input[type="color"],
+input[type="password"]
+{
+	width: 200px;
+	height: 30px;
+	margin: 4px;
+	padding: 4px;
+	color: #184C4D;
+	background-color: #A0C1B8;
+}
+
+input[type="email"],
+input[type="color"]
+{
+	background-color: #FFFFFF;
+}
+
+input[type="text"].wide
+{
+	width: 700px;
+	height: 30px;
+	margin: 4px;
+	padding: 4px;
+	color: #184c4d;
+	background-color: #A0C1B8;
+}
+
+
+button,
+input[type="submit"]
+{
+	margin-left: 20px;
+	margin: 10px;
+	padding: 10px;
+}
+
+input[type="submit"].pagin
+{
+	margin: 0px;
+	padding: 6px;
+}
+
+select
+{
+	margin: 0px;
+	padding: 6px;
+}
+
+option
+{
+	margin: 0px;
+	padding: 2px 4px 2px 4px;
+}
+
+input[type="file"]
+{
+	margin: 10px;
+	padding: 10px;
+}
+label
+{
+	margin: 0px;
+	padding: 10px;
+}
+fieldset
+{
+	margin: 10px;
+	padding: 10px;
+}
+
+textarea
+{
+	width: 300px;
+	height: 100px;
+	margin-left: 20px;
+	margin: 0px;
+	padding: 10px;
+	background-color: #FFFFFF;
+}
+
+.content-cell,
+.sidebar
+{
+	padding: 10px;
+}
+
+.menu-content
+{
+	padding: 0px 0px 10px 0px;
+}

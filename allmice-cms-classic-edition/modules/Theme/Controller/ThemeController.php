@@ -1,7 +1,7 @@
 <?php 
 /*
  * Theme module for Allmice™ CMS
- * Version 1.6.4 (2019-08-31)
+ * Version 1.7.1 (2019-10-27)
  * Copyright 2017 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Theme module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".

@@ -12,6 +12,7 @@ which replaces such configuration values with new values from core_config table.
 Comment them out, if the website is stable and active, to avoid: 
 * webpage creating time calculation message at the end of every page;
 * unlikely, but still possible error and warning messages. */
+
 /*
 	$startTime = round(microtime(true) * 1000);
 	//Errors, warnings, notices
@@ -46,7 +47,7 @@ Comment them out, if the website is stable and active, to avoid:
 	);
 
 	$layoutFile="layout.phtml";
-	$layoutPath="core/themes/";
+	$layoutPath="core/View/";
 
 //===> Add modules as 'members' of the array 'Module'
 //   for global modules (those which are activated always and not depending on URLs) leave 'path' value empty.
@@ -76,7 +77,7 @@ Comment them out, if the website is stable and active, to avoid:
 //Choose template file for edition
 	$Other['installPath']="misc/input/install-website/TemplateMinimal";
 	$Other['installPath']="misc/input/install-website/TemplateClassic";
-	$GLOBALS['version']="Classic Edition 🐭 Version 1.6.5";
+	$GLOBALS['version']="Classic Edition 🐭 Version 1.7.1";
 
 	$tempArr=explode("://",$GLOBALS['baseUrl']);
 	$sitePath=str_replace("/","_",$tempArr[1]);

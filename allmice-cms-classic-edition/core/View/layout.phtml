@@ -1,91 +1,86 @@
 <!DOCTYPE html>
-<html id="html">
+<html>
 <head>
-<title></title>
-<meta http-equiv="content-type" content="text/html; charset=UTF8" />
+
+<?php
+	$mainStylePath=$GLOBALS['baseUrl']."/core/View/styles.css";
+ ?>
+
+<title><?php 
+if(isset($GLOBALS['titleTag'])){
+	echo $GLOBALS['titleTag'];
+}
+ ?>
+</title>
+
 <?php 
-if($pageType!="printable"){
-?>
-<script type="text/javascript">
-$(document).ready(function(){
+if(isset($GLOBALS['metaTags']))
+	echo $GLOBALS['metaTags']; 
+ ?>
 
-        $(".slidingDiv").hide();
-        $(".show_hide").show();
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    $('.show_hide').click(function(){
-    $(".slidingDiv").slideToggle();
-    });
+<link href="<?php echo $mainStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
 
-});
-</script>
-<link href="<?php echo $_SESSION['baseUrl']; ?>/core/View/style.css" media="screen" rel="stylesheet" type="text/css">
-<!-- Scripts -->
-<script type="text/javascript" src="<?php echo $_SESSION['baseUrl']; ?>/core/View/jquery.min.js"></script>
-<!--[if lt IE 9]><script type="text/javascript" src="/a-other/zf2-examples-online/public/js/html5.js"></script><![endif]-->
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script type="text/javascript">
-    //<!--
-    $(function() {$("#shippingTimeview").datepicker({ dateFormat: "dd/mm/yy" });});
-    $(function() {$("#deliveryTimeview").datepicker({ dateFormat: "dd/mm/yy" });});
-    //-->
-</script>
 <?php 
-}else{
-<link rel="stylesheet" href="<?php echo $GLOBALS['baseUrl']; ?>/core/View/style-printable.css">
-?>
+if(isset($GLOBALS['scriptTags']))
+	echo $GLOBALS['scriptTags']; 
+
+if(isset($GLOBALS['headTags']))
+	echo $GLOBALS['headTags']; 
+ ?>
+
+<?php if(isset($GLOBALS['faviconPath'])){ ?>
+<link rel="shortcut icon" href="<?php echo $GLOBALS['faviconPath']; ?>">
+<?php }
+elseif(isset($GLOBALS['faviconImage'])){ ?>
+<?php echo $GLOBALS['faviconImage']; ?>
+<?php } ?>
+
+
 </head>
 
 <body id="html">
 
-<?php 
-if($pageType!="printable"){
-?>
-<h2><a href="<?php echo $_SESSION['baseUrl']; ?>"><?php echo $lang['ui']['appName']; ?></a></h2>
-<div>by Any Outline LTD</div>
-<div>Version 1.2.1 (06/09/2018)</div>
-<br />
-<br />
+	<div class="col1">
+		<?php /* Content column start */ ?>
+		<?php if (isset($Region['title'])) : ?>
+		<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+		<?php endif; ?>
 
-<?php 
+		<?php /* Content area */ ?>
 
-	include $pathModuleViewFile;
-
-	echo $Region['userData'];
-
-	echo $Region['mainContent'];
-
-	echo $Region['mainMenu'];
-
- ?>
-<br />
-
-		<div class="rowInvisible">
-		<div class="moduleMenuItem">
+		<?php if (isset($Region['messageArea'])) : ?>
+		&nbsp;<br />
+		<div class="message-area">
+		<?php echo ($Region['messageArea']); ?>
 		</div>
-		<?php
+		<?php endif; ?>
 
-			foreach($Module as $row){
-				if($row['path']!=""){
-		 ?>
-		<div class="moduleMenuItem">
-		<?php
-					echo "<a href=\""."http:"."/"."/".$path_info['host'].$path_info['base']."/".$row['path']."\">".$Other['modMenuMap'][($row['name'])]."</a>";
-		 ?>
-		</div>
-		<?php
-				}
-			}
-		 ?>
+		<div class="content-cell">
+		<?php include $contentView; ?>
 		</div>
 
-		<br />
+	</div>
 
-<?php 
-
-}else{
-		include $pathModuleView;
-}
-?>
+	<div class="col2">
+		<?php /* Other column start */ ?>
+		<?php if (isset($Region['menuArea'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['menuArea']); ?>
+		</div>
+		<?php endif; ?>
+		<?php if (isset($Region['bar1Area'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['bar1Area']); ?>
+		</div>
+		<?php endif; ?>
+		<?php if (isset($Region['bar2Area'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['bar2Area']); ?>
+		</div>
+		<?php endif; ?>
+	</div>
 
 </body>
 </html>

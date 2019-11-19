@@ -24,7 +24,7 @@ Options -Indexes
 # Set the default handler.
 DirectoryIndex index.php index.html index.htm
 
-# Avoid duplicate content, if your site can be used with 'www.' subdomain. Use only one of the following redirect options.
+# Avoid duplicate content, if your website can be used with 'www.' subdomain. Use only one of the following redirect options.
 # 
 # Redirect users to use the site with the 'www.' subdomain,
 # (http://example.com will be redirected to http://www.example.com)
@@ -33,11 +33,11 @@ DirectoryIndex index.php index.html index.htm
 # RewriteCond %{HTTP_HOST} !^www\. [NC]
 # RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #
-# Redirect users to use the site without the 'www.' subdomain,
+# Redirect users to use the website without the 'www.' subdomain,
 # (http://www.example.com will be redirected to http://example.com)
 # uncomment following lines:
-# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-# RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
 
 # Various header fixes.
 <IfModule mod_headers.c>

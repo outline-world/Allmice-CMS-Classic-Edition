@@ -23,7 +23,7 @@ class AppDatabase extends DatabaseCms
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$searchFormData[] = $row;
 		}
@@ -46,7 +46,7 @@ class AppDatabase extends DatabaseCms
 			":id" => $id
 		));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemDetails = $row;
 		}
@@ -180,7 +180,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$template = $row['value'];
 		}
@@ -217,7 +217,7 @@ class AppDatabase extends DatabaseCms
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$pageDetails = $row;
@@ -270,7 +270,7 @@ class AppDatabase extends DatabaseCms
 			":userId" => $userId
 		));
 
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($resultSet as $row) {
 			$activeRole = $row['active_role_id'];
@@ -317,7 +317,7 @@ class AppDatabase extends DatabaseCms
 
 		$stmt = $this->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$configData[($row['type'])][($row['uri'])] = $row['value'];
 		}

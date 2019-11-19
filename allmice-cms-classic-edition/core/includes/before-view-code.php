@@ -134,7 +134,7 @@
 		$layoutLocation=$layoutPath.$layoutFile;
 	}
 	elseif(isset($GLOBALS['pageType']) && $GLOBALS['pageType']=="pdf"){
-		$layoutFile="layout-pdf.php";
+		$layoutFile="layout-pdf.phtml";
 		$layoutLocation=$layoutPath.$layoutFile;
 	}
 

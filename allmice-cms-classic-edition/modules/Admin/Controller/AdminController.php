@@ -1,7 +1,7 @@
 <?php 
 /*
  * Admin module for Allmice™ CMS
- * Version 1.5.10 (2019-06-11)
+ * Version 1.7.1 (2019-10-27)
  * Copyright 2017 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Admin module for Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".

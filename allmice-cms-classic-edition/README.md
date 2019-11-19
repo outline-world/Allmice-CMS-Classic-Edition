@@ -6,7 +6,7 @@ A free, fast, simple, lightweight, extendable modern Content Management System (
 ## Short Overview
 
  * Allmice™ CMS Classic Edition
- * Version 1.6.5 (2019-09-09)
+ * Version 1.7.1 (2019-11-19)
  * Copyright 2016 - 2019 by Any Outline LTD
  * http://www.allmice.com/cms
  * Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
@@ -33,6 +33,15 @@ Allmice CMS has been developed since 2016 by the companies Any Outline LTD regis
 ### Changelog
 
 Changes in a version compared with its previous version are listed below.
+
+
+#### Version 1.7.1, 2019-11-19
+
+* A bug in SystemManager module was fixed in uninstallModuleStructureEvent method. When using this method for uninstalling a module, then the data of such module will not be deleted any more from database.
+* Page module can view after change pages in PDF format and also all themes are supporting PDF format.
+* The file .htaccess was changed so, that URLs, which are containing www subdomains, are not supported by default. This change was done to avoid various problems, which may be caused by letting the websites be accessed through many URLs.
+* The way how data is requested from database was changed in all modules. This change was done to make the performance of websites better.
+* README.txt files were added to empty directories, which are explaining the purpose of such directories. The .gitignore files were deleted from these directories.
 
 
 #### Version 1.6.5, 2019-09-09

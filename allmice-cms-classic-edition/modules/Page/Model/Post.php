@@ -33,7 +33,7 @@ class Post
 
 		$stmt = $appDb->dbId->prepare($sqlString);
 		$stmt->execute();
-		$resultSet = $stmt->fetchAll();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($resultSet as $row) {
 			$itemList[] = $row;
 		}
@@ -128,7 +128,7 @@ class Post
 
 							$stmt = $appDb->dbId->prepare($sqlString);
 							$stmt->execute();
-							$resultSet = $stmt->fetchAll();
+							$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 							foreach ($resultSet as $row) {
 								$profileExists=true;
 							}
@@ -143,7 +143,7 @@ class Post
 
 								$stmt = $appDb->dbId->prepare($sqlString);
 								$stmt->execute();
-								$resultSet = $stmt->fetchAll();
+								$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 								foreach ($resultSet as $row) {
 									$avatarUrl = $row['value'];
 								}
@@ -235,7 +235,7 @@ class Post
 
 			$stmt = $appDb->dbId->prepare($sqlString);
 			$stmt->execute();
-			$resultSet = $stmt->fetchAll();
+			$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($resultSet as $row) {
 				$configData[($row['type'])][($row['uri'])] = $row['value'];
 			}

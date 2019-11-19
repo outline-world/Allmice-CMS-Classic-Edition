@@ -3,27 +3,44 @@ if(isset($pageData['status']) && $pageData['status']==1){
 
 	$editorData="";
 
-if($pageData['creatorId']==$_SESSION[($GLOBALS['siteId'])]['userData']['id']){
+	if($pageData['creatorId']==$_SESSION[($GLOBALS['siteId'])]['userData']['id']){
+	
+		$editorData="<a href=\"";
+		$editorData.=$GLOBALS['baseUrl']."/own-page/edit-page/".$pageData['id']."\"";
+		$editorData.=" target=\"_blank\"";
+		$editorData.=">";
+		$editorData.=$lang['link1'];
+		$editorData.="</a>\n";
+		$editorData.="&nbsp;&nbsp;&nbsp;\n";
+	
+	}
+	elseif($accessList['editAnyPage']==true){
+	
+		$editorData="<a href=\"";
+		$editorData.=$GLOBALS['baseUrl']."/page/edit-any-page/".$pageData['id']."\"";
+		$editorData.=" target=\"_blank\"";
+		$editorData.=">";
+		$editorData.=$lang['link1'];
+		$editorData.="</a>\n";
+		$editorData.="&nbsp;&nbsp;&nbsp;\n";
+	
+	}
 
-	$editorData="<a href=\"";
-	$editorData.=$GLOBALS['baseUrl']."/own-page/edit-page/".$pageData['id']."\"";
-	$editorData.=" target=\"_blank\"";
-	$editorData.=">";
-	$editorData.=$lang['link1'];
-	$editorData.="</a>\n";
+	$pdfData="";
 
-}
-elseif($accessList['editAnyPage']==true){
+	if($accessList['viewPdfPage']==true){
+	
+		$pdfData="<a href=\"";
+		$pdfData.=$GLOBALS['baseUrl']."/page/view-pdf/".$pageData['id']."\"";
+		$pdfData.=" target=\"_blank\"";
+		$pdfData.=">";
+		$pdfData.=$lang['link2'];
+		$pdfData.="</a>\n";
+		$pdfData.="&nbsp;&nbsp;&nbsp;\n";
+	
+	}
 
-	$editorData="<a href=\"";
-	$editorData.=$GLOBALS['baseUrl']."/page/edit-any-page/".$pageData['id']."\"";
-	$editorData.=" target=\"_blank\"";
-	$editorData.=">";
-	$editorData.=$lang['link1'];
-	$editorData.="</a>\n";
-
-}
-
+	$template=str_replace("[pdfData]",$pdfData,$template);
 	$template=str_replace("[editorData]",$editorData,$template);
 	$template=str_replace("[title]",$pageData['title'],$template);
 	$template=str_replace("[body]",$pageData['body'],$template);
