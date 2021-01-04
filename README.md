@@ -1,6 +1,5 @@
 # Allmice CMS Classic Edition
 
-<<<<<<< HEAD
 A free, fast, simple, lightweight, extendable modern Content Management System (CMS). It is programmed in PHP and uses MySQL or MariaDB database system. See the [project website](http://www.allmice.com/cms) for more details.
 
 
@@ -86,4 +85,4 @@ For quick overview check out the other README.md file in the subfolder allmice-c
 The content of this subfolder is the same as the content of extracted .tar.gz or .zip file, which can be downloaded from the project website.
 
 For detailed copyright and license information see also LICENSE.txt file under subdirectory allmice-cms-classic-edition.
->>>>>>> 18a6d8ce0e7299f5907df9a0aa5f4864620778ac
+
