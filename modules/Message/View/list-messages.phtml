@@ -1,0 +1,116 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/write-message'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-user-blockings'; ?>"><?php echo $lang['link2']; ?></a>
+</div>
+<br />
+<?php 
+echo $lang['tb1Title'];
+if(count($dataListIn)>0){
+ ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ColSubject']; ?></th>
+	    <th><?php echo $lang['tb1ColSender']; ?></th>
+	    <th><?php echo $lang['tb1ColTime']; ?></th>
+	    <th><?php echo $lang['tb1ColStatus']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataListIn as $row) : ?>
+		<?php if($row['statusForReceiver']!="unsent" && $row['statusForReceiver']!="deleted"){ ?>
+		<tr>
+
+			<td><?php echo $row['subject'];
+			 ?></td>
+			<td><?php 
+			if(strstr($row['type'],"system-"))
+				echo $lang['senderSystem'];
+			else
+				echo $row['sender_name'];
+			 ?></td>
+			<td><?php echo date($GLOBALS['timeFormat'],$row['time']);
+			 ?></td>
+			<td><?php 
+			if($row['statusForReceiver']=="unread"){
+				echo $lang['statusOption3'];
+			}
+			elseif($row['statusForReceiver']=="sent"){
+				echo $lang['statusOption2'];
+			}
+
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'view-message'.'/'.$row['id']; ?>"><?php echo $lang['tb1LinkRead']; ?></a>
+		<?php if($row['sender_user_id']!=0){ ?>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'write-message'.'/'.$row['id']; ?>"><?php echo $lang['tb1LinkReply']; ?></a>
+		<?php } ?>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-message'.'/'.$row['id']; ?>"><?php echo $lang['tb1LinkDelete']; ?></a>
+			</td>
+		</tr>
+		<?php } ?>
+	<?php endforeach; ?>
+</table>
+<?php }else{ ?>
+<br />
+<?php
+echo $lang['message1'];
+ } ?>
+<br />
+<br />
+
+<?php 
+echo $lang['tb2Title'];
+
+if(count($dataListOut)>0){
+	 ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb2ColSubject']; ?></th>
+	    <th><?php echo $lang['tb2ColRecipient']; ?></th>
+	    <th><?php echo $lang['tb2ColTime']; ?></th>
+	    <th><?php echo $lang['tb2ColStatus']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataListOut as $row) : ?>
+		<?php if($row['statusForSender']!="deleted"){ ?>
+		<tr>
+
+			<td><?php echo $row['subject'];
+			 ?></td>
+			<td><?php echo $row['recipientName'];
+			 ?></td>
+			<td><?php echo date($GLOBALS['timeFormat'],$row['time']);
+			 ?></td>
+			<td><?php
+			if($row['statusForSender']=="unsent"){
+				echo $lang['statusOption1'];
+			}
+			elseif($row['statusForSender']=="sent"){
+				echo $lang['statusOption2'];
+			}
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'view-message'.'/'.$row['id']; ?>"><?php echo $lang['tb2LinkRead']; ?></a>
+		<?php if($row['statusForSender']=="unsent"){ ?>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-message'.'/'.$row['id']; ?>"><?php echo $lang['tb2LinkEdit']; ?></a>
+		<?php } ?>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-message'.'/'.$row['id']; ?>"><?php echo $lang['tb2LinkDelete']; ?></a>
+			</td>
+		</tr>
+		<?php } ?>
+	<?php endforeach; ?>
+</table>
+<?php }else{ ?>
+<br />
+<?php 
+echo $lang['message2'];
+} ?>
+<br />

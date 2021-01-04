@@ -1,0 +1,62 @@
+<h1><?php echo "List Pages"; ?></h1>
+<br />
+<div class="link">
+	<a href="<?php	
+	echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-relations";
+	 ?>"><?php echo "List relations"; ?></a>
+</div>
+<br />
+<?php if (count($pageList)>0){ ?>
+<br />
+<?php
+$lang=array();
+$lang['tb1Title']="List of pages for choosing to relate"; 
+$lang['tb1PageTitle']="Page title"; 
+$lang['tb1BodyStart']="Content start"; 
+$lang['tb1Created']="Created"; 
+$lang['tb1Modified']="Modified"; 
+$lang['tb1Status']="Status"; 
+$lang['tb1Creator']="Creator"; 
+ echo $lang['tb1Title']; ?>
+<div style="width:100%">
+
+<table class="table">
+<tr>
+    <th><?php echo $lang['tb1PageTitle']; ?></th>
+    <th><?php echo $lang['tb1BodyStart']; ?></th>
+    <th><?php echo $lang['tb1Created']; ?></th>
+    <th><?php echo $lang['tb1Modified']; ?></th>
+    <th><?php echo $lang['tb1Status']; ?></th>
+    <th><?php echo $lang['tb1Creator']; ?></th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($pageList as $row) : ?>
+<tr>
+    <td><?php echo $row['title'];
+    ?></td>
+    <td><?php 
+    echo strip_tags(htmlspecialchars_decode($row['bodyPart']))." ...";
+    ?></td>
+    <td><?php echo date($GLOBALS['dateFormat'],$row['created']);
+    ?></td>
+    <td><?php echo date($GLOBALS['dateFormat'],$row['edited']);
+    ?></td>
+    <td></td>
+    <td><?php echo $row['creator'];
+    ?></td>
+    <td>
+
+        <a href="<?php
+        echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-relation/'.$row['id'];
+            ?>" target="_blank"><?php echo "Add relation"; ?></a>
+
+    </td>
+
+</tr>
+<?php endforeach; ?>
+</table>
+</div>
+<?php }else{ ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

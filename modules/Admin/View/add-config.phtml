@@ -1,0 +1,34 @@
+<?php
+$title = 'Add a New Configuration';
+$form->formMap['title']['label']="Config title";
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-config'; ?>">Show list of configuration items!</a>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="field">
+<?php echo $form->get('description'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('modName'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('uri'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('type'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('value'); ?>
+</div>
+<div class="field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

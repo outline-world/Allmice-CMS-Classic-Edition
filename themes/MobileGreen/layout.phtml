@@ -1,0 +1,319 @@
+ 
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+<?php
+	$mainStylePath=$GLOBALS['baseUrl']."/themes/MobileBase/versions/green/main-styles.css";
+
+//If header mode is line, then title and menu button are tried to be shown on the same line (title on left, menu button on right).
+//   If screen is too narrow and header mode is line, then menu button will be shown on second line on right side.
+//If header mode is center, then title will be shown centered on one line, menu button centered on next line.
+$headerMode="center";
+//$headerMode="line";
+ ?>
+
+<title><?php 
+if(isset($GLOBALS['titleTag'])){
+	echo $GLOBALS['titleTag'];
+}
+ ?>
+</title>
+
+<?php 
+if(isset($GLOBALS['metaTags']))
+	echo $GLOBALS['metaTags']; 
+ ?>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="<?php echo $mainStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
+
+<?php 
+if(isset($GLOBALS['scriptTags']))
+	echo $GLOBALS['scriptTags']; 
+
+if(isset($GLOBALS['headTags']))
+	echo $GLOBALS['headTags']; 
+ ?>
+<?php if(isset($GLOBALS['faviconPath'])){ ?>
+<link rel="shortcut icon" href="<?php echo $GLOBALS['faviconPath']; ?>">
+<?php }
+elseif(isset($GLOBALS['faviconImage'])){ ?>
+<?php echo $GLOBALS['faviconImage']; ?>
+<?php } ?>
+
+</head>
+
+<body>
+<?php 
+if(isset($GLOBALS['otherTags1']))
+	echo $GLOBALS['otherTags1']; 
+ ?>
+
+<a id="top"></a>
+
+<?php if(isset($headerMode) && $headerMode=="line"){ ?>
+
+<div class="header-wrapper">
+    <div id="site-name-set-left">
+
+	<?php if(isset($GLOBALS['smallSiteNameImage']) && $GLOBALS['smallSiteNameImage']!="") : ?>
+
+		<div id="site-name-img-left">
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+			<?php 
+				echo $GLOBALS['smallSiteNameImage'];
+			 ?>
+			</a>
+		</div>
+
+	<?php else: ?>
+
+	<div id="site-name-left">
+
+		<?php if(isset($GLOBALS['smallLogoImage']) && $GLOBALS['smallLogoImage']!="") : ?>
+	
+			<div id="logo-image">
+				<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+				<?php 
+					echo $GLOBALS['smallLogoImage'];
+				 ?>
+				</a>
+			</div>
+	
+		<?php endif; ?>
+	
+		<div class="site-name">
+			<h2>
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>"><?php echo $GLOBALS['siteName']; ?></a>
+			</h2>
+	    </div>
+
+    </div>
+
+	<?php endif; ?>
+
+    </div>
+    <div id="menu-button-right">
+		<div class ="menu-button">
+			<button class="menu-icon" onclick="openArea()"><img src="<?php echo $GLOBALS['baseUrl']; ?>/themes/MobileBase/images/menu-50px.png"></button>
+		</div>
+    </div>
+</div>
+<?php }else{ ?>
+<div class="header-area">
+
+	<div class="site-name-center">
+
+	<?php 
+		if(isset($GLOBALS['siteNameImage2']) && $GLOBALS['siteNameImage2']!="") :
+	 ?>
+		<div class="site-name-img-wrap">
+			<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+			<div class="site-name-img-link">
+			<?php 
+				echo $GLOBALS['siteNameImage2'];
+			 ?>
+			</div>
+			</a>
+		</div>
+
+	<?php else: ?>
+
+		<?php if(isset($GLOBALS['smallLogoImage']) && $GLOBALS['smallLogoImage']!="") : ?>
+	
+			<div class="logo-image">
+				<a href="<?php echo $GLOBALS['baseUrl']; ?>">
+				<?php 
+					echo $GLOBALS['smallLogoImage'];
+				 ?>
+				</a>
+			</div>
+	
+		<?php endif; ?>
+
+	<div class="site-name">
+		<h2>
+		<a href="<?php echo $GLOBALS['baseUrl']; ?>"><?php echo $GLOBALS['siteName']; ?></a>
+		</h2>
+	</div>
+	<?php endif; ?>
+	</div>
+
+	<div class ="menu-button-wrap">
+		<div class ="menu-button">
+			<button class="menu-icon" onclick="openArea()"><img src="<?php echo $GLOBALS['baseUrl']; ?>/themes/MobileBase/images/menu-50px.png"></button>
+		</div>
+	</div>
+
+</div>
+<?php } ?>
+
+	<?php if (isset($Region['headerArea'])) : ?>
+	<div class="header-area-custom">
+		<?php echo ($Region['headerArea']); ?>
+	</div>
+	<?php endif; ?>
+
+<div class="middle-area">
+
+			<div class="colmask">
+				<div class="col1">
+					<?php /* Content column start */ ?>
+					<?php if (isset($Region['title'])) : ?>
+					<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+					<?php endif; ?>
+
+					<?php /* Content area */ ?>
+
+					<?php if (isset($Region['messageArea'])) : ?>
+					&nbsp;<br />
+					<div class="message-area">
+					<?php echo ($Region['messageArea']); ?>
+					</div>
+					<?php endif; ?>
+
+					<div class="content-cell">
+					<?php 
+					include $contentView;
+					 ?>
+					</div>
+
+				</div>
+		</div>
+
+</div>
+<a name="panel"></a>
+
+<div id="controlArea">
+<div class="control-area">
+
+		<div class="control-header">
+		  <button onclick="closeArea()" class="close-button">X</button>
+		  <br>
+		</div>
+
+		<div class="control-body">
+
+
+<?php if (isset($Region['searchArea'])) : ?>
+	<div class="search-set-wrap">
+	<div class="search-set">
+	   	<?php echo ($Region['searchArea']); ?>
+	</div>
+	</div>
+<?php endif; ?>
+
+<?php if (isset($Region['userArea'])) : ?>
+			<div class="user-space-wrap">
+			<div class="generic-block user-block-space">
+			<div class="user-label">
+			<?php 
+/*Following fix is needed to land after Log in button submit click at the same area, where login form gets opened.*/
+/*For this purpose form post method's action attribute needs suffix #menu.*/
+/*Exception is logout form, where this suffix is not needed and would mess things up.*/
+			if(!strstr($Region['userArea'],"logout"))
+				$Region['userArea']=str_replace($GLOBALS['curUrl'],($GLOBALS['curUrl']."#panel"),$Region['userArea']);
+			if(isset($GLOBALS['userBlock']['username']) && $GLOBALS['userBlock']['username']!=""){
+			echo $GLOBALS['userBlock']['logoutLabel']." ".$GLOBALS['userBlock']['username'];
+			echo "<br>";
+			}
+			 ?>
+			</div>
+	   	<?php echo ($Region['userArea']); ?>
+			</div>
+			</div>
+<?php endif; ?>
+
+<?php if (isset($Region['languageArea'])) : ?>
+			<div class="lang-space-wrap">
+			<div class="generic-block lang-block-space">
+			<div class="lang-label">
+		    <?php 
+/*A fix is needed to land after Language Chooser button submit click at the same area, where language form gets opened.*/
+/*For this purpose form post method's action attribute needs suffix #menu.*/
+			$Region['languageArea']=str_replace($GLOBALS['curUrl'],($GLOBALS['curUrl']."#panel"),$Region['languageArea']);
+		    if (isset($GLOBALS['langBlock']['activeLanguage']) && $GLOBALS['langBlock']['activeLanguage']!="")
+//		    	echo $GLOBALS['langBlock']['activeLanguage'];
+				echo "".strtoupper($GLOBALS['langCode'])."";
+//$GLOBALS['langBlock']['activeLanguage'] language label, which can be changed as language phrase
+		     ?>
+			</div>
+	   	<?php echo ($Region['languageArea']); ?>
+			</div>
+			</div>
+
+<?php endif; ?>
+			<?php if (isset($Region['naviArea'])) : ?>
+				<div class="navi-area">
+					<?php echo ($Region['naviArea']); ?>
+				</div>
+			<?php endif; ?>
+		
+			<?php if (isset($Region['menuArea'])) : ?>
+			<div class="menu-area">
+			<?php echo ($Region['menuArea']); ?>
+			</div>
+			<?php endif; ?>
+
+				<?php if (isset($Region['bar1Area'])) : ?>
+				<div class="bar">
+						<?php echo ($Region['bar1Area']); ?>
+				</div>
+				<?php endif; ?>
+				<?php if (isset($Region['bar2Area'])) : ?>
+				<div class="bar">
+						<?php echo ($Region['bar2Area']); ?>
+				</div>
+				<?php endif; ?>
+
+	</div>
+
+</div>
+</div>
+
+<?php 
+if (isset($Region['consentArea']) && $Region['consentArea']!="") : ?>
+
+<div class="gap">
+</div>
+<div class="footer-area-set">
+	<?php if (isset($Region['footerArea'])) : ?>
+	<div class="footer-area">
+      <div class="footer-cell">
+        <?php echo ($Region['footerArea']); ?>
+      </div>
+	</div>
+	<?php endif; ?>
+	<div class="consent-area">
+        <?php echo ($Region['consentArea']); ?>
+	</div>
+</div>
+<?php else: ?>
+	<div class="footer-area">
+      <div class="footer-cell">
+        <?php echo ($Region['footerArea']); ?>
+      </div>
+	</div>
+<?php endif; ?>
+
+<script>
+//closeArea();
+function openArea() {
+	document.getElementById("controlArea").style.display = "block";
+	window.location = "<?php echo $GLOBALS['curUrl']; ?>#panel";
+}
+function closeArea() {
+	document.getElementById("controlArea").style.display = "none";
+	window.location = "<?php echo $GLOBALS['curUrl']; ?>#top";
+}
+</script>
+
+<?php 
+if(isset($GLOBALS['otherTags2']))
+	echo $GLOBALS['otherTags2']; 
+ ?>
+
+</body>
+</html>

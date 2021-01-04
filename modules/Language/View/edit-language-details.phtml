@@ -1,0 +1,81 @@
+<?php
+$title = 'Edit Details of an Existing Language';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-languages'; ?>">Show list of languages!</a>
+<br />
+<br />
+<?php if($id>0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('languageCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('languageCode'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('languageCode2'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('languageCode2'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('label'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('label'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('direction'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('direction'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+
+<div class="dateFormat">
+<?php echo $form->get('dateFormat'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('dateFormat'); ?>
+	</div>
+
+<div class="dateFormat">
+<?php echo $form->get('timeFormat'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('timeFormat'); ?>
+	</div>
+
+<div class="numberFormat">
+<?php echo $form->get('numberFormat'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('numberFormat'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>
+

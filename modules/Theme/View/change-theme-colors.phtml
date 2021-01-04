@@ -1,0 +1,126 @@
+<?php
+if($note!=""){
+	echo "<div class=\"problem-note\">".$note."</div>";
+	echo "<br />\n";
+	echo "<br />\n";
+}
+ ?>
+<?php
+$title = 'Change Theme Colors';
+
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Theme module main page</a>
+<br />
+<br />
+Using this page you can change colors in a CSS file content or simply get information about what CSS colors exist in a CSS file content and in what context they appear there (to what selectors, declarations they are related to).
+<br />
+Enter an existing CSS file content into input field and click 'Extract colors'.
+<br />
+Colors will be shown with their web code, shade and with list of selectors and declarations, where they appear.
+<br />
+Change colors in 'New color' input fields, which you wish to replace and click 'Show output'.
+<br />
+The new CSS file content will be shown in output field.
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php echo $form->get('cssData'); ?>
+<br />
+
+<br />
+
+<?php echo $form->get('action'); ?>
+
+<?php 
+
+if(count($colorSet)>0){
+ ?>
+ <?php echo $form->get('getOutput'); ?>
+<br />
+
+<?php echo $form->get('newCssData'); ?>
+<br />
+
+ <?php
+
+	$lastColor="";
+	$lastSelector="";
+	$lastDeclar="";
+	echo "<br />\n";
+	echo "<br />\n";
+	echo "<hr />\n";
+
+	$i=0;
+	echo "<br />\n";
+
+	$index=1;
+
+	for ($i=0;$i<count($colorSet);$i++) {
+
+			if($colorSet[$i]['color']!=$lastColor){
+				$lastColor=$colorSet[$i]['color'];
+
+				if($i>0){
+					echo "</div>\n";
+					echo "<br />\n";
+
+				}
+				echo $index.". color";
+				$index++;
+				echo "<br />\n";
+				echo "<div style=\"display:inline;\">\n";
+				echo "Initial color: ";
+				echo $colorSet[$i]['color'];
+				echo "&nbsp;";
+				echo "<div style=\"display:inline;background-color:".$colorSet[$i]['color'].";border:1px solid gray;width:100px;\">\n";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "</div>\n";
+
+				echo "</div>\n";
+
+				echo "<br />\n";
+				echo "New color: ";
+				if(isset($_POST[('newColor'.$i)]))
+					echo "<input type=\"text\" name=\"newColor".$i."\" class=\"color no-alpha\" value=\"".$_POST[('newColor'.$i)]."\" />\n";
+				else
+					echo "<input type=\"text\" name=\"newColor".$i."\" class=\"color no-alpha\" value=\"".$colorSet[$i]['color']."\" />\n";
+				echo "<br>\n";
+
+				$lastSelector="";
+
+				echo "<div class=\"context\">\n";
+				echo "Context of the color with initial value: ".$colorSet[$i]['color'].".";
+				echo "<br />\n";
+				echo "<br />\n";
+
+			}
+			if($colorSet[$i]['selector']!=$lastSelector){
+
+				echo "Selector: ";
+				$lastSelector=$colorSet[$i]['selector'];
+
+				echo $selectorKeySet[($colorSet[$i]['selector'])];
+				echo "<br />\n";
+
+			}
+
+			echo "&nbsp;&nbsp;&nbsp;Declaration: ";
+			echo $colorSet[$i]['declar'];
+			echo "<br />\n";
+
+			if ($i==(count($colorSet)-1)){
+				echo "</div>\n";
+			}
+
+		}
+}
+
+ ?>
+
+ <?php echo $form->get('end'); ?>
+<script type="text/javascript" src="<?php echo $GLOBALS['baseUrl']; ?>/modules/Theme/config/vendor/tinyColorPicker/index.js"></script>

@@ -1,0 +1,118 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>"><?php echo $lang['link1']; ?></a>
+<br />
+<br />
+<?php echo $form->get('begin'); ?>
+
+<div class="vertical">
+<?php echo $form->get('modId'); ?>
+</div>
+
+<div class="vertical">
+<?php echo $form->get('roleId'); ?>
+</div>
+
+<br />
+<?php echo $lang['text1selMod']; ?>
+<br />
+<?php echo $lang['text2selMod']; ?>
+<br />
+<?php echo $lang['text3selRole']; ?>
+<br />
+<?php echo $lang['text4selRole']; ?>
+<br />
+<br />
+<?php echo $lang['text5selCheck']; ?>
+<br />
+<table class="table">
+	<tr>
+<?php // Table header cells - start ?>
+
+	    <th><?php echo $lang['tb1ModName']; ?></th>
+	    <th><?php echo $lang['tb1YesNo']; ?></th>
+	    <th><?php echo $lang['tb1ValidAcc']; ?></th>
+
+<?php // Table header cells - end ?>
+	    <th>
+<div class="aCbh">
+<?php echo $lang['tb1ChangeAcc']; ?> <br><?php echo $lang['tb1YesNo']; ?><br><input type="checkbox" name="resCb" />
+</div>
+	    </th>
+	    <th>&nbsp;</th>
+	</tr>
+	<?php 
+	//foreach ($resList as $row) :
+	 for($i=0;$i<count($resList);$i++){
+	 ?>
+
+		<tr>
+<?php // Table body cells - start ?>
+
+			<td><?php echo $resList[$i]['module_name'];
+			 ?></td>
+			<td><?php echo $resList[$i]['specific_name'];
+			 ?></td>
+			<td><?php
+			 if($resList[$i]['access_level']==1)
+				echo "Access granted";
+			elseif($resList[$i]['access_level']==0)
+				echo "No access";
+			else
+				echo "No permission";
+			 ?></td>
+			<td>
+<div class="aCb">
+			<?php 
+if($resList[$i]['access_level']==0)
+	$form->formMap['resCb']['attributes']=array();
+else
+	$form->formMap['resCb']['attributes']=array('checked' => "checked");
+/*
+echo "resList[i]['id']=";
+echo $resList[$i]['id'];
+echo "<br>";
+echo "resList[i]['access_level']=";
+echo $resList[$i]['access_level'];
+echo "<br>";
+*/
+//$form->formMap['resCb']['value']=$resCbArray[$i]['id'];
+$form->formMap['resCb']['value']=$resList[$i]['id'];
+echo $form->get('resCb');
+
+//$form->get('title');
+			 ?>
+</div>
+			 </td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].$resList[$i]['uri']; ?>" target="blank">Try</a>
+			</td>
+		</tr>
+	<?php 
+}
+//	endforeach;
+	 ?>
+</table>
+<br />
+
+<div class="vertical">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php // Other fields - end ?>
+<?php echo $form->get('end'); ?>
+
+<script>
+$(document).ready(function(){
+ $(".aCbh input:checkbox").click(function() {
+            var checkedStatus = this.checked;
+            $(".aCb input:checkbox").each(function() {
+                this.checked = checkedStatus;
+            });
+        });
+
+});
+</script>
+

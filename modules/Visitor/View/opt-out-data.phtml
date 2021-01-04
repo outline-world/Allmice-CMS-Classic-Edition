@@ -1,0 +1,26 @@
+<?php
+$title = 'Opt-out Personal Data';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+This website may have automatically recorded your IP address and some of your software data (some browser and operating system details) as evidence of using the website.
+<br />
+Such possibly collected data may be following:
+<br />
+<?php
+echo "Your IP address: ".$ip;
+?>
+<br />
+<?php
+echo "Your software data: ".$agentData;
+?>
+<br />
+<br />
+By clicking the button below you can opt-out such collected data, when it is not needed as evidence of consenting our Cookies and Privacy Policy.
+<br />
+<br />
+<?php
+	echo $form->get('begin');
+	echo $form->get('optOut');
+	echo $form->get('end');
+?>

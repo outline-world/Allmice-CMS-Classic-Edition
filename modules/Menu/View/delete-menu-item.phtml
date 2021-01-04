@@ -1,0 +1,46 @@
+<?php
+$title = 'Delete Menu Item';
+?>
+
+<h1><?php echo $title; ?></h1>
+
+<br />
+<p>
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">Show list of menus!</a>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-menu-items/'.$item->menuId; ?>">List menu items</a>
+</p>
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The menu item with following details was deleted<br />
+
+    label: '<?php echo $item->label; ?>'<br />
+    uri: '<?php echo $item->uri; ?>'<br />
+    depth: '<?php echo $item->depth; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure, that you want to delete menu item, which<br />
+
+    label is: '<?php echo $item->label; ?>'<br />
+    uri is: '<?php echo $item->uri; ?>'<br />
+    depth is: '<?php echo $item->depth; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+
+<?php } ?>
+<?php }else{ ?>
+Menu item id is not correct!
+<?php } ?>
+
+<br />

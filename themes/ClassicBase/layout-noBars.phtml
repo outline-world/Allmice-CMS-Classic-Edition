@@ -1,0 +1,25 @@
+	<div class="contentArea">
+		<?php /* Content column start */ ?>
+
+		<?php if (isset($Region['title'])) : ?>
+		<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+		<?php endif; ?>
+
+		<?php /* Content area */ ?>
+
+		<?php if (isset($Region['messageArea'])) : ?>
+		<div class="message-area">
+		<?php echo ($Region['messageArea']); ?>
+		</div>
+		<?php endif; ?>
+
+		<div class="content-cell">
+		<?php include $contentView; ?>
+		</div>
+
+	</div>
+	<?php if (isset($Region['menuArea'])) : ?>
+	<div class="menuArea">
+		<?php echo ($Region['menuArea']); ?>
+	</div>
+	<?php endif; ?>

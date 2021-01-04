@@ -1,0 +1,44 @@
+
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-messages'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if($id>0){ ?>
+<?php
+	if ($ownMes) {
+?>
+<?php if($deleted){ ?>
+<p><?php echo $lang['afterMessage']; ?><br />
+    <?php echo $lang['afterField1']; ?> '<?php echo $mesData['senderName']; ?>'<br />
+    <?php echo $lang['afterField2']; ?> '<?php echo $mesData['recipientName']; ?>'<br />
+    <?php echo $lang['afterField3']; ?> '<?php echo date($GLOBALS['timeFormat'],$mesData['time']); ?>'<br />
+    <?php echo $lang['afterField4']; ?> '<?php echo $mesData['subject']; ?>'<br />
+</p>
+<?php }else{ ?>
+<p><?php echo $lang['beforeMessage']; ?><br />
+    <?php echo $lang['beforeField1']; ?> '<?php echo $mesData['senderName']; ?>'<br />
+    <?php echo $lang['beforeField2']; ?> '<?php echo $mesData['recipientName']; ?>'<br />
+    <?php echo $lang['beforeField3']; ?> '<?php echo date($GLOBALS['timeFormat'],$mesData['time']); ?>'<br />
+    <?php echo $lang['beforeField4']; ?> '<?php echo $mesData['subject']; ?>'<br />
+</p>
+
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="<?php echo $lang['submitYes']; ?>" />
+</div>
+</form>
+<?php
+		}
+	}
+	else{
+		echo $lang['message1'];
+	}
+?>
+<?php }else{
+		echo $lang['message2'];
+ } ?>

@@ -1,0 +1,62 @@
+<?php
+$title = 'Add a New Menu Item';
+?>
+
+<h1><?php echo $title; ?></h1>
+
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">Show list of menus!</a>
+<br />
+<?php if(count($menuDetails)>0){ ?>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-menu-items/'.$menuId; ?>">List menu items</a>
+<br />
+<br />
+
+<?php echo "This item will be added into menu: ".$menuDetails['title']; ?>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+<?php echo $form->get('menuId'); ?>
+
+<div class="form-field">
+<?php echo $form->get('label'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('label'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('uri'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('uri'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('weight'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('weight'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('parentId'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('parentId'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('itemStatus'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('itemStatus'); ?>
+	</div>
+<br />
+<div class="form-field">
+<?php echo $form->get('saveMenuItem'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{ ?>
+<br />
+Menu id is not correct!
+<?php } ?>

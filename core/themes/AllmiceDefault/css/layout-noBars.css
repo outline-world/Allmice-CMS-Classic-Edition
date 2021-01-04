@@ -1,0 +1,47 @@
+
+.contentArea {
+	clear:both;
+	float:left;
+/*	margin:15px;*/
+	padding:15px;
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+.menuArea {
+	clear:both;
+	float:left;
+/*	display:block;*/
+/*	margin:15px;*/
+	padding:15px;
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+
+.col1 a,
+.col1 a:link,
+.col1 a:hover,
+.col1 a:active,
+.col1 a:focus,
+.col2 a,
+.col2 a:link,
+.col2 a:hover,
+.col2 a:active,
+.col2 a:focus,
+.col3 a,
+.col3 a:link,
+.col3 a:hover,
+.col3 a:active,
+.col3 a:focus {
+	color: #024;
+}
+
+.navi-area {
+	float:left;
+	color: #FFFFFF;
+	font: normal 18px/24px 'DejaVu Sans', sans-serif;
+	position:relative;
+	padding: 0 0 0 20px;
+	z-index: 3;
+}

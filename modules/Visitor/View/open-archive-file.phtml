@@ -1,0 +1,51 @@
+<?php
+	$title = 'List of Archive Files';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<br />
+Archive location is determined in config entry of GlobalObserver module, type dataExpiry, uri archivingLocation.
+<br />
+
+Check, that this folder and its .sql archive files would be readable (Suggested file permissions in *nix systems '755').
+<br />
+<br />
+
+<?php
+	echo $form->get('begin');
+ ?>
+
+<table border="0">	
+<tr class="trHead">	
+	<th>Archive file</th>	
+	<th>
+&nbsp;
+	</th>
+</tr>	
+
+<?php
+ for($i=0;$i<count($pathSet);$i++){
+ 	 ?>
+<tr class="odd">	
+    <td><?php echo $pathSet[$i]; ?></td>
+			<td>
+				<div class="cb">
+							<?php 
+
+		$form->setValue('fileName',$pathSet[$i]);
+
+				echo $form->get('fileName');
+
+							 ?>
+				</div>
+			 </td>
+</tr>	
+<?php } ?>
+</table>
+<br />
+
+<?php
+	echo $form->get('openArchive');
+	echo $form->get('end');
+ ?>
+

@@ -1,0 +1,111 @@
+<?php
+if($note!=""){
+	echo "<div class=\"problem-note\">".$note."</div>";
+	echo "<br />\n";
+	echo "<br />\n";
+}
+ ?>
+<?php
+$title = 'Replace CSS Declarations';
+
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Theme module index page</a>
+<br />
+<br />
+This method helps to replace CSS declarations, which can be filtered out using some search keyword (e.g. border, url, font, text-shadow).
+<br />
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php echo $form->get('cssData'); ?>
+<br />
+<?php echo $form->get('keyword'); ?>
+<br />
+
+<br />
+
+<?php echo $form->get('action'); ?>
+
+<?php 
+
+if(count($declarSet)>0){
+ ?>
+ <?php echo $form->get('getOutput'); ?>
+<br />
+
+<?php echo $form->get('newCssData'); ?>
+<br />
+
+ <?php
+	$lastSelector="";
+	$lastDeclar="";
+	echo "<br />\n";
+
+	$i=0;
+
+	$index=1;
+
+	for ($i=0;$i<count($declarSet);$i++) {
+
+			if($declarSet[$i]['declar']!=$lastDeclar){
+				$lastDeclar=$declarSet[$i]['declar'];
+
+				if($i>0){
+					echo "</div>\n";
+					echo "<br />\n";
+
+				}
+				echo $index.". declaration";
+				$index++;
+				echo "<br />\n";
+				echo "<div style=\"display:inline;\">\n";
+				echo "Initial declaration: ";
+				echo $declarSet[$i]['declar'];
+
+				echo "</div>\n";
+
+				echo "<br />\n";
+				echo "New declaration: ";
+				if(isset($_POST[('newUrl'.$i)]))
+					echo "<input type=\"text\" name=\"newUrl".$i."\" style=\"width:500px;\" value=\"".$_POST[('newUrl'.$i)]."\" />\n";
+				else
+					echo "<input type=\"text\" name=\"newUrl".$i."\" style=\"width:500px;\" value=\"".$declarSet[$i]['declar']."\" />\n";
+				echo "<br>\n";
+
+				$lastSelector="";
+
+				echo "<div class=\"context\">\n";
+				echo "Context of the url with initial value: ".$declarSet[$i]['declar'].".";
+				echo "<br />\n";
+				echo "<br />\n";
+
+			}
+			if($declarSet[$i]['selector']!=$lastSelector){
+
+				echo "Selector: ";
+				$lastSelector=$declarSet[$i]['selector'];
+
+				echo $selectorKeySet[($declarSet[$i]['selector'])];
+				echo "<br />\n";
+
+			}
+
+			echo "&nbsp;&nbsp;&nbsp;Declaration: ";
+			echo $declarSet[$i]['declar'];
+			echo "<br />\n";
+
+			if ($i==(count($declarSet)-1)){
+				echo "</div>\n";
+			}
+
+		}
+
+}
+ ?>
+ <?php echo $form->get('end'); ?>
+<script type="text/javascript" src="<?php echo $GLOBALS['baseUrl']; ?>/modules/Theme/config/vendor/tinyColorPicker/index.js"></script>

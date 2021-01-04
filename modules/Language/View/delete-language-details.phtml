@@ -1,0 +1,39 @@
+<?php
+$title = 'Delete Language Details';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-languages'; ?>">Show list of languages!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The language with following details was deleted:<br />
+    language code: '<?php echo $item->languageCode; ?>'<br />
+    language code 2: '<?php echo $item->languageCode2; ?>'<br />
+    label: '<?php echo $item->label; ?>'<br />
+</p>
+<?php }else{ ?>
+<p>Are you sure, that you wish to delete the language with following details?<br />
+<br />
+Language details are: <br />
+    language code is: '<?php echo $item->languageCode; ?>'<br />
+    language code 2 is: '<?php echo $item->languageCode2; ?>'<br />
+    label is: '<?php echo $item->label; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Delete this language!" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

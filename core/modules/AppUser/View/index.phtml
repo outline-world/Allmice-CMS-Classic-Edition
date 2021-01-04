@@ -1,0 +1,25 @@
+
+
+<?php
+
+echo $loginForm->get('begin');
+
+if($userData['name']==""){
+echo "<div class=\"vertical\">";
+	echo $loginForm->get('username');
+echo "</div>\n";
+echo "<div class=\"vertical\">";
+	echo $loginForm->get('password');
+echo "</div>\n";
+echo "<div class=\"vertical\">";
+	echo $loginForm->get('login');
+echo "</div>\n";
+}else{
+	echo $lang['label']." ";
+	echo $userData['name'];
+	echo $loginForm->get('logout');
+}
+//echo $formWidget;
+echo $loginForm->get('end');
+
+ ?>

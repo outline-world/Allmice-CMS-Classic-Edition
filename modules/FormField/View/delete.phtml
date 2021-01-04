@@ -1,0 +1,41 @@
+<?php
+$title = 'Delete Changing Ability of a Form Field';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-fields'; ?>">Show list of fields!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The changing ability for the field with following details was deleted<br />
+
+    field name: '<?php echo $item->fieldName; ?>'<br />
+    module: '<?php echo $item->module; ?>'<br />
+    event: '<?php echo $item->event; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete changing ability for the field, which<br />
+
+    field name is: '<?php echo $item->fieldName; ?>'<br />
+    module is: '<?php echo $item->module; ?>'<br />
+    event is: '<?php echo $item->event; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

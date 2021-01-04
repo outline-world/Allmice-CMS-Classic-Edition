@@ -1,0 +1,34 @@
+<?php
+	$title = 'List of Roles';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Administrator menu</a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-role'; ?>">Add a role</a>
+<br />
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Role title</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['title'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-role'.'/'.$row['id']; ?>">Edit</a>
+				<?php if($row['id']>3){ ?>
+					<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-role'.'/'.$row['id']; ?>">Delete</a>
+				<?php } ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

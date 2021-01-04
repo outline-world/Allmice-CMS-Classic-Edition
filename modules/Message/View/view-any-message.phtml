@@ -1,0 +1,37 @@
+<?php
+$title = 'View Any Message';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+    <a href="<?php echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/list-all-messages"; ?>">Show list of messages!</a>
+<br />
+<br />
+<?php if($id>0){ ?>
+<?php 
+echo "From: ";
+if(strstr($mesData['type'],"system-"))
+	echo "Automated system message";
+else
+	echo $mesData['senderName'];
+ ?>
+<br />
+<?php echo "To: ".$mesData['recipientName']; ?>
+<br />
+<?php echo "Time: ".date($GLOBALS['timeFormat'],$mesData['time']); ?>
+<br />
+<?php echo "Subject: ".$mesData['subject']; ?>
+<br />
+<br />
+<hr />
+<br />
+Content:
+<br />
+<?php echo $mesData['content']; ?>
+
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

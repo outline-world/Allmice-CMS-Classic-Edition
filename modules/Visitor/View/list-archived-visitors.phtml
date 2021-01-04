@@ -1,0 +1,65 @@
+<?php
+	$title = 'List of Archived Visitors';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<br />
+<?php if(count($dataList)){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Id</th>
+	    <th>Session id</th>
+	    <th>IP aadress</th>
+	    <th>Device (user agent) data</th>
+	    <th>Status</th>
+	    <th>Consent type</th>
+	    <th>Last visit</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['id'];
+			 ?></td>
+			<td><?php echo $row['sess_id'];
+			 ?></td>
+			<td><?php echo $row['ip'];
+			 ?></td>
+			<td><?php echo $row['device_data'];
+			 ?></td>
+			<td><?php
+if($row['status']==0)
+			 echo "Unknown";
+elseif($row['status']==1)
+			 echo "Signal registered";
+elseif($row['status']==2)
+			 echo "Opt-out request";
+			 ?></td>
+			<td><?php
+if($row['consent_type']==1)
+			 echo "Using";
+elseif($row['status']==2)
+			 echo "Continuing";
+elseif($row['status']==3)
+			 echo "Submit";
+			 ?></td>
+			<td><?php echo date("d/M/Y h:i",$row['last_visit']);
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-archived-visitor'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-archived-visitor'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

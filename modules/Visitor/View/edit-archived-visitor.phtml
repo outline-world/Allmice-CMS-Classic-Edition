@@ -1,0 +1,43 @@
+<?php
+$title = 'Edit an Existing Archived Visitor';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-archived-visitors'; ?>">Show list of archived visitors!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('ip'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('ip'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('agentData'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('agentData'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

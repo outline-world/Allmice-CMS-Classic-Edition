@@ -1,0 +1,40 @@
+<?php
+$title = 'Save Archive';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/open-archive'; ?>">Open another archive</a>
+<br />
+<br />
+
+Here you can save any possible open archive - this means update the content of this archive's file with the content of archive database tables.
+<br />
+
+<?php if($updated){ ?>
+<p>The archive was saved.<br />
+
+</p>
+<?php }else{ ?>
+
+	<?php if($archiveFileName!=""){ ?>
+		<p>
+		The archive <?php echo $archiveFileName; ?> is currently open.<br />
+		Are you sure that you want to save this archive?<br />
+
+				</p>
+		<br />
+		<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+		<div>
+		    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+		    <input type="submit" name="del" value="Yes" />
+		    <input type="submit" name="del" value="No" />
+		</div>
+		</form>
+
+	<?php }else{ ?>
+		<p>
+			No archive is currently open.<br />
+				</p>
+	<?php } ?>
+
+<?php } ?>

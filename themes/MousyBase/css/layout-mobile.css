@@ -1,0 +1,21 @@
+
+.col1,
+.col2 {
+	display:block;
+/*	margin:10px;*/
+	margin:18px;
+/*	padding:0px 10px 0px 20px;*/
+	padding:15px;
+	position:relative;
+/*	width:100%;*/
+	overflow:auto;
+}
+
+.navi-area {
+	float:left;
+	color: #FFFFFF;
+	font: normal 18px/24px 'DejaVu Sans', sans-serif;
+	position:relative;
+	padding: 0 0 0 20px;
+	z-index: 3;
+}

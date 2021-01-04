@@ -1,0 +1,91 @@
+<?php
+$title = 'Add or Edit a TSV Set';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Module index page</a>
+<br />
+<br />
+<?php 
+if($note!=""){
+echo "<b>".$note."</b>";
+echo "<br>";
+echo "<br>";
+}
+
+//Sql insert query string (without table prefix) will be displayed on screen as output.  
+//<br />
+
+ ?>
+By using this method, you can insert/update values in any Allmice CMS database table using as input a TSV (tab separated values) table, if following conditions are satisfied:   
+<br />
+* Database table must have an id column, and in addition to id column one or more other unique key columns.
+<br />
+<br />
+Instructions to use this method:
+<br />
+Prepare SQL table as a TSV table (in a spreadsheet program, text editor or otherwise).
+<br />
+Copy TSV table to the corresponding (Input) form field.
+<br />
+Entries, which are not existing in database, will be inserted there, existing entries will be updated with new content.
+<br />
+If entries are existing already, then only one column of such entries will be updated. Updated will be the last column, which is not listed as key column name.
+<br />
+<br />
+This TSV format presumes, that columns are separated by tabs and strings have no (double) quotes.
+<br />
+Whitespace characters will be removed from beginning and end of strings.
+<br />
+First line must be header line with table column names (except column id) according to the structure of the table, where you wish to insert/update entries.
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('tsvSet'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('tsvSet'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('tableName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('tableName'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('keyFields'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('keyFields'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('htmlReplace'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('htmlReplace'); ?>
+	</div>
+<?php
+/*
+<div class="form-field">
+<?php echo $form->get('outputString'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('outputString'); ?>
+	</div>
+*/
+ ?>
+
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

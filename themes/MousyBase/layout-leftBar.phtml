@@ -1,0 +1,22 @@
+
+	<?php if (isset($Region['title'])) : ?>
+	<h1 class="title"><?php echo ($Region['title']); ?></h1>
+	<?php endif; ?>
+
+	<?php /* Content area */ ?>
+
+	<?php if (isset($Region['messageArea'])) : ?>
+	<div class="message-area">
+	<?php echo ($Region['messageArea']); ?>
+	</div>
+	<?php endif; ?>
+
+	<?php if (isset($Region['menuArea'])) : ?>
+	<div class="menu-area">
+	<?php echo ($Region['menuArea']); ?>
+	</div>
+	<?php endif; ?>
+
+	<div class="content-area">
+	<?php include $contentView; ?>
+	</div>

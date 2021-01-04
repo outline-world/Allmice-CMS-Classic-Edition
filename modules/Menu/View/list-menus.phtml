@@ -1,0 +1,54 @@
+<?php
+	$title = 'List of Menus';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-menu'; ?>">Add a menu</a>
+&nbsp;|&nbsp;
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Menu module main links</a>
+&nbsp;|&nbsp;
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-menu-items'; ?>">List menu items</a>
+</p>
+<br />
+<br />
+
+	<?php if (count($dataList)>0){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Human readable title for menu header</th>
+	    <th>Menu name for computer</th>
+	    <th>Menu status (active, passive)</th>
+	    <th>Menu type (horisontal, vertical)</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['title'];
+			 ?></td>
+			<td><?php echo $row['code'];
+			 ?></td>
+			<td><?php echo $row['statusString'];
+			 ?></td>
+			<td><?php echo $row['typeString'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-menu-items'.'/'.$row['id']; ?>">List items</a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-menu-item'.'/'.$row['id']; ?>">Add item</a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'view'.'/'.$row['id']; ?>">View menu</a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-menu'.'/'.$row['id']; ?>">Edit</a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-menu'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+	<?php }else{ ?>
+There are no menus.
+	<?php } ?>
+<br />

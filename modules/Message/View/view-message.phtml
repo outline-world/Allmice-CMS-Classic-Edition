@@ -1,0 +1,44 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-messages'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+
+<br />
+
+<?php 
+	if($id>0){
+		if ($ownMes) {
+?>
+
+<?php 
+echo $lang['label1']." ";
+if(strstr($mesData['type'],"system-"))
+	echo $lang['message2'];
+else
+	echo $mesData['senderName'];
+ ?>
+<br />
+<?php echo $lang['label2']." ".$mesData['recipientName']; ?>
+<br />
+<?php echo $lang['label3']." ".date($GLOBALS['timeFormat'],$mesData['time']); ?>
+<br />
+<?php echo $lang['label4']." ".$mesData['subject']; ?>
+<br />
+<br />
+<hr />
+<br />
+<?php 
+ echo $lang['label5']
+  ?>
+<br />
+<?php echo $mesData['content']; ?>
+
+<?php 
+		}
+		else{
+			echo $lang['message1'];
+		}
+	}else{
+		echo $lang['message3'];
+	}
+  ?>

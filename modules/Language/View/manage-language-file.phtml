@@ -1,0 +1,70 @@
+<?php
+$title = 'Manage Language File';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Language module main links</a>
+<br />
+<br />
+This method helps to insert, upload or delete a set of language sql queries in database.
+<br />
+To do this, upload an sql file to execute its queries for the website's database.
+<br />
+The queries in the file can be translations of phrases of one or many modules or actually this file may include any SQL queries, which may change the website's database in any possible ways.   
+<br />
+Thus, be sure, that the contents of the sql files, which will be uploaded using this method, will be trusted.
+<br />
+<br />
+
+<?php 
+$content="";
+function selfURL() {
+ $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
+  $protocol = strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+   $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
+	 return $protocol."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
+	  }
+function strleft($s1, $s2) {
+return substr($s1, 0, strpos($s1, $s2));
+}
+
+$curUrl = selfURL();
+
+	 echo "<br />";
+	 echo "<hr />";
+	 echo "<br />";
+
+$i=0;
+
+
+if($pageStatus=="initial-form"){
+
+$formCodeBeg="<form id=\"convertTool\" name=\"convertTool\" method=\"post\" action=\"".$curUrl."\" enctype=\"multipart/form-data\">\n";
+$procGenButtons="";
+$formCodeEnd="</form>\n";
+			echo $formCodeBeg;
+
+ ?>
+
+	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+<div class="form-field">
+	Choose the file: <input name="userfile" type="file" id="userfile">
+</div>
+<div class="form-field">
+	<input name="process" id="process" type="submit" class="box" value=" Start process ">
+</div>
+
+<?php 
+	echo $formCodeEnd;
+
+}else{
+	echo "SQL queries were attempted to do from the uploaded file.\n";
+	echo "<br />\n";
+	echo "The uploaded file size was: \n";
+	echo $fileSize;
+	echo "<br />\n";
+	echo "Number of SQL queries was: \n";
+	echo $amountOfQueries;
+	echo "<br />\n";
+}
+ ?>

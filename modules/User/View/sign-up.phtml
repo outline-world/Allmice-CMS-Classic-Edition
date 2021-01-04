@@ -1,0 +1,57 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<?php
+if($status=="initial" || $status=="registered"){
+ ?>
+<?php echo $form->get('begin'); ?>
+<?php 
+$visibleFields=$form->visibleFields;
+		for($i=0;$i<count($visibleFields);$i++){
+
+ ?>
+
+<div class="form-field">
+	<?php 
+	 ?>
+<?php 
+//Agreement checkbox element - create separately not through get method.
+//Get method checks, if options array is set - then uses CSS classes check-set, checkbox; otherwise check-set2, checkbox2.
+//The way how get method handles checkboxes, and displays them, is not good for current purposes.
+if($visibleFields[$i]['fieldName']=="agreement"){
+
+	$agreeCb="";
+	$agreeCb.="<label class=\"check-set\">";
+	$agreeCb.="<input class=\"checkbox\" name=\"agreement\" type=\"checkbox\" value=\""."i-agree"."\"";
+	if(isset($_POST['agreement']) && $_POST['agreement'] == 'i-agree')
+		$agreeCb.=" checked=\"checked\"";
+	$agreeCb.="><span class=\"check-mark\">";
+	$agreeCb.="&nbsp;".$agreementCode;
+	$agreeCb.="</span></label>";
+
+	echo $agreeCb;
+
+}else{
+	echo $form->get($visibleFields[$i]['fieldName']);
+}
+ ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide($visibleFields[$i]['fieldName']); ?>
+	</div>
+
+<?php } ?>
+<?php 
+echo $captcha->formWidget;
+ ?>
+<div class="form-field">
+	<?php echo $form->get('register'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+}
+if($status=="newUser"){
+	echo $message[0];
+}
+ ?>

@@ -1,0 +1,39 @@
+<?php
+$title = 'Delete Role';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-roles'; ?>">Show list of roles!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The Role with following details was deleted<br />
+
+    title: '<?php echo $item->title; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to delete Role, which<br />
+
+    title is: '<?php echo $item->title; ?>'<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+<?php } ?>
+
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

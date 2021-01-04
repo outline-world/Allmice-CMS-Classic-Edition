@@ -1,0 +1,35 @@
+
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-user-blocking'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-messages'; ?>"><?php echo $lang['link2']; ?></a>
+</div>
+<br />
+
+<?php if(count($dataList)>0){ ?>
+<?php echo $lang['tb1Title']; ?>
+<table class="table">
+	<tr>
+	    <th><?php echo $lang['tb1ColName']; ?></th>
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['name'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'remove-user-blocking'.'/'.$row['id']; ?>"><?php echo $lang['tb1LinkRemove']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php }else{
+echo $lang['message1'];
+ } ?>
+<br />

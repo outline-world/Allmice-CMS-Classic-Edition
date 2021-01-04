@@ -1,0 +1,57 @@
+
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-messages'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+
+<br />
+<?php if($id>0){ ?>
+<?php
+	if ($ownMes) {
+?>
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+
+<div class="form-field">
+<?php echo $form->get('receiverName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('receiverName'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('subject'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('subject'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('content'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('content'); ?>
+	</div>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('send'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+<?php
+	}
+	else{
+		echo $lang['message5'];
+	}
+?>
+<?php }else{
+		echo $lang['message5'];
+		}
+ ?>
+

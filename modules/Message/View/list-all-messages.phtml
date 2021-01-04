@@ -1,0 +1,56 @@
+<?php
+	$title = 'List of All Messages';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'write-message'; ?>">Write a new message</a>
+</p>
+<br />
+All messages:
+<?php if(count($dataList)>0){ ?>
+<table class="table">
+	<tr>
+
+	    <th>Subject</th>
+	    <th>Receiver username</th>
+	    <th>Status for receiver</th>
+	    <th>Sender username</th>
+	    <th>Status for sender</th>
+	    <th>Time</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['subject'];
+			 ?></td>
+			<td><?php echo $row['recipientName'];
+			 ?></td>
+			<td><?php echo $row['statusForReceiver'];
+			 ?></td>
+			<td><?php 
+			if(strstr($row['type'],"system-"))
+				echo "Automated system message";
+			else
+				echo $row['senderName'];
+			 ?></td>
+			<td><?php echo $row['statusForSender'];
+			 ?></td>
+			<td><?php echo date($GLOBALS['timeFormat'],$row['time']);
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'view-any-message'.'/'.$row['id']; ?>">Read</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-any-message'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<?php }else{ ?>
+<br />
+There are no messages.
+<?php } ?>
+<br />

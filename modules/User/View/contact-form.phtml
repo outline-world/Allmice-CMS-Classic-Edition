@@ -1,0 +1,61 @@
+<?php 
+
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+
+<?php if(count($messages)==0){ ?>
+<?php
+
+if($contactData['contact_name']!=""){
+echo $lang['recipient']." ";
+echo $contactData['contact_name'];
+echo "<br />";
+}
+
+if($contactData['description']!=""){
+echo $contactData['description'];
+echo "<br />";
+}
+echo "<br />";
+
+echo $form->get('begin');
+
+if($userId==0){
+	echo "<div class=\"form-field\">";
+		echo $form->get('senderName');
+	echo "</div>\n";
+	echo "<div class=\"form-field\">";
+		echo $form->get('senderEmail');
+	echo "</div>\n";
+}
+echo "<div class=\"form-field\">";
+	echo $form->get('subject');
+echo "</div>\n";
+echo "<div class=\"form-field\">";
+	echo $form->get('message');
+echo "</div>\n";
+
+echo $captcha->formWidget;
+
+echo "<div class=\"form-field\">";
+	echo $form->get('send');
+echo "</div>\n";
+
+echo "<br />";
+echo "<br />";
+
+echo $form->get('end');
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+	}
+}
+
+ ?>

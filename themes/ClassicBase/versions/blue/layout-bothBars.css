@@ -1,0 +1,76 @@
+/* column container */
+.colmask {
+	position:relative;
+	clear:both;
+	float:left;
+	width:100%;
+	overflow:hidden;
+}
+
+.wrap .colmid {
+	float:left;
+	width:200%;
+	margin-left:-240px;        /* Width of right column */
+	position:relative;
+	right:100%;
+}
+.wrap .colleft {
+	float:left;
+	width:100%;
+	margin-left:-50%;
+	position:relative;
+	left:480px;         	/* Left column width + right column width */
+}
+.wrap .col1wrap {
+	float:left;
+	width:50%;
+	position:relative;
+	right:240px;        	/* Width of left column */
+	padding-bottom:1em; 	/* Centre column bottom padding. Leave it out if it's zero */
+}
+.wrap .col1 {
+	margin:0 255px;     	/* Centre column side padding:
+	                	Left padding = left column width + centre column left padding width
+	                	Right padding = right column width + centre column right padding width */
+	position:relative;
+	left:200%;
+	overflow:auto;
+}
+.wrap .col2 {
+	padding-top:14px;
+	float:left;
+	float:right;			/* This overrides the float:left above */
+	width:210px;        	/* Width of left column content (left column width minus left and right padding) */
+	position:relative;
+	right:15px;         	/* Width of the left-had side padding on the left column */
+}
+.wrap .col3 {
+	padding-top:14px;
+	float:left;
+	float:right;			/* This overrides the float:left above */
+	width:210px;        	/* Width of right column content (right column width minus left and right padding) */
+	margin-right:45px;  	/* Width of right column right-hand padding + left column left and right padding */
+	position:relative;
+	left:50%;
+}
+
+.wrap .colleft {
+	background:#FFFFFF;    	/* Left column background colour */
+	border-right: 2px solid #000055;	/* Border between left bar and center column */
+}
+.wrap .colmid {
+	background:#FFFFFF;	/* Centre column background colour */
+	border-right: 2px solid #000055;	/* Border between center column and right bar */
+}
+.wrap {
+	background:#FFFFFF;	/* Right column background colour */
+}
+
+/* --> */
+<!--[if lt IE 7]>
+<style media="screen" type="text/css">
+.col1 {
+	width:100%;
+}
+</style>
+<![endif]-->

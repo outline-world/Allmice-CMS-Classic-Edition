@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<?php
+	$mainStylePath=$GLOBALS['baseUrl']."/core/View/styles.css";
+ ?>
+
+<title><?php 
+if(isset($GLOBALS['titleTag'])){
+	echo $GLOBALS['titleTag'];
+}
+ ?>
+</title>
+
+<?php 
+if(isset($GLOBALS['metaTags']))
+	echo $GLOBALS['metaTags']; 
+ ?>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="<?php echo $mainStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
+
+<?php 
+if(isset($GLOBALS['scriptTags']))
+	echo $GLOBALS['scriptTags']; 
+
+if(isset($GLOBALS['headTags']))
+	echo $GLOBALS['headTags']; 
+ ?>
+
+<?php if(isset($GLOBALS['faviconPath'])){ ?>
+<link rel="shortcut icon" href="<?php echo $GLOBALS['faviconPath']; ?>">
+<?php }
+elseif(isset($GLOBALS['faviconImage'])){ ?>
+<?php echo $GLOBALS['faviconImage']; ?>
+<?php } ?>
+
+
+</head>
+
+<body id="html">
+
+	<div class="col1">
+		<?php /* Content column start */ ?>
+		<?php if (isset($Region['title'])) : ?>
+		<h1 class="title" id="page-title"><?php echo ($Region['title']); ?></h1>
+		<?php endif; ?>
+
+		<?php /* Content area */ ?>
+
+		<?php if (isset($Region['messageArea'])) : ?>
+		&nbsp;<br />
+		<div class="message-area">
+		<?php echo ($Region['messageArea']); ?>
+		</div>
+		<?php endif; ?>
+
+		<div class="content-cell">
+		<?php include $contentView; ?>
+		</div>
+
+	</div>
+
+	<div class="col2">
+		<?php /* Other column start */ ?>
+		<?php if (isset($Region['menuArea'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['menuArea']); ?>
+		</div>
+		<?php endif; ?>
+		<?php if (isset($Region['bar1Area'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['bar1Area']); ?>
+		</div>
+		<?php endif; ?>
+		<?php if (isset($Region['bar2Area'])) : ?>
+		<div class="sidebar">
+				<?php echo ($Region['bar2Area']); ?>
+		</div>
+		<?php endif; ?>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?php
+	$title = 'List TSV Set';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">System Manager module main links</a>
+<br />
+<br />
+<?php 
+if($note!=""){
+echo "<b>".$note."</b>";
+echo "<br>";
+echo "<br>";
+}
+
+ ?>
+Choose a table.
+<br />
+Choose column names of the table for filtering content. 
+<br />
+Choose values for the chosen column names to filter content. 
+<br />
+Entries, which exist in database for the chosen table, which match the chosen column name values, will be viewed on screen as a TSV table. 
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('tableNameList'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('tableNameList'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('keyFields'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('keyFields'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('keyValues'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('keyValues'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('outputString'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('outputString'); ?>
+	</div>
+<br />
+
+
+<div class="form-field">
+<?php echo $form->get('submit1'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>

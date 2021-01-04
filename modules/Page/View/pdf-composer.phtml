@@ -1,0 +1,92 @@
+<?php 
+
+$pageList=array();
+$styleData="";
+
+if(isset($GLOBALS['pdfData']['pageList'])){
+	$pageList=$GLOBALS['pdfData']['pageList'];
+}
+
+// create new PDF document
+$pdf = new CustomPdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+$styleData=$GLOBALS['pdfData']['mainStyles'];
+$styleData=$pdf->decodeData($styleData);
+
+// Process Allmice CMS configuration entry tcpdfVariousSettings 
+$pdf->setPdfSettings($config['viewPdfEvent']['tcpdfVariousSettings']);
+
+// set document information
+$pdf->SetCreator($GLOBALS['pdfData']['author']);
+$pdf->SetAuthor($GLOBALS['pdfData']['author']);
+$pdf->SetTitle($GLOBALS['pdfData']['title']);
+$pdf->SetSubject($GLOBALS['pdfData']['subject']);
+$pdf->SetKeywords($GLOBALS['pdfData']['keywords']);
+
+// set default header and footer data
+if($GLOBALS['pdfData']['displayMode']!="off"){
+
+	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, $GLOBALS['pdfData']['title'], $GLOBALS['pdfData']['headerText'], array(0,64,255), array(0,64,128));
+	$pdf->setFooterData(array(0,64,0), array(0,64,128));
+	
+	// set header and footer fonts
+	$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+}
+
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// set margins
+$pdf->SetMargins($GLOBALS['pdfData']['leftMargin'], $GLOBALS['pdfData']['topMargin'], $GLOBALS['pdfData']['rightMargin']);
+
+	// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, $GLOBALS['pdfData']['bottomMargin']);
+
+if($GLOBALS['pdfData']['displayMode']=="off"){
+// remove default header/footer
+	$pdf->setPrintHeader(false);
+	$pdf->setPrintFooter(false);
+}else{
+	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+}
+
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+    require_once(dirname(__FILE__).'/lang/eng.php');
+    $pdf->setLanguageArray($l);
+}
+
+// ---------------------------------------------------------
+
+// set default font subsetting mode
+$pdf->setFontSubsetting(true);
+
+//From TCPDF website:
+// Set font
+// dejavusans is a UTF-8 Unicode font, if you only need to
+// print standard ASCII chars, you can use core fonts like
+// helvetica or times to reduce file size.
+
+//==>To support other fonts, than standard, may need some extension for Allmice CMS -
+//   should be checked out from TCPDF web-examples or documentation.
+$pdf->SetFont($GLOBALS['pdfData']['fontFamily'], $GLOBALS['pdfData']['fontStyle'], $GLOBALS['pdfData']['fontSize'], '', true);
+
+for($i=0;$i<count($pageList);$i++){
+
+	$pageList[$i]=$styleData.$pageList[$i]."\n";
+	$pdf->AddPage();
+	$pdf->writeHTML($pageList[$i], true, false, true, false, '');
+
+}
+
+//Close and output PDF document
+ob_end_clean();
+$pdf->Output('pages.pdf', 'I');
+ 
+ ?>

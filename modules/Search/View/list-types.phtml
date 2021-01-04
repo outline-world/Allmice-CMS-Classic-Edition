@@ -1,0 +1,44 @@
+<?php
+	$title = 'List of Search Types';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-type'; ?>">Add</a>
+</p>
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Id</th>
+	    <th>Title</th>
+	    <th>Module name</th>
+	    <th>Search table field</th>
+	    <th>Search table</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['id'];
+			 ?></td>
+			<td><?php echo $row['title'];
+			 ?></td>
+			<td><?php echo $row['module_name'];
+			 ?></td>
+			<td><?php echo $row['search_table_field'];
+			 ?></td>
+			<td><?php echo $row['search_table'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-type'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-type'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

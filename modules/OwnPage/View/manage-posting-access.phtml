@@ -1,0 +1,71 @@
+
+
+<h1>
+<?php 
+echo $lang['title'];
+ ?></h1>
+<br />
+<?php if($id>0){ ?>
+<?php
+	if ($ownPage) {
+
+	echo $lang['intro'];
+	echo "<br>";
+	echo $lang['label1']." ".$pageDetails['title'];
+	echo "<br>";
+	echo $lang['label2']." ".$pageDetails['alias'];
+	echo "<br>";
+	echo "<br>";
+	echo "\n";
+
+?>
+
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $form->get('id'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('postingIntro'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('postingIntro'); ?>
+	</div>
+<div class="form-field">
+<?php 
+echo "<b>Posting access: </b>";
+	if($postData['type']==21){
+		echo "<label class=\"check-set\"><span>Posting enabled</span><input class=\"checkbox\" name=\"postingAccess[]\" type=\"checkbox\" value=\"postingAccessGranted\" checked=\"checked\"><span class=\"check-mark\"></span></label>";
+	}
+	else{
+		echo "<label class=\"check-set\"><span>Posting enabled</span><input class=\"checkbox\" name=\"postingAccess[]\" type=\"checkbox\" value=\"postingAccessGranted\"><span class=\"check-mark\"></span></label>";
+	}
+ ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('postingAccess'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('postStatus'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('postStatus'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php }else{ ?>
+<br />
+<?php 
+echo $lang['message1'];
+ ?>
+<?php } ?>
+
+<?php }else{ ?>
+<br />
+<?php 
+echo $lang['message1'];
+ ?>
+<?php } ?>

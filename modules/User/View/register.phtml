@@ -1,0 +1,36 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<?php
+if($status=="initial" || $status=="registered"){
+ ?>
+<?php
+	echo $form->get('begin');
+ ?>	
+	<div class="form-field">
+		<?php echo $form->get('username'); ?>
+	</div>
+	<div class="form-field">
+		<?php echo $form->get('password'); ?>
+	</div>
+	<div class="form-field">
+		<?php echo $form->get('password2'); ?>
+	</div>
+		<div class="guide">
+		<?php echo $form->getGuide('password2'); ?>
+		</div>
+	<div class="form-field">
+		<?php echo $form->get('email'); ?>
+	</div>
+<?php 
+echo $captcha->formWidget;
+ ?>
+	<div class="form-field">
+		<?php echo $form->get('register'); ?>
+	</div>
+<?php 
+ echo $form->get('end');
+}
+if($status=="newUser"){
+	echo $message[0];
+}
+ ?>

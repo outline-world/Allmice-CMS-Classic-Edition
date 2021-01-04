@@ -1,0 +1,63 @@
+<?php
+	$title = 'List Configuration Data';
+
+	$formMap=$form->formMap;
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Administrator menu</a>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-config'; ?>">Add</a>
+<br />
+<br />
+<?php echo $form->get('begin'); ?>
+
+<div class="field">
+<?php echo $form->get('modId'); ?>
+</div>
+<?php if(count($dataList)>0){ ?>
+<div class="field">
+<?php echo $form->get('typeId'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+<br />
+<br />
+
+<button id="btnShow" type="button">Show Description column</button> 
+<button id="btnHide" type="button">Hide Description column</button> 
+<br />
+<br />
+<table class="table">
+	<tr>
+
+	    <th>Description</th>
+	    <th>Module name</th>
+	    <th>Unique resource identifier (uri)</th>
+	    <th>Type</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo htmlspecialchars($row['description']);
+			 ?></td>
+			<td><?php echo $row['module_name'];
+			 ?></td>
+			<td><?php echo $row['uri'];
+			 ?></td>
+			<td><?php echo $row['type'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-config'.'/'.$row['id']; ?>">Delete</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-config'.'/'.$row['id']; ?>" target="_blank">Edit</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<?php }else{ ?>
+<br />
+Choose a module or all modules to manage configuration entries!
+<?php } ?>
+<br />

@@ -1,0 +1,64 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<div class="link">
+	<a href="<?php	
+	echo $GLOBALS['baseUrl']."/".$GLOBALS['modPath']."/add-page";
+	 ?>"><?php echo $lang['link1a']; ?></a>
+</div>
+<?php if (count($pageList)>0){ ?>
+<br />
+<button id="btnShow" type="button"><?php echo $lang['buttonShowCols']; ?></button> 
+<button id="btnHide" type="button"><?php echo $lang['buttonHideCols']; ?></button> 
+<br />
+<br />
+<b><?php echo $lang['tb1Title']; ?></b>
+
+<div style="width:100%">
+<table class="table">
+<tr>
+    <th><?php echo $lang['tb1PageTitle']; ?></th>
+    <th><?php echo $lang['tb1BodyStart']; ?></th>
+    <th><?php echo $lang['tb1Created']; ?></th>
+    <th><?php echo $lang['tb1Modified']; ?></th>
+    <th><?php echo $lang['tb1Status']; ?></th>
+    <th><?php echo $lang['tb1Creator']; ?></th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($pageList as $row) : ?>
+<tr>
+    <td><?php echo $row['title'];
+    ?></td>
+    <td><?php 
+    echo $row['bodyPart']."...";
+    ?></td>
+    <td><?php echo date($GLOBALS['dateFormat'],$row['created']);
+    ?></td>
+    <td><?php echo date($GLOBALS['dateFormat'],$row['edited']);
+    ?></td>
+    <td><?php echo $statusMap[($row['status'])];
+    ?></td>
+    <td><?php echo $row['creator'];
+    ?></td>
+    <td>
+        <a href="<?php
+        echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/edit-any-page/'.$row['id'];
+            ?>"><?php echo $lang['link2']; ?></a>
+         | <a href="<?php 
+        echo $GLOBALS['baseUrl']."/page/delete-any-page/".$row['id'];
+            ?>"><?php echo $lang['link3']; ?></a>
+         | <a href="<?php 
+        echo $GLOBALS['baseUrl']."/page/view/".$row['id'];
+            ?>" target="blank"><?php echo $lang['link4']; ?></a>
+         | <a href="<?php 
+        echo $GLOBALS['baseUrl'].''.$row['alias'];
+            ?>" target="blank"><?php echo $lang['link5']; ?></a>
+    </td>
+
+</tr>
+<?php endforeach; ?>
+</table>
+</div>
+<?php }else{ ?>
+<br />
+<?php echo $lang['message1']; ?>
+<?php } ?>

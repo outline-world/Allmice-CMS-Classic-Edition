@@ -1,0 +1,67 @@
+<?php
+	$title = 'List of Language Relations';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-pages'; ?>">List pages</a>
+<br />
+<br />
+Choose a module and language.
+<br />
+Relations, which exist in database for the chosen module and language will be viewed on screen as a table with links to edit or delete it. 
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+
+<div class="form-field">
+<?php echo $form->get('modId'); ?>
+</div>
+<br />
+
+<div class="form-field">
+<?php echo $form->get('langId'); ?>
+</div>
+<br />
+
+<?php echo $form->get('end'); ?>
+
+<?php if(count($dataList)>0){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Language code</th>
+	    <th>Translated page (child) title</th>
+	    <th>Main page (parent) title</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['langCode'];
+			 ?></td>
+			<td><?php echo $row['childTitle'];
+			 ?></td>
+			<td><?php echo $row['parentTitle'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-relation'.'/'.$row['id']; ?>" target="_blank">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-relation'.'/'.$row['id']; ?>" target="_blank">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />
+<?php 
+}
+else{
+ ?>
+No relations were found.
+<?php 
+}
+ ?>

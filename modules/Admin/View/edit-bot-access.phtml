@@ -1,0 +1,33 @@
+<?php
+$title = 'Edit an Existing Bot Access';
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-bot-access-resources'; ?>">Show list of bot access resources!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+Uri: <?php echo $accessData['uri']; ?>
+<br />
+Specific name: <?php echo $accessData['specName']; ?>
+<br />
+Module name: <?php echo $accessData['modName']; ?>
+<br />
+<div class="form-field">
+<?php echo $form->get('level'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

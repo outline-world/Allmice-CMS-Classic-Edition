@@ -1,0 +1,30 @@
+<?php
+$title = 'Close Archive';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/open-archive'; ?>">Open another archive</a>
+<br />
+<br />
+
+Here you can close any possible open archive - this means clear archive database tables.
+<br />
+
+<?php if($cleared){ ?>
+<p>The archive database tables were cleared.<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure that you want to clear the archive database tables?<br />
+
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Yes" />
+    <input type="submit" name="del" value="No" />
+</div>
+</form>
+
+<?php } ?>

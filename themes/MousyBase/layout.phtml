@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="<?php echo $GLOBALS['langCode']; ?>" dir="<?php echo $GLOBALS['langDirection']; ?>">
+<head>
+
+<?php
+$isMobile = (bool)preg_match('#\b(ip(hone|od)|android\b.+\bmobile|opera m(ob|in)i|windows (phone|ce)|blackberry'.
+                    '|s(ymbian|eries60|amsung)|p(alm|rofile/midp|laystation portable)|nokia|fennec|htc[\-_]'.
+                    '|up\.browser|[1-4][0-9]{2}x[1-4][0-9]{2})\b#i', $_SERVER['HTTP_USER_AGENT'] );
+
+//$isMobile=true;
+$fileSysAbsPath=$_SERVER["DOCUMENT_ROOT"].$GLOBALS['pathData']['base'];
+if($isMobile){
+	$layoutMiddleArea=$fileSysAbsPath."/themes/MousyBase/layout-mobile.phtml";
+	$layoutHeader=$fileSysAbsPath."/themes/MousyBase/layout-mobile-header.phtml";
+	$layoutStylePath=$GLOBALS['baseUrl']."/themes/MousyBase/css/layout-mobile.css";
+	$mainStylePath=$GLOBALS['baseUrl']."/themes/MousyBase/css/main-styles.css";
+	$mobileStylePath=$GLOBALS['baseUrl']."/themes/MousyBase/css/mobile-styles.css";
+}
+else{
+	$layoutMiddleArea=$fileSysAbsPath."/themes/MousyBase/layout-leftBar.phtml";
+	$layoutHeader=$fileSysAbsPath."/themes/MousyBase/layout-main-header.phtml";
+	$mainStylePath=$GLOBALS['baseUrl']."/themes/MousyBase/css/main-styles.css";
+	$mobileStylePath="";
+}
+ ?>
+
+<title><?php 
+if(isset($GLOBALS['titleTag'])){
+	echo $GLOBALS['titleTag'];
+}
+ ?>
+</title>
+
+<?php 
+if(isset($GLOBALS['metaTags']))
+	echo $GLOBALS['metaTags']; 
+ ?>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php 
+
+if(isset($GLOBALS['scriptTags']))
+	echo $GLOBALS['scriptTags']; 
+if(isset($GLOBALS['headTags']))
+	echo $GLOBALS['headTags']; 
+ ?>
+
+<?php if(isset($layoutStylePath) && $layoutStylePath!=""){ ?>
+<link href="<?php echo $layoutStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
+<?php } ?>
+<link href="<?php echo $mainStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
+<?php if(isset($mobileStylePath) && $mobileStylePath!=""){ ?>
+<link href="<?php echo $mobileStylePath; ?>" media="screen" rel="stylesheet" type="text/css">
+<?php } ?>
+
+<?php if(isset($GLOBALS['faviconPath'])){ ?>
+<link rel="shortcut icon" href="<?php echo $GLOBALS['faviconPath']; ?>">
+<?php }
+elseif(isset($GLOBALS['faviconImage'])){ ?>
+<?php echo $GLOBALS['faviconImage']; ?>
+<?php } ?>
+
+</head>
+
+<body>
+<?php 
+if(isset($GLOBALS['otherTags1']))
+	echo $GLOBALS['otherTags1']; 
+ ?>
+
+<?php 
+	include ($layoutHeader);
+ ?>
+
+<div class="middle-area">
+<?php 
+	include ($layoutMiddleArea);
+ ?>
+</div>
+
+<?php 
+if (isset($Region['consentArea']) && $Region['consentArea']!="") : ?>
+
+<div class="gap">
+</div>
+<div class="footer-area-set">
+	<?php if (isset($Region['footerArea'])) : ?>
+	<div class="footer-area">
+      <div class="footer-cell">
+        <?php echo ($Region['footerArea']); ?>
+      </div>
+	</div>
+	<?php endif; ?>
+	<div class="consent-area">
+        <?php echo ($Region['consentArea']); ?>
+	</div>
+</div>
+<?php else: ?>
+	<div class="footer-area">
+      <div class="footer-cell">
+        <?php echo ($Region['footerArea']); ?>
+      </div>
+	</div>
+<?php endif; ?>
+
+<?php 
+if(isset($GLOBALS['otherTags2']))
+	echo $GLOBALS['otherTags2']; 
+ ?>
+</body>
+</html>

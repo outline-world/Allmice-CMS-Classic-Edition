@@ -1,0 +1,63 @@
+<?php
+	$title = 'List of Menu Items';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add-menu-item/'.$menuId; ?>">Add a menu item</a>
+&nbsp;|&nbsp;
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Menu module main links</a>
+&nbsp;|&nbsp;
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'list-menus'; ?>">List menus</a>
+</p>
+<br />
+To add a menu item, you should first choose, which menu is it related to. Click on 'List menus' link and add an item through the link at the end of the row of your chosen menu.
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('menuList'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<br />
+	<?php if (count($dataList)>0){ ?>
+
+<table class="table">
+	<tr>
+
+	    <th>Human readable label for menu item</th>
+	    <th>URL, where this menu item is linking to</th>
+	    <th>Order of the item in the menu structure</th>
+	    <th>Depth for the item in the menu structure</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['label'];
+			 ?></td>
+			<td><?php echo $row['uri'];
+			 ?></td>
+			<td><?php echo $row['weight'];
+			 ?></td>
+			<td><?php echo $row['depth'];
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-menu-item'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-menu-item'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+	<?php }else{ ?>
+There are no menu items.
+	<?php } ?>
+<br />

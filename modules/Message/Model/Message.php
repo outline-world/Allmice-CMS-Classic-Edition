@@ -1,0 +1,348 @@
+<?php
+
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
+
+	require 'modules/Message/config/vendor/PHPMailer/src/Exception.php';
+	require 'modules/Message/config/vendor/PHPMailer/src/PHPMailer.php';
+	require 'modules/Message/config/vendor/PHPMailer/src/SMTP.php';
+
+class Message
+{
+
+	public $id;
+
+	public $username;
+	public $time;
+	public $receiverName;
+	public $receiverEmail;
+	public $senderName;
+	public $senderEmail;
+	public $subject;
+	public $content;
+	public $status;
+	public $statusForReceiver;
+	public $statusForSender;
+	public $senderId;
+	public $receiverId;
+	public $type;
+	public $parentId;
+
+	public function formatOrigin($mesData)
+	{
+
+		$origin="";
+		if(count($mesData)>0){
+
+			$mesData['content']=str_replace("<br />\n","\n",$mesData['content']);
+			$mesData['content']=str_replace("<br />","\n",$mesData['content']);
+
+			$origin.="\n\n--------------------\n";
+			$origin.="On ".date($GLOBALS['timeFormat'],$mesData['time']).", ".$mesData['senderName']." wrote:\n";
+			$origin.="Subject: ".$mesData['subject']."\n";
+			$origin.="Content: \n";
+			$origin.=$mesData['content']."\n";
+		}
+		return $origin;
+
+	}
+
+	public function formatContent($mesData)
+	{
+
+		$origin="";
+		if(count($mesData)>0){
+
+			$mesData['content']=str_replace("<br />\n","\n",$mesData['content']);
+			$mesData['content']=str_replace("<br />","\n",$mesData['content']);
+
+		}
+		return $mesData['content'];
+
+	}
+
+	public function convertFormData($data)
+	{
+
+		$this->username = (isset($data['username'])) ? $data['username'] : '';
+		$this->time = (isset($data['time'])) ? $data['time'] : '';
+		$this->receiverName = (isset($data['receiverName'])) ? $data['receiverName'] : '';
+
+		$this->receiverEmail = (isset($data['receiverEmail'])) ? $data['receiverEmail'] : '';
+		$this->senderName = (isset($data['senderName'])) ? $data['senderName'] : '';
+		$this->senderEmail = (isset($data['senderEmail'])) ? $data['senderEmail'] : '';
+		$this->subject = (isset($data['subject'])) ? $data['subject'] : '';
+		$this->content = (isset($data['content'])) ? $data['content'] : '';
+		$this->status = (isset($data['status'])) ? $data['status'] : '';
+		$this->statusForReceiver = (isset($data['statusForReceiver'])) ? $data['statusForReceiver'] : '';
+		$this->statusForSender = (isset($data['statusForSender'])) ? $data['statusForSender'] : '';
+
+		$this->senderId = (isset($data['senderId'])) ? $data['senderId'] : 0;
+		$this->receiverId = (isset($data['receiverId'])) ? $data['receiverId'] : 0;
+
+		$this->type = (isset($data['type'])) ? $data['type'] : "";
+		$this->parentId = (isset($data['parentId'])) ? $data['parentId'] : 0;
+
+	}
+
+	public function convertDbData($data)
+	{
+
+		$this->username = (isset($data['username'])) ? $data['username'] : '';
+		$this->time = (isset($data['time'])) ? $data['time'] : '';
+
+		if(!isset($data['receiverName']) || $data['receiverName']==""){
+			$this->receiverName = (isset($data['receiverName'])) ? $data['receiverName'] : '';
+		}
+		else{
+			$this->receiverName = (isset($data['recipientName'])) ? $data['recipientName'] : '';
+		}
+		$this->receiverEmail = (isset($data['receiverEmail'])) ? $data['receiverEmail'] : '';
+		$this->uri = (isset($data['senderName'])) ? $data['senderName'] : '';
+		$this->senderEmail = (isset($data['sender_email_address'])) ? $data['sender_email_address'] : '';
+		$this->subject = (isset($data['subject'])) ? $data['subject'] : '';
+		$this->content = (isset($data['content'])) ? $data['content'] : '';
+		$this->status = (isset($data['status'])) ? $data['status'] : '';
+		$this->statusForReceiver = (isset($data['status_for_receiver'])) ? $data['status_for_receiver'] : '';
+		$this->statusForSender = (isset($data['status_for_sender'])) ? $data['status_for_sender'] : '';
+
+		$this->senderId = (isset($data['sender_user_id'])) ? $data['sender_user_id'] : 0;
+		$this->receiverId = (isset($data['receiver_user_id'])) ? $data['receiver_user_id'] : 0;
+
+		$this->type = (isset($data['type'])) ? $data['type'] : "";
+		$this->parentId = (isset($data['parent_id'])) ? $data['parent_id'] : 0;
+
+	}
+
+	public function getIP() { 
+		$ip; 
+		if (getenv("HTTP_CLIENT_IP")) 
+			$ip = getenv("HTTP_CLIENT_IP"); 
+		else if(getenv("HTTP_X_FORWARDED_FOR")) 
+			$ip = getenv("HTTP_X_FORWARDED_FOR"); 
+		else if(getenv("REMOTE_ADDR")) 
+			$ip = getenv("REMOTE_ADDR"); 
+		else 
+			$ip = "UNKNOWN";
+		return $ip; 
+	}
+
+	public function getMesData($receiverData, $authData, $appDb, $mesCode)
+	{
+		$mesData=array();
+
+			$mesTemplate=$appDb->getMesTemplate($mesCode);
+
+			$mesSubject=$mesTemplate['subject'];
+			$mesContentHtml=$mesTemplate['content_html'];
+			$mesContentPlain=$mesTemplate['content_plain'];
+
+			$senderData['email']=$authData['username'];
+
+			$senderData['name']=$_SESSION[($GLOBALS['siteId'])]['userData']['name'];
+			$replyData['email']=$authData['username'];
+			$replyData['name']=$GLOBALS['siteName'];
+
+			$mesData['auth']=$authData;
+			$mesData['receiver']=$receiverData;
+			$mesData['sender']=$senderData;
+			$mesData['reply']=$replyData;
+
+			if($mesCode=='verifyEmail'){
+				$activationLink=$GLOBALS['baseUrl']."/user/verify-email/".$this->verifyingCode;
+				$activationLinkHtml="<a href=\"".$activationLink."\">".$activationLink."</a>";
+
+				$mesContentHtml=str_replace("[activationLink]",$activationLinkHtml,$mesContentHtml);
+				$mesContentPlain=str_replace("[activationLink]",$activationLink,$mesContentPlain);
+			}
+
+			$mesSubject=str_replace("[websiteName]","\"".$GLOBALS['siteName']."\"",$mesSubject);
+			$mesContentHtml=str_replace("[websiteName]","\"".$GLOBALS['siteName']."\"",$mesContentHtml);
+			$mesContentPlain=str_replace("[websiteName]","\"".$GLOBALS['siteName']."\"",$mesContentPlain);
+
+			$mesSubject=str_replace("[username]",$this->username,$mesSubject);
+			$mesContentHtml=str_replace("[username]",$this->username,$mesContentHtml);
+			$mesContentPlain=str_replace("[username]",$this->username,$mesContentPlain);
+
+			$mesContentHtml=str_replace("[baseUrl]",$GLOBALS['baseUrl'],$mesContentHtml);
+			$mesContentPlain=str_replace("[baseUrl]",$GLOBALS['baseUrl'],$mesContentPlain);
+
+			$contactLink=$GLOBALS['baseUrl']."/user/contact-form/1";
+			$contactLinkHtml="<a href=\"".$contactLink."\">".$contactLink."</a>";
+			$mesContentHtml=str_replace("[contactLink]",$contactLink,$mesContentHtml);
+			$mesContentPlain=str_replace("[contactLink]",$contactLink,$mesContentPlain);
+
+			$mesContentHtml=str_replace("&amp;#39;","'",$mesContentHtml);
+			$mesContentPlain=str_replace("&amp;#39;","'",$mesContentPlain);
+
+			$mesContentHtml=str_replace("\n","<br />\n",$mesContentHtml);
+
+			$mesData['message']['subject']=$mesSubject;
+			$mesData['message']['content']['html']=$mesContentHtml;
+			$mesData['message']['content']['plain']=$mesContentPlain;
+
+		return $mesData;
+	}
+
+	public function sendMessage($mesData)
+	{
+
+		$lang=$this->getPhrases('sendMessage');
+
+		$auth['host']=$mesData['auth']['host'];
+		$auth['port']=$mesData['auth']['port'];
+		$auth['username']=$mesData['auth']['username'];
+		$auth['password']=$mesData['auth']['password'];
+
+		date_default_timezone_set($mesData['timezone']);
+
+		$subject=$mesData['message']['subject'];
+		$contentHtml=$mesData['message']['content']['html'];
+		$contentPlain=$mesData['message']['content']['plain'];
+
+		$mail = new PHPMailer();
+
+		$resMes="";
+
+		try {
+
+			$mail->isSMTP();
+
+			$mail->Host = $auth['host'];
+
+			if(isset($auth['port']) && $auth['port']==587){
+
+				$mail->Port = $auth['port'];
+
+				$mail->SMTPSecure = 'tls';
+
+			}
+
+			$mail->SMTPAuth = true;     
+
+			$mail->Username = $auth['username'];  
+			$mail->Password = $auth['password']; 
+
+			$mail->setFrom($mesData['sender']['email'], $mesData['sender']['name']);
+
+			$mail->AddAddress($mesData['receiver']['email'], $mesData['receiver']['name']);
+
+//			$mail->WordWrap = 50;
+
+			$mail->IsHTML(true);
+
+			$mail->Subject = $subject;
+//$mail->msgHTML($contentHtml);
+			$mail->Body = $contentHtml;
+			$mail->AltBody = $contentPlain;
+
+			$mail->CharSet = $GLOBALS['emailEncoding']['charSet'];
+			$mail->Encoding = $GLOBALS['emailEncoding']['binaryToText'];
+
+			if($GLOBALS['emailDkim']['domainName']!=""){
+				$mail->DKIM_domain = $GLOBALS['emailDkim']['domainName'];
+				//$mail->DKIM_private = dirname(__FILE__).’/key.private’; // Make sure to protect the key from being publicly accessible!
+				$mail->DKIM_private = $GLOBALS['emailDkim']['privateKeyPath'];
+				$mail->DKIM_selector = $GLOBALS['emailDkim']['selector'];
+				$mail->DKIM_passphrase = $GLOBALS['emailDkim']['passphrase'];
+
+				if($GLOBALS['emailDkim']['identity']=="")
+					$mail->DKIM_identity = $mail->From;
+				else
+					$mail->DKIM_identity = $GLOBALS['emailDkim']['identity'];
+			}
+
+			if(!$mail->send())
+			{
+				$resMes=$lang['error'];
+			}else{
+				$resMes=$lang['messageSent'];
+			}
+
+
+		} catch (phpmailerException $e) {
+
+			$resMes=$lang['confProblem'];
+
+		}
+
+		return $resMes;
+
+	}
+
+	public function replaceTokens($mesData,$message)
+	{
+
+		$urlListMessages=$GLOBALS['baseUrl']."/message/list-messages";
+		$urlAddBlocking=$GLOBALS['baseUrl']."/message/add-user-blocking";
+
+		$mesData['message']['subject']=str_replace("[memberName]",$message->senderName,$mesData['message']['subject']);
+		$mesData['message']['content']['html']=str_replace("[memberName]",$message->senderName,$mesData['message']['content']['html']);
+		$mesData['message']['content']['plain']=str_replace("[memberName]",$message->senderName,$mesData['message']['content']['plain']);
+
+		$mesData['message']['subject']=str_replace("[messageSubject]",$message->subject,$mesData['message']['subject']);
+
+		$mesData['message']['content']['html']=str_replace("[listMessages]",$urlListMessages,$mesData['message']['content']['html']);
+		$mesData['message']['content']['html']=str_replace("[addUserBlocking]",$urlAddBlocking,$mesData['message']['content']['html']);
+		$mesData['message']['content']['plain']=str_replace("[listMessages]",$urlListMessages,$mesData['message']['content']['plain']);
+		$mesData['message']['content']['plain']=str_replace("[addUserBlocking]",$urlAddBlocking,$mesData['message']['content']['plain']);
+
+		$mesData['message']['content']['html']=str_replace("[messageContent]",$message->content,$mesData['message']['content']['html']);
+		$mesData['message']['content']['plain']=str_replace("[messageContent]",$message->content,$mesData['message']['content']['plain']);
+
+		$mesContentHtml=$mesData['message']['content']['html'];
+		$mesContentPlain=$mesData['message']['content']['plain'];
+
+		$mesData['message']['content']['html']=$mesContentHtml;
+		$mesData['message']['content']['plain']=$mesContentPlain;
+
+		return $mesData;
+	}
+
+	public function setSessNoteSet($noteList,$class)
+	{
+
+		$noteBlock="";
+		if(count($noteList)>0){
+
+			$noteBlock.=("<div class=\"".$class."\">");
+			for ($i=0;$i<count($noteList);$i++) {
+				$noteBlock .= $noteList[$i];
+				if($i<(count($noteList)-1))
+					$noteBlock.="<br/>";
+
+			}
+			$noteBlock.="</div>\n";
+
+			$_SESSION[($GLOBALS['siteId'])]['messageList'][]=$noteBlock;
+		}
+
+	}
+
+	public function getPhrases($specName)
+	{
+
+		$dbId=$GLOBALS['db']['id'];
+		$tablePrefix=$GLOBALS['db']['tablePrefix'];
+
+		$langData=array();
+
+		$sqlString="SELECT uri, text";
+		$sqlString.=" FROM ".$tablePrefix."core_language";
+		$sqlString.=" WHERE module_name = 'Message'";
+		if($specName!="")
+			$sqlString.=" AND specific_name LIKE '".$specName."'";
+
+		$stmt = $dbId->prepare($sqlString);
+		$stmt->execute();
+		$resultSet = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($resultSet as $row) {
+			$langData[($row['uri'])] = $row['text'];
+		}
+
+		return $langData;
+
+	}
+
+}

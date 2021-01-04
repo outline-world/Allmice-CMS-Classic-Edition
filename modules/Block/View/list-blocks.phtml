@@ -1,0 +1,54 @@
+<?php
+	$title = 'List of Blocks';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+
+<p>
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'add'; ?>">Add</a>
+</p>
+<br />
+
+<table class="table">
+	<tr>
+
+	    <th>Id</th>
+	    <th>Block name (code)</th>
+	    <th>Language code</th>
+	    <th>Region code</th>
+	    <th>Rank</th>
+	    <th>Building module</th>
+	    <th>Status</th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['id'];
+			 ?></td>
+			<td><?php echo $row['block_code'];
+			 ?></td>
+			<td><?php echo $row['language_code'];
+			 ?></td>
+			<td><?php echo $row['region_code'];
+			 ?></td>
+			<td><?php echo $row['rank'];
+			 ?></td>
+			<td><?php echo $row['building_module'];
+			 ?></td>
+			<td><?php
+if($row['status']==0)
+			 echo "Passive (not in use)";
+else
+			 echo "Active (in use)";
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit'.'/'.$row['id']; ?>">Edit</a>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete'.'/'.$row['id']; ?>">Delete</a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<br />

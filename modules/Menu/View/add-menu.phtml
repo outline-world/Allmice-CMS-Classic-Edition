@@ -1,0 +1,92 @@
+<?php
+$title = 'Add a New Menu';
+
+?>
+
+<h1><?php echo $title; ?></h1>
+<br />
+<p>
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menus'; ?>">Show list of Menus!</a>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-menu-items'; ?>">Show list of Menu items!</a>
+</p>
+<br />
+<?php if($saved){ ?>
+Menu with the following details was created:
+<br />
+Menu title: "<?php echo $menu->title; ?>"
+<br />
+Menu code: "<?php echo $menu->code; ?>"
+<br />
+This menu can be displayed by default using Menu module view method.
+<br />
+To show this menu as a block menu in a theme's region for all pages, you should add a block for this menu.
+<br />
+<br />
+If Block module is installed, then it is easy to add such a block by:
+<br />
+1) Copying above mentioned Menu code
+<br />
+2) Going to following link (link opens in another window): 
+<a href="<?php echo $GLOBALS['baseUrl'].'/block/add'; ?>" target="_blank">Add block!</a>
+<br />
+3) Pasting above mentioned Menu code into field "Block code".
+<br />
+Rest of the fields there can have default values or you can change them, if you wish and if you know why you are changing them.
+<br />
+Most likely you wish to change also the field "Access right for roles" to determine for which roles the new block will be displayed. 
+<br />
+4) After clicking submit button ("Save" or however it is called there), the new menu will appear in the block's region, if it has items.
+<br />
+5) Start to add items for the new menu by using link (link opens in another window):
+ <a href="<?php echo $GLOBALS['baseUrl'].'/menu/add-menu-item/'.$menu->id; ?>" target="_blank">Add menu item!</a>
+<br />
+
+<?php }else{ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('code'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('code'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('title'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('title'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('type'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('type'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('roleAccess'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('roleAccess'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('caching'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('caching'); ?>
+	</div>
+<br />
+<div class="form-field">
+<?php echo $form->get('saveMenu'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php } ?>

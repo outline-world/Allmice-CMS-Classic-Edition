@@ -1,0 +1,76 @@
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/add-any-email-address'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+	<?php if (count($dataList)>0){ ?>
+<?php echo $form->get('begin'); ?>
+<div class="form-field">
+<?php echo $paginator->formWidget; ?>
+</div>
+<?php echo $form->get('end'); ?>
+<?php 
+$lang['entriesCount']=str_replace("[allEntries]","".($paginator->noOfAllItems),$lang['entriesCount']);
+	echo $lang['entriesCount'];
+ ?>
+	<br />
+<?php 
+if($paginator->formWidget!=""){
+$lang['paginStatus']=str_replace("[curPage]","".($paginator->currentPage+1),$lang['paginStatus']);
+$lang['paginStatus']=str_replace("[allPages]","".($paginator->lastPage+1),$lang['paginStatus']);
+	echo $lang['paginStatus'];
+	echo "<br />\n";
+}
+ ?>
+<table class="table">
+	<tr>
+
+	    <th><?php echo $lang['tb1ColUsername']; ?></th>
+	    <th><?php echo $lang['tb1ColEmail']; ?></th>
+	    <th><?php echo $lang['tb1ColQuestion']; ?></th>
+	    <th><?php echo $lang['tb1ColStatus']; ?></th>
+
+	    <th>&nbsp;</th>
+	</tr>
+	<?php foreach ($dataList as $row) : ?>
+		<tr>
+
+			<td><?php echo $row['username'];
+			 ?></td>
+			<td><?php 
+			if($row['email_address']==$row['main_email'])
+				echo $lang['message2']."<br />";
+			echo $row['email_address'];
+			 ?></td>
+			<td><?php 
+			echo $row['mem_word_question'];
+			 ?></td>
+			<td><?php 
+			switch($row['status']){
+				case "verified":
+				$statusValue=$lang['statusOption1'];
+				break;
+				case "created":
+				$statusValue=$lang['statusOption0'];
+				break;
+				case "created-recent":
+				$statusValue=$lang['statusOption2'];
+				break;
+				default:
+				$statusValue="";
+			}
+			echo $statusValue;
+			 ?></td>
+
+			<td>
+				<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'edit-any-email-address'.'/'.$row['id']; ?>"><?php echo $lang['link2']; ?></a>
+				| <a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/'.'delete-any-email-address'.'/'.$row['id']; ?>"><?php echo $lang['link3']; ?></a>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+<?php echo $form->get('end'); ?>
+	<?php }else{ ?>
+<?php echo $lang['message1']; ?>
+	<?php } ?>

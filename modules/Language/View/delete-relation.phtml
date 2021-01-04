@@ -1,0 +1,38 @@
+<?php
+$title = 'Delete Language Relation';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-relations'; ?>">Show list of relations!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The relation with following details was deleted:<br />
+    translated page title: '<?php echo $relationData['childTitle']; ?>'<br />
+    main page title: '<?php echo $relationData['parentTitle']; ?>'<br />
+    language code: '<?php echo $item->langCode; ?>'<br />
+</p>
+<?php }else{ ?>
+<p>Are you sure, that you wish to delete the relation with following details?<br />
+<br />
+Relation details are: <br />
+    translated page title: '<?php echo $relationData['childTitle']; ?>'<br />
+    main page title: '<?php echo $relationData['parentTitle']; ?>'<br />
+    language code is: '<?php echo $item->langCode; ?>'<br />
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Delete this relation!" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

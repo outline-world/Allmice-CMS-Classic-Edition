@@ -1,0 +1,56 @@
+<?php 
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-all-contact-forms'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($messages)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('contactName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('contactName'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('emailId'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('emailId'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('description'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('description'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+		echo "<br />";
+	}
+}
+ ?>

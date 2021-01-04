@@ -1,0 +1,40 @@
+<?php
+$title = 'Edit an Existing User';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-users'; ?>">Show list of Users!</a>
+<br />
+<br />
+<?php if($id>0){ ?>
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('username'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('password'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('eMail'); ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('userStatus'); ?>
+</div>
+<div class="form-field">
+<?php 
+echo $form->get('mainRole');
+ ?>
+</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

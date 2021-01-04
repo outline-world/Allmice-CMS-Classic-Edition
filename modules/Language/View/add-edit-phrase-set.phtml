@@ -1,0 +1,39 @@
+<?php
+$title = 'Add or Edit a Phrase Set';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Language module main links</a>
+<br />
+<br />
+Input - prepare phrases as a TSV table (in a spreadsheet program or otherwise).
+<br />
+Copy TSV table to corresponding form field element.
+<br />
+Phrases which are not existing in database, will be inserted there, existing phrases will be updated with new text.
+<br />
+Sql insert query string (without table prefix) will be displayed on screen as output.  
+<br />
+<br />
+This TSV (tab separated values) format presumes, that columns are separated by tabs and strings have no (double) quotes.
+<br />
+Whitespace characters will be removed from beginning and end of strings.
+<br />
+First line must be header line with table field names (except field id) as follows:
+<br />
+language_code	type	module_name	specific_name	uri	text
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php echo $form->get('phraseSet'); ?>
+<br />
+
+<?php echo $form->get('outputString'); ?>
+<br />
+
+<?php echo $form->get('save'); ?>
+
+<?php echo $form->get('end'); ?>

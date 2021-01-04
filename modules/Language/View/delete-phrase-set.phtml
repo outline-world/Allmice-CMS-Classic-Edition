@@ -1,0 +1,34 @@
+<?php
+$title = 'Delete a Phrase Set';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath']; ?>">Language module main links</a>
+<br />
+<br />
+Input - prepare phrases as a TSV table (in a spreadsheet program or otherwise).
+<br />
+Copy TSV table to corresponding form field element.
+<br />
+Phrases which are existing in database according to the inserted details will be deleted.
+<br />
+<br />
+This TSV (tab separated values) format presumes, that columns are separated by tabs.
+<br />
+First line must be header line with table field names as follows:
+<br />
+language_code	type	module_name	specific_name	uri
+<br />
+If the first line is different, than that, then nothing will be deleted.
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<?php echo $form->get('phraseSet'); ?>
+<br />
+
+<?php echo $form->get('submit1'); ?>
+
+<?php echo $form->get('end'); ?>

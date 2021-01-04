@@ -1,0 +1,85 @@
+<?php 
+$messages=array();
+if($id<=0){
+	$messages[]=$lang['message1'];
+}
+switch($form->formMap['status']['value']){
+	case "verified":
+	$statusValue=$lang['statusOption1'];
+	break;
+	case "created":
+	$statusValue=$lang['statusOption0'];
+	break;
+	case "created-recent":
+	$statusValue=$lang['statusOption2'];
+	break;
+	default:
+	$statusValue="";
+}
+
+ ?>
+
+<h1><?php echo $lang['title']; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-all-email-addresses'; ?>"><?php echo $lang['link1']; ?></a>
+</div>
+<br />
+
+<?php if(count($messages)==0){ ?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('emailAddress'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('emailAddress'); ?>
+	</div>
+<?php
+ if($hasContactForms){
+ ?>
+<div class="form-field">
+<?php echo $lang['message2']." ".$statusValue.$lang['message3']; ?>
+</div>
+<br />
+<?php }else{ ?>
+<div class="form-field">
+<?php echo $form->get('status'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('status'); ?>
+	</div>
+<?php } ?>
+<div class="form-field">
+<?php echo $form->get('memWordQuestion'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('memWordQuestion'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('memWord'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('memWord'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('comment'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('comment'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
+
+<?php
+}else{
+	foreach ($messages as $message) {
+		echo $message;
+		echo "<br />";
+	}
+}
+ ?>

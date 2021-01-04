@@ -1,0 +1,43 @@
+<?php
+$title = 'Delete Phrase';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-phrases'; ?>">Show list of phrases!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+<?php if($deleted){ ?>
+<p>The phrase with following details was deleted:<br />
+    uri: '<?php echo $item->uri; ?>'<br />
+    module name: '<?php echo $item->moduleName; ?>'<br />
+    specific name: '<?php echo $item->specificName; ?>'<br />
+    type: '<?php echo $typeSet[($item->type)]; ?>'<br />
+    language code: '<?php echo $item->langCode; ?>'<br />
+
+</p>
+<?php }else{ ?>
+<p>Are you sure, that you wish to delete the phrase with following details?<br />
+<br />
+Phrase details are: <br />
+    uri is: '<?php echo $item->uri; ?>'<br />
+    module name is: '<?php echo $item->moduleName; ?>'<br />
+    specific name is: '<?php echo $item->specificName; ?>'<br />
+    type is: '<?php echo $typeSet[($item->type)]; ?>'<br />
+    language code is: '<?php echo $item->langCode; ?>'<br />
+</p>
+<br />
+<form action="<?php echo $GLOBALS['curUrl']; ?>" method="post">
+<div>
+    <input type="hidden" name="id" value="<?php echo (int) $id; ?>" />
+    <input type="submit" name="del" value="Delete this phrase!" />
+</div>
+</form>
+<?php } ?>
+<?php }else{
+		foreach ($messages as $message) {
+			echo $message;
+			echo "<br />";
+		}
+ } ?>

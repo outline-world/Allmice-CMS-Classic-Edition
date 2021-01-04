@@ -1,0 +1,44 @@
+<h1><?php echo $lang['title']; ?></h1>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+
+<?php
+	if (strstr($accessRight,"#pageOwner#") || strstr($accessRight,"#postOwner#")) {
+?>
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+<div class="form-field">
+<?php echo $form->get('postContent'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('postContent'); ?>
+	</div>
+
+<?php
+	if (strstr($accessRight,"#pageOwner#")) {
+?>
+
+<div class="form-field">
+<?php echo $form->get('postStatus'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('postStatus'); ?>
+	</div>
+<?php } ?>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php
+	}else{
+		echo $lang['message1'];
+	}
+?>
+<?php }else{ ?>
+<?php echo $lang['message2']; ?>
+<?php } ?>

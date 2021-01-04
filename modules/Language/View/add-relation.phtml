@@ -1,0 +1,50 @@
+<?php
+$title = 'Add a New Relation';
+?>
+<h1><?php echo $title; ?></h1>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-pages'; ?>">Show list of pages!</a>
+<br />
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-relations'; ?>">Show list of relations!</a>
+<br />
+<br />
+
+<?php if($id>0){ ?>
+
+<?php 
+echo "Translated page (descendant) title: ";
+echo $pageDetails['title'];
+
+ ?>
+<br />
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('parentId'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('parentId'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('langCode'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('langCode'); ?>
+	</div>
+
+<div class="form-field">
+<?php echo $form->get('save'); ?>
+</div>
+<?php echo $form->get('end'); ?>
+
+<?php }else{
+			foreach ($messages as $message) {
+				echo $message;
+				echo "<br />";
+
+			}
+		}
+  ?>

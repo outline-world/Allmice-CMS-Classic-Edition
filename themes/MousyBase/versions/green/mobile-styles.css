@@ -1,0 +1,242 @@
+.header-line-set {
+}
+.header-line {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+	float: left;
+}
+
+.lang-space-wrap,
+.user-space-wrap
+{
+	float: left;
+}
+
+.site-name-img-wrap,
+.site-name-logo-set,
+.search-set-wrap,
+.search-set,
+.lang-space-wrap,
+.user-space-wrap
+{
+	display: inline-block;
+	align-self: center;
+}
+
+.site-name-wrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 10px 10px 10px;
+}
+
+.site-name-img-wrap {
+	margin: 0px;
+	float: left;
+}
+
+.site-name{
+	position: relative;
+	display: inline-block;
+	margin: 0px 8px 0px 8px;
+}
+
+
+.user-space-wrap
+{
+	margin: 0px 0px 16px 0px;
+	height: 48px;
+
+}
+
+.lang-space-wrap
+{
+	margin: 0px 0px 16px 0px;
+	height: 48px;
+}
+
+
+/*Search area specific*/
+
+.search-set-wrap
+ {
+	left:-4px;
+	position:relative;
+	display: inline-block; 
+	height: 30px;
+	width: 250px;
+	margin: 10px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+/*	float: right;*/
+	float: left;
+}
+
+div.search-phrase
+ {
+	float: left;
+/*	margin: auto;*/
+	padding: 0px;
+	display: inline-block;
+	width:220px;
+	position: relative;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+
+div.search-button
+ {
+/*	margin: auto;*/
+	padding: 0px;
+	display: inline-block;
+	left: 0px;
+	width:30px;
+	position: relative;
+	font: normal 16px/22px 'DejaVu Sans', sans-serif;
+	z-index:2;
+}
+
+input[type="text"].search-phrase
+ {
+	position:relative;
+	display: inline-block;
+	width:202px;
+	height:30px;
+	padding:0px 5px 0px 5px;
+	float: left;
+
+}
+
+button.search-button,
+input[type="submit"].search-button
+ {
+	position:relative;
+	display: inline-block;
+	left:-4px;
+	padding:0px 0px 0px 0px;
+	border:0px;
+	float: left;
+	left:0px;
+	width:30px;
+	height:30px;
+}
+
+.footer-area-set {
+	position:fixed!important;
+	z-index:5;
+	bottom: 0px;
+}
+
+.consent-area {
+	display: flex;
+  flex-direction: column;
+	z-index: 5;
+
+}
+
+.consent-text {
+	top: 0px;
+	display: inline-block;
+	width: 90%;
+	padding: 5px 10px 5px 10px;
+	z-index: 5;
+}
+
+.consent-button {
+	top: 0px;
+	display: inline-block;
+	width: 90%;
+	padding: 0px;
+	z-index: 5;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="range"],
+input[type="number"],
+input[type="color"],
+input[type="password"]
+{
+	width:90%;
+}
+
+textarea
+{
+	width:90%;
+}
+
+select {
+	width:90%;
+}
+
+.link-area,
+.form-field
+ {
+	width:90%;
+}
+
+input[type="text"].wide
+ {
+	width:90%;
+}
+
+select.multiple {
+	width:90%;
+}
+
+select.wide-element {
+	width:90%;
+}
+
+.header-area {
+	padding: 0px 0px 10px 0px;
+}
+
+.header-bar {
+	position: relative;
+	background-color: #005500;
+/*For mobile same as ".navi-area li a" bg. color*/
+}
+.navi-area li {
+    border-right: none;
+}
+
+.menu-area {
+	float: left;
+	max-width: 190px;
+	margin: 0;
+	padding: 10px;
+	font: normal 20px/1.5em 'DejaVu Sans', sans-serif;
+}
+.menu-area ul {
+	list-style-type: none;
+	padding: 0 0 0 16px;
+}
+ 
+.menu-area ul a {
+	text-decoration: none;
+}
+
+.menu-area li a {
+	font: normal 20px/1.5em 'DejaVu Sans', sans-serif;
+}
+
+.menu-title h2 {
+	margin: 0;
+	padding: 8px 0px 8px 8px;
+	font: 24px DejaVu Sans, sans-serif;
+}
+
+.menu-content {
+	margin: 0px 0px 20px 0px;
+	padding: 0px 10px 0px 0px;
+}
+
+a.link-area
+{
+  font-size: 1.4em;
+}

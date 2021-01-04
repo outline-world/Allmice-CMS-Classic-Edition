@@ -1,0 +1,60 @@
+<?php
+$title = 'Add a New Form Field Changing Ability';
+?>
+
+<h1><?php echo $title; ?></h1>
+<div class="link">
+	<a href="<?php echo $GLOBALS['baseUrl'].'/'.$GLOBALS['modPath'].'/list-fields'; ?>">Show list of form fields!</a>
+</div>
+<br />
+
+<?php echo $form->get('begin'); ?>
+<?php echo $form->get('id'); ?>
+
+<div class="form-field">
+<?php echo $form->get('module'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('module'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('event'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('event'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('fieldName'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('fieldName'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('visibility'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('visibility'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('required'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('required'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('fieldOrder'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('fieldOrder'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('defaultValue'); ?>
+</div>
+	<div class="guide">
+	<?php echo $form->getGuide('defaultValue'); ?>
+	</div>
+<div class="form-field">
+<?php echo $form->get('submit1'); ?>
+</div>
+
+<?php echo $form->get('end'); ?>
