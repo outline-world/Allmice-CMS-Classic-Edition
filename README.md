@@ -1,6 +1,8 @@
 # Allmice CMS Classic Edition
 
-A free, fast, simple, lightweight, extendable modern Content Management System (CMS). It is programmed in PHP and uses MySQL or MariaDB database system. See the [project website](http://www.allmice.com/cms) for more details.
+A free, fast, simple, lightweight, extendable modern Content Management System (CMS). It is programmed in PHP and uses MySQL or MariaDB database system. See the [project website](http://www.allmice.com/cms) for more details, documentation, support and help.
+
+Newer stable versions will be released first on project website. Thus, if you wish to be more sure to get the most recent version, then it is better to download it from the project website.
 
 
 ## Short Overview
