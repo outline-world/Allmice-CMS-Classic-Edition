@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 All Allmice CMS Classic Edition code (including all Allmice CMS Minimal Edition code) is released under the "GNU GENERAL PUBLIC LICENSE" with following exceptions.
 Third party components under vendor directories or elsewhere (e.g. WYSIWYG CKEditor, PHPMailer, JQuery color picker, etc.) may have different licenses.
 Allmice PHP Framework code, which is included in Allmice CMS code, is released under New BSD License, if it is considered as separated software.
@@ -353,3 +354,10 @@ proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
+=======
+ * Allmice™ CMS Classic Edition
+ * Copyright 2016 - 2019 by Any Outline LTD
+ * http://www.allmice.com/cms
+ * Allmice CMS is released under the "GNU GENERAL PUBLIC LICENSE".
+ * Read more about the license from the other LICENSE.txt file, which is located in the subdirectory allmice-cms-classic-edition.
+>>>>>>> 18a6d8ce0e7299f5907df9a0aa5f4864620778ac
